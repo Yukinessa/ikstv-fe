@@ -1,28 +1,72 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar app color="Dark" dark>
+      <div class="d-flex align-center">
+        <v-img
+          alt="Logo-navbar"
+          class="shrink mr-2"
+          contain
+          src="./assets/logo-white.png"
+          transition="scale-transition"
+          width="80"
+        />
+      </div>
+      <v-spacer></v-spacer>
+      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
+        <span class="mr-2">Home</span>
+      </v-btn>
+      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
+        <span class="mr-2">News</span>
+      </v-btn>
+      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
+        <span class="mr-2">Iklan</span>
+      </v-btn>
+      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
+        <span class="mr-2">Home</span>
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <div class="black">        
+      <v-container>
+        <Highlight  />
+        <br>
+        <Category />
+        <br>
+        <br>
+        <Advertise />
+        <br>
+        <infoBarang />
+        <br>
+        <infoSosial />
+        <br>
+        <Advertise />
+      </v-container>
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Highlight from "./components/Highlight";
+import Category from "./components/Category";
+import Advertise from "./components/Advertise";
+import infoBarang from "./components/infoBarang";
+import infoSosial from "./components/infoSosial"
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    Highlight,
+    Category,
+    Advertise,
+    infoBarang,
+    infoSosial
+  },
+
+  data: () => ({
+    //
+  })
+};
+</script>
