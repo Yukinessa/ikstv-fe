@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-text class="font-weight-regular text-center">IksTV</v-text>
+  <!-- <v-text class="font-weight-regular text-center">IksTV</v-text> -->
   <v-container class="dark">
     <v-row no-gutters>
       <v-col v-for="n in 3" :key="n" cols="12" sm="4">
@@ -39,6 +39,6 @@ export default {
 }
 .v-btn__content{
   height: 100px;
-  weight: 300px;
+  /* weight: 300px; */
 }
 </style>

@@ -4,38 +4,35 @@
     <!-- <img v-bind:src="logo" /> -->
     <v-carousel cycle hide-delimiters show-arrows-on-hover >
       <v-carousel-item
-        v-for="(item,i) in items"
-        :key="i"
-        :src="item.src"
+        v-for="(iklan, index) in iklanData"
+        :key="index"
+        :src="iklan.banner"
       ></v-carousel-item>
+      <!-- <div id="iklan"> {{  advertisements }} </div> -->
     </v-carousel>
   </div>
   </v-container>
 </template>
 
-
 <script>
+import axios from 'axios';
+
 export default {
-data () {
+  name: "Advertisement",
+  data () {
       return {
-        items: [
-          {
-            src: require('../assets/Advertise.jpg'),
-          },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-          },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-          },
-        ],
+        iklanData: [],
+        errors: []
       }
     },
-}
+    mounted(){
+      axios.get('http://localhost:8000/api/iklan')
+            .then(response => {
+              console.log(response)
+              this.iklanData = response.data.bronze
+            }).catch(error =>{
+              console.log(error)
+            })
+    }
+  }
 </script>
-
-<style>
-.v-carousel{
-  height: 300px !important ;
-}
-</style>

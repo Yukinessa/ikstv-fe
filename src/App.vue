@@ -27,7 +27,7 @@
     </v-app-bar>
 
     <v-main>
-      <div class="black">        
+      <div class="black">
       <v-container>
         <Highlight  />
         <br>

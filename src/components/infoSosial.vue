@@ -68,8 +68,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-
+    name: "Info",
+    data () {
+        return{
+            infoLoker: [],
+            infoSocial: [],
+        }
+    },
+    mounted(){
+        axios.get('http://localhost:8000/api/kehilangan')
+            .then(response => {
+                console.log(response.data.data)
+            })
+            .catch(error =>{
+                console.log(error)
+            })
+    }
 }
 </script>
 
