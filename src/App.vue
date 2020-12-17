@@ -27,7 +27,7 @@
     </v-app-bar>
 
     <v-main>
-      <div class="black">        
+      <div class="black">
       <v-container>
         <Highlight  />
         <br>
@@ -41,7 +41,14 @@
         <infoSosial />
         <br>
         <Advertise />
+        <br>
+        <Youtube />
+        <br>
+        <Advertise2 />
+        <br>
+        <Footer />
       </v-container>
+      <router-view></router-view>
       </div>
     </v-main>
   </v-app>
@@ -52,19 +59,23 @@ import Highlight from "./components/Highlight";
 import Category from "./components/Category";
 import Advertise from "./components/Advertise";
 import infoBarang from "./components/infoBarang";
-import infoSosial from "./components/infoSosial"
+import infoSosial from "./components/infoSosial";
+import Youtube from "./components/Youtube";
+import Advertise2 from "./components/Advertise2";
+import Footer from "./components/Footer";
 
 export default {
   name: "App",
-
   components: {
     Highlight,
     Category,
     Advertise,
     infoBarang,
-    infoSosial
+    infoSosial,
+    Youtube,
+    Advertise2,
+    Footer
   },
-
   data: () => ({
     //
   })
