@@ -22,6 +22,11 @@
             unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
             Lorem Ipsum passages, and more recently with desktop publishing software like Aldus 
             PageMaker including versions of Lorem Ipsum</p>
+          <v-layout row>
+            <v-flex xs12 md4>
+              
+            </v-flex>
+          </v-layout>
       </v-container>
       <Footer />
   </div>

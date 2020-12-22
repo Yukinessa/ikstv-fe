@@ -1,9 +1,9 @@
 <template>
 <v-container>
-  <div class="rounded-lg">
+  <div :class="`rounded-lg`">
     <!-- <img v-bind:src="logo" /> -->
-    <v-carousel cycle hide-delimiters show-arrows-on-hover >
-      <v-carousel-item
+    <v-carousel :class="`rounded-lg`" cycle hide-delimiters show-arrows-on-hover >
+      <v-carousel-item  
         v-for="(item,i) in items"
         :key="i"
         :src="item.src"

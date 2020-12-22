@@ -14,7 +14,7 @@
         <span class="mr-2">Iklan</span>
       </v-btn>
       <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
-        <span class="mr-2">Home</span>
+        <span class="mr-2">Contact</span>
       </v-btn>
     </v-app-bar>
 </template>

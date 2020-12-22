@@ -3,10 +3,11 @@
   <p class="font-weight-medium text-align: left">Berita Terkini </p>
   <v-sheet class="mx-auto" elevation="10" max-width="1200">
     <v-slide-group class="pa-4" multiple show-arrows >
-      <v-slide-item v-for="n in 9" :key="n" v-slot="{ active, toggle }">
+      <v-slide-item v-for="n in 9" :key="n" v-slot="{toggle }">
         <v-card class="pa-2" outlined tile rounded="true" @click="toggle">
-            <v-card class="mx-1" max-width="316">
+            <v-card :class="`rounded-lg`" class="mx-1 " max-width="316">
               <v-img class="dark--text align-end" height="200px" src="@/assets/sample-pict.png">
+              <v-img></v-img>
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="50px">
                     <div class="my-4 ml-8 subtitle-2">

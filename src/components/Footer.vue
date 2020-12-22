@@ -1,7 +1,7 @@
 <template>
   <div class="footer" style="background-color:red">
         <v-layout row>
-          <!-- Explore section -->
+          <!-- About IKS section -->
         <v-flex xs12 md4 style="padding-left:140px; padding-top:30px" class="container-footer">
             <a href="">
             <img src="@/assets/logo-white.png" width="100">
@@ -10,6 +10,7 @@
               mulai dari info kecelakaan hingga info sosial. Ikuti pembaruan berita kami melalui website dan sosial
               media yang tersedia</p>
         </v-flex>
+          <!-- Explore section -->
         <v-flex xs12 md4 style="padding-left:150px; padding-top:40px; padding-bottom:60px">
           <h3 style="color: white; font-weight:bold; position: absolute; top:42px">EXPLORE</h3>
             <br>
@@ -28,22 +29,22 @@
         </v-flex>
         <!-- Update section -->
         <v-flex xs12 md4> 
-            <h3 style="color: white; font-weight:bold; position: absolute; left: 1090px; top:42px">UPDATE</h3>
+            <h3 style="color: white; font-weight:bold; position: absolute; left: 1070px; top:42px">UPDATE</h3>
             <br>
             <br>
             <v-flex xs6 md3>
               <a href="">
-              <img src="@/assets/icon-instagram.png" width="80" 
+              <img src="@/assets/icon-instagram.png" width="70" 
               style="position: absolute;
-                    right:300px; 
+                    right:310px; 
                     top: 82px;
                     padding: 10px;">
               </a>
               <a href="">
-              <img src="@/assets/icon-youtube.png" width="80" 
+              <img src="@/assets/icon-youtube.png" width="70" 
               style="position: absolute;
                     top:82px;
-                    right: 170px;
+                    right: 200px;
                     padding: 10px;">  
               </a>
             </v-flex> 

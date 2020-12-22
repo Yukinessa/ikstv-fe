@@ -1,6 +1,6 @@
 <template>
    <v-container>
-    <v-layout row>
+    <v-row>
         <v-flex xs12 md3>
             <h3 style="color:white">Info Kehilangan</h3>
             <v-card href="#">
@@ -65,10 +65,10 @@
                 </v-card-title>
             </v-card>
             <a href="#">
-            <p style="color:white; text-align:right line-height: 1.8">Lihat Semua ></p>
+            <p style="color:white; text-align:right; line-height: 1.8">Lihat Semua ></p>
             </a>
         </v-flex>
-    </v-layout>
+    </v-row>
     
   </v-container>
 </template>

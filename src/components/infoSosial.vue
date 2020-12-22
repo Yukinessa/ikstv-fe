@@ -30,6 +30,9 @@
                 <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
                 </v-card-title>
             </v-card>
+            <a href="#">
+            <p style="color:white; text-align:right; line-height: 1.8">Lihat Semua ></p>
+            </a>
         </v-flex>
         <v-flex xs12 md3 style="padding-left: 25px; padding-right: 10px">
             <h3 style="color:white">Info Sosial</h3>
@@ -61,6 +64,9 @@
                  <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
                 </v-card-title>
             </v-card>
+            <a href="#">
+            <p style="color:white; text-align:right; line-height: 1.8">Lihat Semua ></p>
+            </a>
         </v-flex>
     </v-layout>
     

@@ -2,25 +2,18 @@
 <div>
   <v-text class="font-weight-regular text-center">IksTV</v-text>
   <v-container class="dark">
-    <v-row no-gutters>
+    <v-row>
       <v-col v-for="n in 3" :key="n" cols="12" sm="4">
-        <v-card class="pa-2" outlined tile>
-        <div class="overflow-hidden v-sheet v-sheet-outlined theme--dark rounded" style="min-height: 61px" min-height="61">
-          <a class="v-list-item v-list-item--link theme--dark" href="#" tabindex="0">
-            <v-img  max-height="140" max-width="330" src="@/assets/Entertainment-1.png"></v-img>
+          <a class="v-list-item v-list-item--link theme--dark" href="#">
+            <v-img :class="`rounded-lg`" max-height="140" max-width="330" src="@/assets/Entertainment-1.png"></v-img>
           </a>
-        </div>
-        </v-card>
       </v-col>
-    </v-row><v-row no-gutters>
+    </v-row>
+    <v-row>
       <v-col v-for="n in 3" :key="n" cols="12" sm="4">
-        <v-card class="pa-2" outlined tile>
-        <div class="overflow-hidden v-sheet v-sheet-outlined theme--dark rounded" style="min-height: 61px" min-height="61">
-          <a class="v-list-item v-list-item--link theme--dark" href="#" tabindex="0">
-            <v-img max-height="140" max-width="330" src="@/assets/Entertainment-1.png"></v-img>
+          <a class="v-list-item v-list-item--link theme--dark" :class="`rounded-lg`" href="#">
+            <v-img :class="`rounded-lg`" max-height="140" max-width="330" src="@/assets/Entertainment-1.png"></v-img>
           </a>
-        </div>
-        </v-card>
       </v-col>
     </v-row>
   </v-container>
