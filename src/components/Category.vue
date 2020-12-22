@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-text class="font-weight-regular text-center">IksTV</v-text>
+  <h2 style="color:white; text-align:center;">IksTV</h2>
   <v-container class="dark">
     <v-row>
       <v-col v-for="n in 3" :key="n" cols="12" sm="4">

@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="footer" style="background-color:red">
         <v-layout row>
           <!-- About IKS section -->
@@ -51,6 +52,7 @@
         </v-flex>
         </v-layout>
   </div>
+</div>
 </template>
 
 <script>
