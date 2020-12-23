@@ -2,8 +2,8 @@
 <div>
   <p class="font-weight-medium text-align: left">Berita Terkini </p>
   <v-sheet class="mx-auto" elevation="10" max-width="1200">
-    <v-slide-group class="pa-4" show-arrows >
-      <v-slide-item v-for="n in 9" :key="n">
+    <v-slide-group class="pa-4" show-arrows>
+      <v-slide-item v-for="n in 9" :key="n" >
         <v-card class="pa-2" rounded="true" @click="toggle">
             <v-card :class="`rounded-lg`" class="mx-1 " max-width="316">
               <v-img class="dark--text align-end" height="200px" src="@/assets/sample-pict.png">
@@ -27,7 +27,6 @@
       </v-slide-item>
     </v-slide-group>
   </v-sheet>
-  <p class="font-weight-regular" style="margin-top:10px">Lihat Semua ></p>
 </div>
 </template>
 <style>

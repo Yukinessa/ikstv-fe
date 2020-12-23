@@ -3,18 +3,20 @@
     <v-row>
         <v-flex xs12 md3>
             <h3 style="color:white; padding-bottom:1rem">Info Kehilangan</h3>
-            <v-card :class="`rounded-lg`" href="#">
-                <v-card-title style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;">
-                    INFO BARANG <br> HILANG!
-                    <img :class="`rounded-lg`" class="ml-3 mr-3" src="@/assets/barang-hilang.jpg" width="180">
-                <v-card-subtitle style="color:white; font-size:16px; text-align:left">
-                    <p>Nama Pelapor :</p>
-                    <p>IG Pelapor :</p>
-                    <p>Barang yang ditemukan <br> / dicari :</p>
-                    <p>Lokasi terakhir Barang :</p>
-                </v-card-subtitle>
-                </v-card-title>
-            </v-card>
+            <router-link to="/list-lost" tag="card">
+                <v-card :class="`rounded-lg`" href="#">
+                    <v-card-title style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;">
+                        INFO BARANG <br> HILANG!
+                        <img :class="`rounded-lg`" class="ml-3 mr-3" src="@/assets/barang-hilang.jpg" width="180">
+                    <v-card-subtitle style="color:white; font-size:16px; text-align:left">
+                        <p>Nama Pelapor :</p>
+                        <p>IG Pelapor :</p>
+                        <p>Barang yang ditemukan <br> / dicari :</p>
+                        <p>Lokasi terakhir Barang :</p>
+                    </v-card-subtitle>
+                    </v-card-title>
+                </v-card>
+            </router-link>
         </v-flex>
         <v-flex xs12 md3 style="padding-right: 25px; padding-left:10px">
 

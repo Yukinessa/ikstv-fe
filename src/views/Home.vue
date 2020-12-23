@@ -6,6 +6,7 @@
         <Navbar />
         <Highlight />
         <br>
+        <br>
         <Category />
         <br>
         <br>
