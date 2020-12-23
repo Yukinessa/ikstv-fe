@@ -2,7 +2,7 @@
 <div>
   <p class="font-weight-medium text-align: left">Berita Terkini </p>
   <v-sheet class="mx-auto" elevation="10" max-width="1200">
-    <v-slide-group class="pa-4" show-arrows>
+    <v-slide-group class="pa-4" multiple show-arrows>
       <v-slide-item v-for="n in 9" :key="n" >
         <v-card class="pa-2" rounded="true" @click="toggle">
             <v-card :class="`rounded-lg`" class="mx-1 " max-width="316">

@@ -23,6 +23,16 @@ const routes = [
     name: "listLost",
     component: () => import("../views/listLost.vue")
   },
+  {
+    path: "/list-found",
+    name: "listFound",
+    component: () => import("../views/listFound.vue")
+  },
+  {
+    path: "/detail-category",
+    name: "detailCategory",
+    component: () => import("../views/detailCategory.vue")
+  },
 ];
 
 const router = new VueRouter({

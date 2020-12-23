@@ -19,7 +19,7 @@
             </router-link>
         </v-flex>
         <v-flex xs12 md3 style="padding-right: 25px; padding-left:10px">
-
+            <router-link to="/list-lost" tag="card">
             <v-card :class="`rounded-lg`" style="padding-top:2.8rem" href="#">
                 <v-card-title style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;">
                     INFO BARANG <br> HILANG!
@@ -32,6 +32,7 @@
                 </v-card-subtitle>
                 </v-card-title>
             </v-card>
+            </router-link>
             <a href="#">
             <p style="color:white; text-align:right; line-height: 1.8">Lihat Semua ></p>
             </a>
@@ -39,6 +40,7 @@
         <v-flex xs12 md3 style="padding-left: 25px; padding-right: 10px">
             <h3 style="color:white; padding-bottom:1rem">Info Pencarian</h3>
             <v-divider></v-divider>
+             <router-link to="/list-found" tag="card">
             <v-card :class="`rounded-lg`"  href="#">
                 <v-card-title style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content:center">
                     INFO BARANG <br> HILANG!
@@ -51,8 +53,10 @@
                 </v-card-subtitle>
                 </v-card-title>
             </v-card>
+             </router-link>
         </v-flex>
         <v-flex xs12 md3>
+             <router-link to="/list-found" tag="card">
             <v-card :class="`rounded-lg`" style="padding-top:2.8rem" href="#">
                 <v-card-title style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;">
                     INFO BARANG <br> HILANG!
@@ -65,6 +69,7 @@
                 </v-card-subtitle>
                 </v-card-title>
             </v-card>
+             </router-link>
             <a href="#">
             <p style="color:white; text-align:right; line-height: 1.8">Lihat Semua ></p>
             </a>
