@@ -13,9 +13,6 @@
         <span class="mr-2" @click="test('news')">News</span>
       </v-btn>
       <v-btn text>
-        <span class="mr-2">Iklan</span>
-      </v-btn>
-      <v-btn text>
         <span class="mr-2" >Contact</span>
       </v-btn>
     </v-app-bar>

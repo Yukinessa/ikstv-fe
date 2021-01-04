@@ -22,6 +22,14 @@
         <div id="advertise-mid" style="padding-top:2.5rem">
           <Advertise />
         </div>
+
+        <div id="kudu-reti" style="padding-top:2.5rem">
+          <KuduReti />
+        </div>
+        
+        <div id="advertise-bottom" style="padding-top:1rem">
+          <Advertise />
+        </div>
         
         <div id="info-barang-hilang" style="padding-top:2rem">
           <infoBarang />
@@ -31,9 +39,6 @@
           <infoSosial />
         </div>
         
-        <div id="advertise-bottom" style="padding-top:1rem">
-          <Advertise />
-        </div>
         
         <div id="hiburan" style="padding-top:2rem">
           <Youtube />
@@ -68,6 +73,7 @@ import Youtube from "../components/Youtube";
 import Advertise2 from "../components/Advertise2";
 import Footer from "../components/Footer";
 import Partner from "../components/Partner";
+import KuduReti from "../components/KuduReti";
 
 export default {
   name: "Home",
@@ -82,7 +88,7 @@ export default {
     Advertise2,
     Footer,
     Partner,
-    Kudu
+    KuduReti
   },
   data: () => ({
     //
