@@ -19,7 +19,7 @@
             <a id="beranda" style="color:white; font-size:15px" href="">Beranda</a>
             <br>
             <br>
-            <a id="news" style="color:white; font-size:15px" href="">Berita Terkini</a>
+            <a id="news" style="color:white; font-size:15px" @click="test('news')">Berita Terkini</a>
             <br>
             <br>
             <a id="lost-item" style="color:white; font-size:15px" href="">Info Kehilangan</a>
@@ -30,7 +30,7 @@
         </v-flex>
         <!-- Update section -->
         <v-flex xs12 md4> 
-            <h3 style="color: white; font-weight:bold; position: absolute; left: 1070px; top:42px">UPDATE</h3>
+            <h3 style="color: white; font-weight:bold; position: absolute; left: 1065px; top:42px">FOLLOW US</h3>
             <br>
             <br>
             <v-flex xs6 md3>
@@ -48,6 +48,7 @@
                     right: 200px;
                     padding: 10px;">  
               </a>
+              <h3 style="position:absolute; left: 1070px; top:170px; color:white; font-weight:bold">CONTACT</h3>
             </v-flex> 
         </v-flex>
         </v-layout>
@@ -56,8 +57,21 @@
 </template>
 
 <script>
-export default {
 
+export default {
+  data(){
+    return{
+      isMobile:this.$isMobile()
+    } 
+  },
+  mounted(){
+    console.log(this.$isMobile)
+  },
+  methods:{
+    test(refName){
+      this.$emit('testing',refName)
+    }
+  }
 }
 </script>
 

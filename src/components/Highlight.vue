@@ -27,6 +27,9 @@
       </v-slide-item>
     </v-slide-group>
   </v-sheet>
+  <a id="lanjut" style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right" href="" >
+      Lebih Lanjut >
+  </a>
 </div>
 </template>
 <style>
@@ -45,6 +48,23 @@
 }
 .theme--light.v-icon{
   color:white;
+}
+
+
+#lanjut:link{
+  text-decoration: none;
+}
+
+#lanjut:visited{
+  text-decoration: none;
+}
+
+#lanjut:hover{
+  text-decoration: underline;
+}
+
+#lanjut:active{
+  text-decoration: underline;
 }
 </style>
 <script>
