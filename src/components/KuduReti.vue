@@ -2,7 +2,7 @@
   <div>
     <h3 style="color:white; ">Koe Kudu Reti</h3>
     <v-row>
-      <v-col v-for="item in kudureti" :key="item" cols="12" sm="4">
+      <v-col v-for="item in kudureti" :key="item.id" cols="12" sm="4">
         <v-card
           :class="`rounded-lg`"
           style="background-color:white !important"
