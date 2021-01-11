@@ -19,7 +19,9 @@
         height="24"
         style="margin-right:1rem"
         @click="
-          shareWA('http://192.168.1.6:8080/#/News/' + strReplace(content.title))
+          shareWA(
+            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
+          )
         "
       />
       <img
@@ -28,7 +30,9 @@
         height="27"
         style="margin-right:1rem"
         @click="
-          shareFB('http://192.168.1.6:8080/#/News/' + strReplace(content.title))
+          shareFB(
+            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
+          )
         "
       />
       <img
@@ -38,7 +42,7 @@
         style="margin-right:1rem"
         @click="
           shareUrl(
-            'http://192.168.1.6:8080/#/News/' + strReplace(content.title)
+            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
           ),
             (snackbar = true)
         "
@@ -46,7 +50,7 @@
       <div style="padding-top:1rem; padding-bottom:2rem">
         <v-img
           :class="`rounded-lg`"
-          v-bind:src="'http://192.168.1.20:8000/uploads/news/' + content.photo"
+          v-bind:src="urlImg + '/article/' + content.url"
           width="1200"
           height="500px"
         ></v-img>
@@ -54,12 +58,12 @@
       <p
         style="font-size:20px; color:white; text-align:justify; margin-bottom:12rem; margin-top:2rem"
       >
-        {{ content.description }}
+        {{ content.text }}
       </p>
       <v-container>
         <h3 style="color:white;">Berita untuk anda</h3>
         <v-row>
-          <v-col v-for="item in news" :key="item" cols="12" sm="4">
+          <v-col v-for="item in kuduReti" :key="item" cols="12" sm="4">
             <v-card
               :class="`rounded-lg`"
               style="background-color:white !important"
@@ -70,26 +74,24 @@
                 :class="`rounded-lg`"
                 class="white--text align-end"
                 height="200px"
-                v-bind:src="
-                  'http://192.168.1.20:8000/uploads/news/' + item.photo
-                "
+                v-bind:src="urlImg + '/article/' + item.url"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">
                     <div class="my-2 ml-8 subtitle-2">
                       <span class="white--text" style="font-size:14px;">{{
-                        limitTitle(item.title)
+                        item.title
                       }}</span>
                     </div>
                   </v-img>
                 </v-card-title>
               </v-img>
               <v-card-text class="text--primary">
-                {{ limitText(item.description) }}
+                {{ limitText(item.text) }}
               </v-card-text>
               <v-card-actions>
                 <router-link
-                  :to="'/News/' + strReplace(item.title)"
+                  :to="'/kudu-reti/' + strReplace(item.title)"
                   tag="button"
                   ><v-btn color="blue" text
                     >Baca Selanjutnya</v-btn
@@ -121,6 +123,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Advertise from "../components/Advertise";
+import loadImg from "../../config.js";
 
 export default {
   name: "News",
@@ -133,29 +136,35 @@ export default {
     return {
       newsId: "",
       content: {},
-      news: [],
+      kuduReti: [],
       snackbar: false,
+      urlImg: loadImg,
     };
   },
   mounted() {
     this.getContent();
-    this.getNews();
+    this.getArticle();
   },
   methods: {
     getContent() {
       this.axios
         .get(
-          "http://192.168.1.20:8000/api/news/details/" +
+          "http://192.168.1.20:8000/api/info/funfact/" +
             this.strReturn(this.$route.params.title)
         )
         .then((response) => {
           this.content = response.data.datas;
+          console.log(response);
         });
     },
-    getNews() {
-      this.axios.get("http://192.168.1.20:8000/api/news").then((response) => {
-        this.news = response.data.datas;
-      });
+    // get content of artikel kudu-reti
+    getArticle() {
+      this.axios
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/funfact/")
+        .then((response) => {
+          this.kuduReti = response.data.datas;
+          console.log(response);
+        });
     },
     shareWA(link) {
       window.open(
@@ -174,10 +183,10 @@ export default {
       this.$copyText(link).then(function() {});
     },
     strReplace(str) {
-      return str.replace(" ", "-");
+      return str.replaceAll(" ", "-");
     },
     strReturn(str) {
-      return str.replace("-", " ");
+      return str.replaceAll("-", " ");
     },
     limitText(text) {
       return text.slice(0, 50) + " ...";

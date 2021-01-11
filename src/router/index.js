@@ -8,42 +8,47 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
-    path: "/news",
+    path: "/news/:title",
     name: "News",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "News" */ "../views/News.vue")
+    component: () => import(/* webpackChunkName: "News" */ "../views/News.vue"),
   },
   {
     path: "/list-lost",
     name: "listLost",
-    component: () => import("../views/listLost.vue")
+    component: () => import("../views/listLost.vue"),
   },
   {
-    path: "/list-found",
-    name: "listFound",
-    component: () => import("../views/listFound.vue")
+    path: "/list-number",
+    name: "listNumber",
+    component: () => import("../views/listNumber.vue"),
   },
   {
-    path: "/detail-category",
+    path: "/detail-category/:playlist",
     name: "detailCategory",
-    component: () => import("../views/detailCategory.vue")
+    component: () => import("../views/detailCategory.vue"),
+  },
+  {
+    path: "/kudu-reti/:title",
+    name: "kuduReti",
+    component: () => import("../views/kuduRetiArticle.vue"),
   },
 ];
 
 const router = new VueRouter({
   routes,
-  scrollBehavior: function(to){
-    if(to.hash){
-      return {selector: to.hash}
+  scrollBehavior: function(to) {
+    if (to.hash) {
+      return { selector: to.hash };
     } else {
-      return {x: 0, y: 0}
+      return { x: 0, y: 0 };
     }
-  }
+  },
 });
 
 export default router;

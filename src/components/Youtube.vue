@@ -1,18 +1,12 @@
 <template>
-<div>
-  <h3 style="color:white">Hiburan</h3>
-  <div class="container" style="background-color:white">
-      
+  <div>
+    <h3 style="color:white">Hiburan</h3>
+    <div class="container" style="background-color:white"></div>
   </div>
-</div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

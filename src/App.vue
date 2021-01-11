@@ -1,15 +1,11 @@
 <template>
-<div id="app">
-  <v-app>
-    <router-view></router-view>
-  </v-app>
-</div>
+  <div id="app">
+    <v-app>
+      <router-view :key="$route.fullPath"></router-view>
+    </v-app>
+  </div>
 </template>
 
 <script>
-
-
-export default {
-  
-}
+export default {};
 </script>

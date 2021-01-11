@@ -1,76 +1,172 @@
 <template>
-   <v-container>
+  <v-container>
     <v-row>
-        <v-flex xs12 md3>
-            <h3 style="color:white; padding-bottom:1rem">Info Kehilangan / Pencarian</h3>
-            <router-link to="/list-lost" tag="card">
-                <v-card :class="`rounded-lg`" href="#">
-                    <v-card-title style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;">
-                        INFO BARANG <br> HILANG!
-                        <img :class="`rounded-lg`" class="ml-3 mr-3" src="@/assets/barang-hilang.jpg" width="180">
-                    <v-card-subtitle style="color:white; font-size:16px; text-align:left">
-                        <p>Nama Pelapor :</p>
-                        <p>IG Pelapor :</p>
-                        <p>Barang yang ditemukan <br> / dicari :</p>
-                        <p>Lokasi terakhir Barang :</p>
-                    </v-card-subtitle>
-                    </v-card-title>
-                </v-card>
-            </router-link>
-        </v-flex>
-        <v-flex xs12 md3 style="padding-right: 25px; padding-left:10px; padding-top:2.8rem">
-            <router-link to="/list-lost" tag="card">
-            <v-card :class="`rounded-lg`" href="#">
-                <v-card-title style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;">
-                    INFO BARANG <br> HILANG!
-                    <img :class="`rounded-lg`" class="ml-3 mr-3" src="@/assets/barang-hilang.jpg" width="180">
-                <v-card-subtitle style="color:white; font-size:16px; text-align:left">
-                    <p>Nama Pelapor :</p>
-                    <p>IG Pelapor :</p>
-                    <p>Barang yang ditemukan <br> / dicari :</p>
-                    <p>Lokasi terakhir Barang :</p>
+      <v-col md="6">
+        <h3 style="color:white; padding-bottom:1rem">
+          Info Kehilangan / Pencarian
+        </h3>
+        <v-row>
+          <v-col md="6" v-for="item in content" :key="item.id">
+            <v-card :class="`rounded-lg`" style="padding-right:3px">
+              <v-card-title
+                style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;"
+              >
+                INFO BARANG <br />
+                HILANG!
+                <img
+                  :class="`rounded-lg`"
+                  class="ml-3 mr-3"
+                  v-bind:src="urlImg + '/info/' + item.photo"
+                  width="180"
+                  height="180"
+                />
+                <v-card-subtitle
+                  style="color:white; font-size:16px; text-align:left"
+                >
+                  <p><b>IG Pelapor</b> : {{ item.ig_pelapor }}</p>
+                  <p>
+                    <b>Tgl Publish</b> : <br />
+                    {{ item.created_at | moment("dddd, MMMM Do YYYY") }}
+                  </p>
+                  <p>
+                    <b>Barang yang ditemukan/dicari:</b> <br />
+                    {{ item.title }}
+                  </p>
+                  <p>
+                    <b>Lokasi terakhir Barang</b> : <br />{{ item.location }}
+                  </p>
                 </v-card-subtitle>
-                </v-card-title>
+              </v-card-title>
             </v-card>
-            </router-link>
-            <a href="#">
-            <p style="color:white; text-align:right; line-height: 1.8">Lihat Semua ></p>
-            </a>
-        </v-flex>
-        <v-flex xs12 md6 style="padding-left: 25px; padding-right: 10px">
-            <h3 style="color:white; padding-bottom:1rem">Nomer Penting Semarang</h3>
-            <v-card :class="`rounded-lg`"  href="#">
-                <v-card-title style="background-color:#800000ff; color:white; text-align:left">
-                <table style="border-collapse: collapse; width: 100%; text-align:center; justify-content:center;">
-                    <tr>
-                        <th>Instansi</th>
-                        <th>Region</th>
-                        <th>Kontak</th>
-                    </tr>
-                    <tr style="font-size:12px" v-for="(item,i) in 8" :key="i">
-                        <td>Polsek Genuk</td>
-                        <td>Genuk</td>
-                        <td>085-6351-789</td>
-                    </tr>
-                </table>
-                </v-card-title>
-            </v-card>
-            <p style="color:white; text-align:right; line-height: 1.8">Lihat Semua ></p>
-        </v-flex>
+          </v-col>
+        </v-row>
+        <!-- </v-col> -->
+      </v-col>
+      <v-col md="6">
+        <h3 style="color:white; padding-bottom:1rem;">
+          Nomer Penting Semarang
+        </h3>
+        <v-card :class="`rounded-lg`" style="margin-top:0.6rem">
+          <v-card-title
+            style="background-color:#800000ff; color:white; text-align:left"
+          >
+            <table
+              style="border-collapse: collapse; width: 100%; text-align:center; justify-content:center;"
+            >
+              <tr>
+                <th>Instansi</th>
+                <th>Daerah</th>
+                <th>Kontak</th>
+                <th></th>
+              </tr>
+              <tr style="font-size:12px" v-for="item in contact" :key="item">
+                <td>{{ item.name }}</td>
+                <td>{{ item.region }}</td>
+                <td id="nohp">{{ item.phone }}</td>
+                <v-btn
+                  class="ma-2"
+                  outlined
+                  color="white"
+                  @click="clipboard(item.phone), (snackbar = true)"
+                  >Copy!</v-btn
+                >
+                <v-snackbar v-model="snackbar"
+                  >Nomor Berhasil Dicopy
+                  <template v-slot:action="{ attrs }">
+                    <v-btn
+                      color="pink"
+                      text
+                      v-bind="attrs"
+                      @click="snackbar = false"
+                      >Close</v-btn
+                    >
+                  </template>
+                </v-snackbar>
+              </tr>
+            </table>
+          </v-card-title>
+        </v-card>
+        <router-link to="list-number">
+          <a
+            id="lanjut"
+            style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
+            href=""
+          >
+            Lebih Lanjut >
+          </a>
+        </router-link>
+      </v-col>
     </v-row>
-    
+    <router-link to="/list-lost">
+      <p style="color:white;margin-top:-1.2rem; margin-left:29rem">
+        Lihat Semua >
+      </p>
+    </router-link>
   </v-container>
 </template>
 
 <script>
-export default {
+import loadImg from "../../config.js";
 
-}
+export default {
+  data() {
+    return {
+      snackbar: false,
+      content: [],
+      contact: [],
+      urlImg: loadImg,
+    };
+  },
+  mounted() {
+    this.getItems();
+    this.getContact();
+  },
+  methods: {
+    clipboard(number) {
+      this.$copyText(number).then(function() {
+        this.snackbar = {
+          show: true,
+        };
+      });
+    },
+    getItems() {
+      this.axios
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/items")
+        .then((response) => {
+          this.content = response.data.datas;
+        });
+    },
+    getContact() {
+      this.axios
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/emergency")
+        .then((response) => {
+          this.contact = response.data.datas;
+          console.log(response);
+        });
+    },
+  },
+};
 </script>
 
 <style>
-td, th {
+td,
+th {
   text-align: left;
   padding: 8px;
+}
+#lanjut:link {
+  text-decoration: none;
+}
+
+#lanjut:visited {
+  text-decoration: none;
+}
+
+#lanjut:hover {
+  text-decoration: underline;
+}
+
+#lanjut:active {
+  text-decoration: underline;
 }
 </style>
