@@ -4,7 +4,7 @@
     <v-sheet class="mx-auto" elevation="10" max-width="1200">
       <v-slide-group class="pa-4" multiple show-arrows>
         <v-slide-item v-for="item in news" :key="item">
-          <v-card class="pa-2" rounded="true" @click="toggle">
+          <v-card class="pa-2" rounded="true">
             <v-card :class="`rounded-lg`" class="mx-1 " max-width="316">
               <v-img
                 v-if="item.photo != null"

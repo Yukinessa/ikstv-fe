@@ -80,7 +80,7 @@
                   <v-img src="@/assets/label-tittle.png" height="40px">
                     <div class="my-2 ml-8 subtitle-2">
                       <span class="white--text" style="font-size:14px;">{{
-                        item.title
+                        limitTitle(item.title)
                       }}</span>
                     </div>
                   </v-img>
@@ -149,7 +149,8 @@ export default {
     getContent() {
       this.axios
         .get(
-          "http://192.168.1.20:8000/api/info/funfact/" +
+          process.env.VUE_APP_IP_ADDRESS +
+            "info/funfact/" +
             this.strReturn(this.$route.params.title)
         )
         .then((response) => {

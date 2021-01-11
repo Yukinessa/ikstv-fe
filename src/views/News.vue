@@ -46,7 +46,7 @@
       <div style="padding-top:1rem; padding-bottom:2rem">
         <v-img
           :class="`rounded-lg`"
-          v-bind:src="'http://192.168.1.20:8000/uploads/news/' + content.photo"
+          v-bind:src="urlImg + 'news/' + content.photo"
           width="1200"
           height="500px"
         ></v-img>
@@ -70,9 +70,7 @@
                 :class="`rounded-lg`"
                 class="white--text align-end"
                 height="200px"
-                v-bind:src="
-                  'http://192.168.1.20:8000/uploads/news/' + item.photo
-                "
+                v-bind:src="urlImg + 'news/' + item.photo"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">
@@ -121,6 +119,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Advertise from "../components/Advertise";
+import loadImg from "../../config.js";
 
 export default {
   name: "News",
@@ -135,6 +134,7 @@ export default {
       content: {},
       news: [],
       snackbar: false,
+      urlImg: loadImg,
     };
   },
   mounted() {
@@ -145,7 +145,8 @@ export default {
     getContent() {
       this.axios
         .get(
-          "http://192.168.1.20:8000/api/news/details/" +
+          process.env.VUE_APP_IP_ADDRESS +
+            "news/details/" +
             this.strReturn(this.$route.params.title)
         )
         .then((response) => {
@@ -153,9 +154,11 @@ export default {
         });
     },
     getNews() {
-      this.axios.get("http://192.168.1.20:8000/api/news").then((response) => {
-        this.news = response.data.datas;
-      });
+      this.axios
+        .get(process.env.VUE_APP_IP_ADDRESS + "news/limit/three")
+        .then((response) => {
+          this.news = response.data.datas;
+        });
     },
     shareWA(link) {
       window.open(

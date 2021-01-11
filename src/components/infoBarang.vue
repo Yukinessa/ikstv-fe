@@ -89,7 +89,7 @@
         <router-link to="list-number">
           <a
             id="lanjut"
-            style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
+            style="padding-top:0.4rem; color:white; margin-left:auto; display:block; text-align:right"
             href=""
           >
             Lebih Lanjut >
@@ -98,9 +98,13 @@
       </v-col>
     </v-row>
     <router-link to="/list-lost">
-      <p style="color:white;margin-top:-1.2rem; margin-left:29rem">
-        Lihat Semua >
-      </p>
+      <a
+        id="lanjut"
+        style="padding-top:0.2rem; color:white; display:block; padding-left:27rem; margin-top:-1.2rem"
+        href=""
+      >
+        Lebih Lengkap >
+      </a>
     </router-link>
   </v-container>
 </template>
