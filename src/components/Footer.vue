@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!$isMobile()">
     <div class="footer" style="background-color:red">
       <v-container>
         <v-layout row>
@@ -95,10 +95,99 @@
       </v-container>
     </div>
   </div>
+  <div v-else>
+    <div class="footer" style="background-color: red">
+      <b-container>
+        <b-row>
+          <b-col sm="1">
+            <img
+              src="@/assets/logo-white.png"
+              width="100"
+              style="display: block; margin-left:auto; margin-right: auto"
+            />
+            <!-- </a> -->
+            <p style="color:white; text-align:justify; padding-top:20px">
+              Kami memberikan informasi se-kota semarang mulai dari info
+              kecelakaan hingga info sosial. Ikuti pembaruan berita kami melalui
+              website dan sosial media yang tersedia
+            </p>
+          </b-col>
+          <b-col sm="1">
+            <h3
+              style="color: white; font-weight:bold; top:42px; text-align:center"
+            >
+              EXPLORE
+            </h3>
+            <br />
+            <br />
+            <a
+              id="beranda"
+              style="color:white; font-size:15px; text-align:center; display:block"
+              href=""
+              >Beranda</a
+            >
+            <br />
+            <br />
+            <a
+              id="news"
+              style="color:white; font-size:15px;text-align:center; display:block"
+              @click="test('news')"
+              >Berita Terkini</a
+            >
+            <br />
+            <br />
+            <a
+              id="lost-item"
+              style="color:white; font-size:15px;text-align:center; display:block"
+              href=""
+              >Info Kehilangan</a
+            >
+            <br />
+            <br />
+            <a
+              id="advertise"
+              style="color:white; font-size:15px; text-align:center; display:block"
+              href=""
+              >Iklan</a
+            >
+          </b-col>
+          <b-col sm="1">
+            <h3 style="color:white;  text-align:center">
+              FOLLOW US
+            </h3>
+            <div style="text-align:center; margin-top: 1rem">
+              <a href="">
+                <img src="@/assets/icon-instagram.png" width="30" />
+              </a>
+              <a href="">
+                <img
+                  src="@/assets/icon-youtube.png"
+                  width="30"
+                  style="margin-left:1rem"
+                />
+              </a>
+              <a href="">
+                <img
+                  src="@/assets/icon-wa.png"
+                  width="25"
+                  style="margin-left:1rem"
+                />
+              </a>
+            </div>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      urlImgFooter: "../assets/logo-white.png",
+    };
+  },
   methods: {
     test(refName) {
       this.$emit("testing", refName);
