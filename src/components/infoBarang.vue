@@ -59,7 +59,7 @@
                 <th>Kontak</th>
                 <th></th>
               </tr>
-              <tr style="font-size:12px" v-for="item in contact" :key="item">
+              <tr style="font-size:12px" v-for="item in contact" :key="item.id">
                 <td>{{ item.name }}</td>
                 <td>{{ item.region }}</td>
                 <td id="nohp">{{ item.phone }}</td>
