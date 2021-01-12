@@ -8,7 +8,7 @@
           </div>
 
           <div id="advertise-top" style="padding-top:0.1rem">
-            <Advertise />
+            <AdvertiseDiamond />
           </div>
 
           <div id="highlight-news" style="padding-top:1rem" ref="news">
@@ -20,7 +20,7 @@
           </div>
 
           <div id="advertise-mid" style="padding-top:2.5rem">
-            <Advertise />
+            <AdvertiseGold />
           </div>
 
           <div id="kudu-reti" style="padding-top:2.5rem">
@@ -28,7 +28,7 @@
           </div>
 
           <div id="advertise-bottom" style="padding-top:1rem">
-            <Advertise />
+            <AdvertiseSilver />
           </div>
 
           <div id="info-barang-hilang" style="padding-top:2rem">
@@ -65,7 +65,9 @@
 import Navbar from "../components/Navbar";
 import Highlight from "../components/Highlight";
 import Category from "../components/Category";
-import Advertise from "../components/Advertise";
+import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseSilver from "../components/advertiseSilver";
 import infoBarang from "../components/infoBarang";
 import infoSosial from "../components/infoSosial";
 // import Youtube from "../components/Youtube";
@@ -80,7 +82,9 @@ export default {
     Navbar,
     Highlight,
     Category,
-    Advertise,
+    AdvertiseDiamond,
+    AdvertiseGold,
+    AdvertiseSilver,
     infoBarang,
     infoSosial,
     // Youtube,

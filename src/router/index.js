@@ -38,6 +38,11 @@ const routes = [
     name: "kuduReti",
     component: () => import("../views/kuduRetiArticle.vue"),
   },
+  {
+    path: "/list-loker",
+    name: "listLoker",
+    component: () => import("../views/listLoker.vue"),
+  },
 ];
 
 const router = new VueRouter({

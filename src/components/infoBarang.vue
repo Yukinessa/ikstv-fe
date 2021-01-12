@@ -145,7 +145,6 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "info/emergency")
         .then((response) => {
           this.contact = response.data.datas;
-          console.log(response);
         });
     },
   },

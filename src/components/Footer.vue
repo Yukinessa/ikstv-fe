@@ -99,14 +99,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isMobile: this.$isMobile(),
-    };
-  },
-  mounted() {
-    console.log(this.$isMobile);
-  },
   methods: {
     test(refName) {
       this.$emit("testing", refName);

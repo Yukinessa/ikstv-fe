@@ -5,7 +5,7 @@
         <Navbar />
       </div>
       <div style="padding-bottom:2rem">
-        <Advertise />
+        <AdvertiseDiamond />
       </div>
       <h1 class="pt-6" style="color:white">
         {{ content.title }}
@@ -108,7 +108,7 @@
         </v-snackbar>
       </v-container>
       <div style="padding-bottom:2rem; padding-top:2rem">
-        <Advertise />
+        <AdvertiseGold />
       </div>
     </v-container>
     <Footer />
@@ -118,7 +118,8 @@
 <script>
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Advertise from "../components/Advertise";
+import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamond from "../components/advertiseDiamond";
 import loadImg from "../../config.js";
 
 export default {
@@ -126,7 +127,8 @@ export default {
   components: {
     Navbar,
     Footer,
-    Advertise,
+    AdvertiseGold,
+    AdvertiseDiamond,
   },
   data() {
     return {
