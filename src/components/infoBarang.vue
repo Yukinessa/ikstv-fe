@@ -117,10 +117,10 @@
     <b-container>
       <h5 class="font-weight-bold text-light">Info Kehilangan</h5>
       <b-row v-for="item in content.slice(0, 2)" :key="item.id">
-        <b-col sm="6">
+        <b-col sm="1">
           <b-card
-            style="max-width: 18rem;background-color: #800000"
-            class="mb-2 shadow"
+            style="max-width: 25rem;background-color: #800000"
+            class="mb-2 shadow mx-auto"
           >
             <b-card-text>
               <h5 class="text-center font-weight-bold" style="color: #f3ae5cff">

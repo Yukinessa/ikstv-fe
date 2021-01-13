@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3 style="color:white; ">Koe Kudu Reti</h3>
+  <div v-if="!$isMobile()">
+    <h3 style="color:white; ">Kudu Reti Lur</h3>
     <v-row>
       <v-col v-for="item in kudureti" :key="item.id" cols="12" sm="4">
         <v-card
@@ -46,6 +46,49 @@
       Lebih Lanjut >
     </a>
   </div>
+  <div v-else>
+    <b-container>
+      <b-row>
+        <h5 style="color:white; " class="font-weight-bold">Kudu Reti Lur</h5>
+        <swiper ref="mySwiper" :options="swiperOptions" class="ml-2">
+          <swiper-slide v-for="item in kudureti" :key="item.id">
+            <b-card
+              :img-src="urlImg + 'article/' + item.url"
+              img-alt="Image"
+              img-top
+              img-width="156"
+              img-height="150"
+              tag="article"
+              style="max-width: 18rem; height: 370px"
+              class="mb-2 shadow"
+            >
+              <b-card-text class="font-weight-bold">
+                <p>{{ limitTitle(item.title) }}</p>
+              </b-card-text>
+
+              <b-card-text>
+                <p class="text-muted" style="font-size: 11px">
+                  {{ limitText(item.text) }}
+                </p>
+              </b-card-text>
+              <router-link
+                :to="'/kudu-reti/' + strReplace(item.title)"
+                tag="button"
+              >
+                <b-button
+                  href="#"
+                  variant="primary"
+                  style="font-size: 10px; color: white; margin-top: 1rem"
+                  >Baca Selengkapnya</b-button
+                >
+              </router-link>
+            </b-card>
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+      </b-row>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -55,10 +98,24 @@ export default {
     return {
       kudureti: [],
       urlImg: loadImg,
+      swiperOptions: {
+        slidesPerView: 2,
+        spaceBetween: 6,
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        // Some Swiper option/callback...
+      },
     };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
   },
   mounted() {
     this.getArticle();
+    this.swiper.slideTo(2, 1000, false);
   },
   methods: {
     limitText(text) {
