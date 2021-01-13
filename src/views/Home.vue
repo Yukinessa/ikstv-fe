@@ -43,9 +43,9 @@
           <Youtube />
         </div> -->
 
-          <div id="advertise-divide2" style="padding-top:2rem">
+          <!-- <div id="advertise-divide2" style="padding-top:2rem">
             <Advertise2 />
-          </div>
+          </div> -->
 
           <div id="our-partner" style="padding-top:2rem">
             <hr size="3" width="100%" color="white" />
@@ -71,7 +71,7 @@ import AdvertiseSilver from "../components/advertiseSilver";
 import infoBarang from "../components/infoBarang";
 import infoSosial from "../components/infoSosial";
 // import Youtube from "../components/Youtube";
-import Advertise2 from "../components/Advertise2";
+// import Advertise2 from "../components/Advertise2";
 import Footer from "../components/Footer";
 import Partner from "../components/Partner";
 import KuduReti from "../components/KuduReti";
@@ -88,7 +88,7 @@ export default {
     infoBarang,
     infoSosial,
     // Youtube,
-    Advertise2,
+    // Advertise2,
     Footer,
     Partner,
     KuduReti,
