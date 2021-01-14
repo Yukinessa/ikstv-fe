@@ -99,12 +99,38 @@ export default {
       kudureti: [],
       urlImg: loadImg,
       swiperOptions: {
-        slidesPerView: 2,
-        spaceBetween: 6,
+        slidesPerView: 1,
+        // spaceBetween: -6,
         pagination: {
           el: ".swiper-pagination",
         },
+        loop: true,
         // Some Swiper option/callback...
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          360: {
+            slidesPerView: 1,
+            spaceBetween: -20,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: -30,
+          },
+          // when window width is >= 480px
+          400: {
+            slidesPerView: 1,
+            spaceBetween: -80,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        },
       },
     };
   },

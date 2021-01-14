@@ -121,7 +121,7 @@
           img-height="109"
           tag="article"
           style="max-width: 20rem;"
-          class="mb-2"
+          class="mb-2 d-block mx-auto"
         >
           <b-card-text>
             <p class="font-weight-bold" style="color: #D60909">
@@ -148,7 +148,12 @@
             >
           </div>
         </b-card>
-        <b-card v-else tag="article" style="max-width: 20rem;" class="mb-2">
+        <b-card
+          v-else
+          tag="article"
+          style="max-width: 20rem;"
+          class="mb-2 mx-auto"
+        >
           <img
             src="@/assets/empty-image.png"
             alt=""

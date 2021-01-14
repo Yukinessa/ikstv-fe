@@ -27,13 +27,13 @@
         <swiper ref="mySwiper" :options="swiperOptions">
           <swiper-slide v-for="item in category" :key="item.id">
             <router-link :to="'/detail-category/' + item.id" tag="button">
-              <a class="v-list-item v-list-item--link theme--dark" href="#">
-                <v-img
-                  :class="`rounded-lg`"
-                  max-width="50%"
-                  :src="urlImg + 'channel_category/' + item.url"
-                ></v-img>
-              </a>
+              <!-- <a class="v-list-item v-list-item--link theme--dark" href="#"> -->
+              <v-img
+                :class="`rounded-lg`"
+                :src="urlImg + 'channel_category/' + item.url"
+                style="width: 250px"
+              ></v-img>
+              <!-- </a> -->
             </router-link>
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
@@ -51,12 +51,39 @@ export default {
       category: [],
       urlImg: loadImg,
       swiperOptions: {
-        slidesPerView: 1,
-        spaceBetween: 3,
+        slidesPerView: 2,
+        // spaceBetween: 150,
         pagination: {
           el: ".swiper-pagination",
         },
+
         // Some Swiper option/callback...
+        // loop: true,
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: -30,
+          },
+          360: {
+            slidesPerView: 1,
+            spaceBetween: -70,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: -80,
+          },
+          // when window width is >= 480px
+          400: {
+            slidesPerView: 1,
+            spaceBetween: -120,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        },
       },
     };
   },
@@ -67,7 +94,7 @@ export default {
   },
   mounted() {
     this.getCategory();
-    this.swiper.slideTo(1, 1000, false);
+    this.swiper.slideTo(0, 1000, false);
   },
   methods: {
     getCategory() {
