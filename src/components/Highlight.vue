@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!$isMobile()">
     <p class="font-weight-medium text-align: left">Berita Terkini</p>
     <v-sheet class="mx-auto" elevation="10" max-width="1200">
       <v-slide-group class="pa-4" multiple show-arrows>
@@ -76,6 +76,91 @@
       Lebih Lanjut >
     </a>
   </div>
+  <div v-else>
+    <h5 class="font-weight-medium ml-2">Berita Terkini</h5>
+    <swiper ref="mySwiper" :options="swiperOptions" class="ml-2">
+      <swiper-slide v-for="item in news" :key="item.id">
+        <b-card
+          :img-src="urlImg + '/news/' + item.photo"
+          img-alt="Image"
+          img-top
+          img-width="159"
+          img-height="109"
+          tag="article"
+          style="max-width: 18rem; height: 400px"
+          class="mb-2 shadow"
+          v-if="item.photo != null"
+        >
+          <b-card-text class="font-weight-bold">
+            <p>{{ limitTitle(item.title) }}</p>
+          </b-card-text>
+
+          <b-card-text>
+            <p class="text-muted" style="font-size: 11px">
+              {{ limitText(item.description) }}
+            </p>
+          </b-card-text>
+          <b-badge
+            variant="danger"
+            v-if="item.content_status == 1"
+            style="font-size: 10px"
+          >
+            Berita Sensitif
+          </b-badge>
+          <b-badge v-else style="font-size: 10px; background-color: white">
+            Berita Normal
+          </b-badge>
+          <router-link :to="'/News/' + strReplace(item.title)" tag="button">
+            <b-button
+              href="#"
+              variant="primary"
+              style="font-size: 10px; color: white; margin-top: 1rem"
+              >Baca Selengkapnya</b-button
+            >
+          </router-link>
+        </b-card>
+        <b-card
+          tag="article"
+          style="max-width: 18rem; height: 400px"
+          class="mb-2 shadow"
+          v-else
+        >
+          <img
+            src="@/assets/empty-image.png"
+            alt=""
+            width="159"
+            height="109"
+            class="card-img-top"
+          />
+
+          <b-card-text class="font-weight-bold">
+            <p>{{ limitTitle(item.title) }}</p>
+          </b-card-text>
+          <b-card-text>
+            <p class="text-muted text-justify" style="font-size: 13px">
+              {{ limitText(item.description) }}
+            </p>
+          </b-card-text>
+          <b-badge
+            variant="danger"
+            v-if="item.content_status == 1"
+            style="font-size: 10px"
+          >
+            Berita Sensitif
+          </b-badge>
+          <router-link :to="'/News/' + strReplace(item.title)" tag="button">
+            <b-button
+              href="#"
+              variant="primary"
+              style="font-size: 10px; color: white"
+              >Baca Selengkapnya</b-button
+            >
+          </router-link>
+        </b-card>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+  </div>
 </template>
 <style>
 .theme--light.v-sheet {
@@ -110,6 +195,9 @@
 #lanjut:active {
   text-decoration: underline;
 }
+/* .swiper-slide {
+  width: 165px !important;
+} */
 </style>
 <script>
 import loadImg from "../../config.js";
@@ -118,10 +206,24 @@ export default {
     return {
       news: [],
       urlImg: loadImg,
+      swiperOptions: {
+        slidesPerView: 2,
+        spaceBetween: 6,
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        // Some Swiper option/callback...
+      },
     };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
   },
   mounted() {
     this.getNews();
+    this.swiper.slideTo(2, 1000, false);
   },
   methods: {
     strReplace(str) {

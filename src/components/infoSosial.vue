@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="!$isMobile()">
     <v-layout row>
       <v-flex xs12 md3>
         <h3 style="color:white; padding-bottom:1rem">Info Lowongan Kerja</h3>
@@ -106,10 +106,177 @@
       </v-flex>
     </v-layout>
   </v-container>
+  <v-container v-else>
+    <h6 style="color:white; padding-bottom:1rem" class="font-weight-bold">
+      Info Lowongan Kerja
+    </h6>
+    <b-row>
+      <b-col sm="1" v-for="loker in lokers.slice(0, 2)" :key="loker.id">
+        <b-card
+          v-if="loker.partner_id != null"
+          :img-src="urlImg + 'loker/' + loker.partner.logo"
+          img-alt="Image"
+          img-top
+          img-width="100%"
+          img-height="109"
+          tag="article"
+          style="max-width: 20rem;"
+          class="mb-2"
+        >
+          <b-card-text>
+            <p class="font-weight-bold" style="color: #D60909">
+              {{ loker.position }}
+            </p>
+            <p
+              v-if="loker.partner_id != null"
+              class="font-weight-bold"
+              style="font-size: 15px"
+            >
+              {{ loker.partner.name }}
+            </p>
+            <p v-else style="font-size: 15px" class="font-weight-bold">
+              {{ loker.title }}
+            </p>
+            <p class="text-muted" style="font-size: 12px">
+              {{ loker.address }}
+            </p>
+          </b-card-text>
+
+          <div class="text-center">
+            <b-button href="#" variant="danger" style="color: white"
+              >Info Lebih Lanjut ></b-button
+            >
+          </div>
+        </b-card>
+        <b-card v-else tag="article" style="max-width: 20rem;" class="mb-2">
+          <img
+            src="@/assets/empty-image.png"
+            alt=""
+            style="width:100%; height:109"
+            class="card-img-top"
+          />
+          <b-card-text>
+            <p class="font-weight-bold" style="color: #D60909">
+              {{ loker.position }}
+            </p>
+            <p
+              v-if="loker.partner_id != null"
+              class="font-weight-bold"
+              style="font-size: 15px"
+            >
+              {{ loker.partner.name }}
+            </p>
+            <p v-else class="font-weight-bold" style="font-size: 15px">
+              {{ loker.title }}
+            </p>
+            <p class="text-muted" style="font-size: 12px">
+              {{ loker.address }}
+            </p>
+          </b-card-text>
+          <div class="text-center">
+            <b-button href="#" variant="danger" style="color: white"
+              >Info Lebih Lanjut ></b-button
+            >
+          </div>
+        </b-card>
+      </b-col>
+    </b-row>
+    <h6 style="color:white; padding-bottom:1rem" class="font-weight-bold mt-4">
+      Info Sosial
+    </h6>
+    <b-row>
+      <b-col sm="1" v-for="sosial in sosials.slice(0, 2)" :key="sosial.id">
+        <b-card
+          v-if="sosial.photo != null"
+          :img-src="urlImg + 'sosial/' + sosial.photo"
+          img-alt="Image"
+          img-top
+          img-width="100%"
+          img-height="109"
+          tag="article"
+          style="max-width: 20rem;"
+          class="mb-2"
+        >
+          <b-card-text>
+            <p class="font-weight-bold" style="color: #D60909">
+              {{ sosial.title }}
+            </p>
+            <p class="font-weight-bold" style="font-size: 15px">
+              {{ sosial.ig_pelapor }}
+            </p>
+            <p class="text-muted" style="font-size: 12px">
+              {{ sosial.description }}
+            </p>
+          </b-card-text>
+
+          <div class="text-center">
+            <b-button href="#" variant="danger" style="color: white"
+              >Info Lebih Lanjut ></b-button
+            >
+          </div>
+        </b-card>
+        <b-card v-else tag="article" style="max-width: 20rem;" class="mb-2">
+          <img
+            src="@/assets/empty-image.png"
+            alt=""
+            style="width:100%;
+          height:109"
+            class="card-img-top"
+          />
+          <b-card-text>
+            <p class="font-weight-bold" style="color: #D60909">
+              {{ sosial.title }}
+            </p>
+            <p class="font-weight-bold" style="font-size: 15px">
+              {{ sosial.ig_pelapor }}
+            </p>
+            <p class="text-muted" style="font-size: 12px">
+              {{ sosial.description }}
+            </p>
+          </b-card-text>
+
+          <div class="text-center">
+            <b-button href="#" variant="danger" style="color: white"
+              >Info Lebih Lanjut ></b-button
+            >
+          </div>
+        </b-card>
+      </b-col>
+    </b-row>
+  </v-container>
 </template>
 
 <script>
-export default {};
+import loadImg from "../../config";
+export default {
+  data() {
+    return {
+      lokers: [],
+      sosials: [],
+      urlImg: loadImg,
+    };
+  },
+  mounted() {
+    this.getLoker();
+    this.getSosial();
+  },
+  methods: {
+    getLoker() {
+      this.axios
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/loker")
+        .then((response) => {
+          this.lokers = response.data.datas;
+        });
+    },
+    getSosial() {
+      this.axios
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/sosial")
+        .then((response) => {
+          this.sosials = response.data.datas;
+        });
+    },
+  },
+};
 </script>
 
 <style></style>

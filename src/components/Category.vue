@@ -19,21 +19,25 @@
     </v-container>
   </div>
   <div v-else>
-    <h4 style="color:white; text-align:center;">IksTV</h4>
     <b-container>
+      <h4 style="color:white;" class="font-weight-bold text-center mb-4">
+        Channel Kami
+      </h4>
       <b-row>
-        <b-col sm="1" v-for="item in category" :key="item.id">
-          <router-link :to="'/detail-category/' + item.id" tag="button">
-            <a class="v-list-item v-list-item--link theme--dark" href="#">
-              <v-img
-                :class="`rounded-lg`"
-                max-height="140"
-                max-width="230"
-                :src="urlImg + 'channel_category/' + item.url"
-              ></v-img>
-            </a>
-          </router-link>
-        </b-col>
+        <swiper ref="mySwiper" :options="swiperOptions">
+          <swiper-slide v-for="item in category" :key="item.id">
+            <router-link :to="'/detail-category/' + item.id" tag="button">
+              <a class="v-list-item v-list-item--link theme--dark" href="#">
+                <v-img
+                  :class="`rounded-lg`"
+                  max-width="50%"
+                  :src="urlImg + 'channel_category/' + item.url"
+                ></v-img>
+              </a>
+            </router-link>
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
       </b-row>
     </b-container>
   </div>
@@ -46,10 +50,24 @@ export default {
     return {
       category: [],
       urlImg: loadImg,
+      swiperOptions: {
+        slidesPerView: 1,
+        spaceBetween: 3,
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        // Some Swiper option/callback...
+      },
     };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
   },
   mounted() {
     this.getCategory();
+    this.swiper.slideTo(1, 1000, false);
   },
   methods: {
     getCategory() {
