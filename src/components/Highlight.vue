@@ -81,15 +81,13 @@
     <swiper ref="mySwiper" :options="swiperOptions" class="ml-2">
       <swiper-slide v-for="item in news" :key="item.id">
         <b-card
-          :img-src="urlImg + '/news/' + item.photo"
+          :img-src="urlImg + 'news/mobile/' + item.photo_mobile"
           img-alt="Image"
           img-top
-          img-width="159"
-          img-height="109"
           tag="article"
-          style="max-width: 18rem; height: 400px"
+          style="max-width: 18rem;"
           class="mb-2 shadow"
-          v-if="item.photo != null"
+          v-if="item.photo_mobile != null"
         >
           <b-card-text class="font-weight-bold">
             <p>{{ limitTitle(item.title) }}</p>
@@ -107,21 +105,22 @@
           >
             Berita Sensitif
           </b-badge>
-          <b-badge v-else style="font-size: 10px; background-color: white">
+          <b-badge v-else style="font-size: 10px;">
             Berita Normal
           </b-badge>
+          <br />
           <router-link :to="'/News/' + strReplace(item.title)" tag="button">
             <b-button
               href="#"
               variant="primary"
-              style="font-size: 10px; color: white; margin-top: 1rem"
+              style="font-size: 10px; color: white; margin-top: 1rem;"
               >Baca Selengkapnya</b-button
             >
           </router-link>
         </b-card>
         <b-card
           tag="article"
-          style="max-width: 18rem; height: 400px"
+          style="max-width: 18rem; height: 100%"
           class="mb-2 shadow"
           v-else
         >
@@ -148,6 +147,7 @@
           >
             Berita Sensitif
           </b-badge>
+          <br />
           <router-link :to="'/News/' + strReplace(item.title)" tag="button">
             <b-button
               href="#"
@@ -207,12 +207,38 @@ export default {
       news: [],
       urlImg: loadImg,
       swiperOptions: {
-        slidesPerView: 2,
-        spaceBetween: 6,
+        slidesPerView: 1,
+        // spaceBetween: -6,
         pagination: {
           el: ".swiper-pagination",
         },
+        loop: true,
         // Some Swiper option/callback...
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          360: {
+            slidesPerView: 1,
+            spaceBetween: -20,
+          },
+          375: {
+            slidesPerView: 1,
+            spaceBetween: -30,
+          },
+          // when window width is >= 480px
+          400: {
+            slidesPerView: 1,
+            spaceBetween: -80,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        },
       },
     };
   },
