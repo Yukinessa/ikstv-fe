@@ -38,48 +38,41 @@
         </v-col>
         <!-- Sosial Section -->
         <v-col md="6">
-          <v-col md="6">
-            <h3 style="color:white; padding-bottom:1rem">
-              Info Sosial
-            </h3>
-            <v-row>
-              <v-col md="6" v-for="item in content" :key="item.id">
-                <v-card :class="`rounded-lg`" style="padding-right:3px">
-                  <v-card-title
-                    style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;"
-                  >
-                    INFO BARANG <br />
-                    HILANG!
-                    <img
-                      :class="`rounded-lg`"
-                      class="ml-3 mr-3"
-                      v-bind:src="urlImg + '/info/' + item.photo"
-                      width="180"
-                      height="180"
-                    />
-                    <v-card-subtitle
-                      style="color:white; font-size:16px; text-align:left"
-                    >
-                      <p><b>IG Pelapor</b> : {{ item.ig_pelapor }}</p>
-                      <p>
-                        <b>Tgl Publish</b> : <br />
-                        {{ item.created_at | moment("dddd, MMMM Do YYYY") }}
-                      </p>
-                      <p>
-                        <b>Barang yang ditemukan/dicari:</b> <br />
-                        {{ item.title }}
-                      </p>
-                      <p>
-                        <b>Lokasi terakhir Barang</b> : <br />{{
-                          item.location
-                        }}
-                      </p>
-                    </v-card-subtitle>
-                  </v-card-title>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-col>
+          <h3 style="color:white; padding-bottom:1rem">
+            Info Sosial
+          </h3>
+          <v-row>
+            <v-col
+              md="6"
+              v-for="sosial in sosials.slice(0, 2)"
+              :key="sosial.id"
+            >
+              <v-card href="#">
+                <v-card-title
+                  style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
+                >
+                  <img
+                    v-if="sosial.photo != null"
+                    class="ml-3 mr-3 mt-5"
+                    v-bind:src="urlImg + 'sosial/' + sosial.photo"
+                    width="180"
+                  />
+                  <img
+                    v-else
+                    class="ml-3 mr-3 mt-5"
+                    src="../assets/img-mobile.png"
+                    width="180"
+                  />
+                  <v-card-subtitle style="font-size:16px; text-align:left">
+                    <p style="color:red">{{ sosial.title }}</p>
+                    <p>{{ sosial.ig_pelapor }}</p>
+                    <p>{{ sosial.description }}</p>
+                  </v-card-subtitle>
+                  <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
+                </v-card-title>
+              </v-card>
+            </v-col>
+          </v-row>
           <router-link to="list-number">
             <a
               id="lanjut"

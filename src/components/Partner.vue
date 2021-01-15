@@ -6,7 +6,7 @@
       </h2>
     </div>
     <v-row>
-      <v-col md="3" v-for="item in partner" :key="item.id">
+      <v-col md="3" v-for="item in partner.slice(0, 8)" :key="item.id">
         <img
           v-bind:src="urlImg + '/partner/' + item.logo"
           width="100"

@@ -5,12 +5,17 @@
       <v-slide-group class="pa-4" multiple show-arrows>
         <v-slide-item v-for="item in news" :key="item.id">
           <v-card class="pa-2" rounded="true">
-            <v-card :class="`rounded-lg`" class="mx-1 " max-width="316">
+            <v-card
+              :class="`rounded-lg`"
+              class="mx-1 "
+              max-width="316"
+              max-height="360"
+            >
               <v-img
                 v-if="item.photo != null"
                 class="dark--text align-end"
                 height="200px"
-                v-bind:src="urlImg + '/news/' + item.photo"
+                v-bind:src="urlImg + '/news/desktop/' + item.photo"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="50px">
