@@ -1,111 +1,108 @@
 <template>
   <v-container v-if="!$isMobile()">
-    <v-layout row>
-      <v-flex xs12 md3>
-        <h3 style="color:white; padding-bottom:1rem">Info Lowongan Kerja</h3>
-        <v-card href="#">
-          <v-card-title
-            style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
-          >
-            <img
-              class="ml-3 mr-3 mt-5"
-              src="@/assets/gambarsosial.png"
-              width="180"
-            />
-            <v-card-subtitle style="font-size:16px; text-align:left">
-              <p style="color:red">Jobdesk</p>
-              <p>Nama Perusahaan</p>
-              <p>Kantor</p>
-              <p style="color:white; line-height: 0">
-                Lokasi terakhir Barang :
-              </p>
-            </v-card-subtitle>
-            <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-flex xs12 md3 style="padding-right: 25px; padding-left:10px">
-        <v-card style="padding-top:2.8rem" href="#">
-          <v-card-title
-            style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
-          >
-            <img
-              class="ml-3 mr-3 mt-5"
-              src="@/assets/gambarsosial.png"
-              width="180"
-            />
-            <v-card-subtitle style="font-size:16px; text-align:left">
-              <p style="color:red">Jobdesk</p>
-              <p>Nama Perusahaan</p>
-              <p>Kantor</p>
-              <p style="color:white; line-height: 0">
-                Lokasi terakhir Barang :
-              </p>
-            </v-card-subtitle>
-            <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
-          </v-card-title>
-        </v-card>
-        <a href="#">
-          <p style="color:white; text-align:right; line-height: 1.8">
-            Lihat Semua >
-          </p>
+    <v-container>
+      <!-- Loker Section -->
+      <v-row>
+        <v-col md="6">
+          <h3 style="color:white; padding-bottom:1rem">
+            Info Loker
+          </h3>
+          <v-row>
+            <v-col md="6" v-for="loker in lokers.slice(0, 2)" :key="loker.id">
+              <v-card href="#">
+                <v-card-title
+                  style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
+                >
+                  <img
+                    v-if="loker.partner_id != null"
+                    class="ml-3 mr-3 mt-5"
+                    v-bind:src="urlImg + 'loker/' + loker.partner.logo"
+                    width="180"
+                  />
+                  <img
+                    v-else
+                    class="ml-3 mr-3 mt-5"
+                    src="../assets/img-mobile.png"
+                    width="180"
+                  />
+                  <v-card-subtitle style="font-size:16px; text-align:left">
+                    <p style="color:red">{{ loker.position }}</p>
+                    <p>{{ loker.title }}</p>
+                    <p>{{ loker.address }}</p>
+                  </v-card-subtitle>
+                  <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
+                </v-card-title>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-col>
+        <!-- Sosial Section -->
+        <v-col md="6">
+          <v-col md="6">
+            <h3 style="color:white; padding-bottom:1rem">
+              Info Sosial
+            </h3>
+            <v-row>
+              <v-col md="6" v-for="item in content" :key="item.id">
+                <v-card :class="`rounded-lg`" style="padding-right:3px">
+                  <v-card-title
+                    style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;"
+                  >
+                    INFO BARANG <br />
+                    HILANG!
+                    <img
+                      :class="`rounded-lg`"
+                      class="ml-3 mr-3"
+                      v-bind:src="urlImg + '/info/' + item.photo"
+                      width="180"
+                      height="180"
+                    />
+                    <v-card-subtitle
+                      style="color:white; font-size:16px; text-align:left"
+                    >
+                      <p><b>IG Pelapor</b> : {{ item.ig_pelapor }}</p>
+                      <p>
+                        <b>Tgl Publish</b> : <br />
+                        {{ item.created_at | moment("dddd, MMMM Do YYYY") }}
+                      </p>
+                      <p>
+                        <b>Barang yang ditemukan/dicari:</b> <br />
+                        {{ item.title }}
+                      </p>
+                      <p>
+                        <b>Lokasi terakhir Barang</b> : <br />{{
+                          item.location
+                        }}
+                      </p>
+                    </v-card-subtitle>
+                  </v-card-title>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-col>
+          <router-link to="list-number">
+            <a
+              id="lanjut"
+              style="padding-top:0.4rem; color:white; margin-left:auto; display:block; text-align:right"
+              href=""
+            >
+              Lebih Lanjut >
+            </a>
+          </router-link>
+        </v-col>
+      </v-row>
+      <router-link to="/list-lost">
+        <a
+          id="lanjut"
+          style="padding-top:0.2rem; color:white; display:block; padding-left:27rem; margin-top:-1.2rem"
+          href=""
+        >
+          Lebih Lengkap >
         </a>
-      </v-flex>
-      <v-flex xs12 md3 style="padding-left: 25px; padding-right: 10px">
-        <h3 style="color:white; padding-bottom:1rem">Info Sosial</h3>
-        <v-divider></v-divider>
-        <v-card href="#">
-          <v-card-title
-            style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
-          >
-            <img
-              class="ml-3 mr-3 mt-5"
-              src="@/assets/gambarsosial.png"
-              width="180"
-            />
-            <v-card-subtitle style="font-size:16px; text-align:left">
-              <p style="color:red">Jobdesk</p>
-              <p>Nama Perusahaan</p>
-              <p>Kantor</p>
-              <p style="color:white; line-height: 0">
-                Lokasi terakhir Barang :
-              </p>
-            </v-card-subtitle>
-            <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-flex xs12 md3>
-        <v-card style="padding-top:2.8rem" href="#">
-          <v-card-title
-            style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
-          >
-            <img
-              class="ml-3 mr-3 mt-5"
-              src="@/assets/gambarsosial.png"
-              width="180"
-            />
-            <v-card-subtitle style="font-size:16px; text-align:left">
-              <p style="color:red">Jobdesk</p>
-              <p>Nama Perusahaan</p>
-              <p>Kantor</p>
-              <p style="color:white; line-height: 0">
-                Lokasi terakhir Barang :
-              </p>
-            </v-card-subtitle>
-            <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
-          </v-card-title>
-        </v-card>
-        <router-link to="/list-loker">
-          <a>
-            <p style="color:white; text-align:right; line-height: 1.8">
-              Lihat Semua >
-            </p>
-          </a>
-        </router-link>
-      </v-flex>
-    </v-layout>
+      </router-link>
+    </v-container>
   </v-container>
+  <!-- Mobile Version -->
   <v-container v-else>
     <h6 style="color:white; padding-bottom:1rem" class="font-weight-bold">
       Info Lowongan Kerja
