@@ -26,22 +26,14 @@
                   >
                     <p><b>IG Pelapor</b> : {{ item.ig_pelapor }}</p>
                     <p>
-                      <b>Tgl Publish</b> : <br />
-                      {{ item.created_at | moment("dddd, MMMM Do YYYY") }}
-                    </p>
-                    <p>
-                      <b>Barang yang ditemukan/dicari:</b> <br />
+                      <b>Deskripsi Barang:</b> <br />
                       {{ item.title }}
-                    </p>
-                    <p>
-                      <b>Lokasi terakhir Barang</b> : <br />{{ item.location }}
                     </p>
                   </v-card-subtitle>
                 </v-card-title>
               </v-card>
             </v-col>
           </v-row>
-          <!-- </v-col> -->
         </v-col>
         <v-col md="6">
           <h3 style="color:white; padding-bottom:1rem;">
@@ -62,7 +54,7 @@
                 </tr>
                 <tr
                   style="font-size:12px"
-                  v-for="item in contact"
+                  v-for="item in contact.slice(0, 6)"
                   :key="item.id"
                 >
                   <td>{{ item.name }}</td>
@@ -145,10 +137,12 @@
               </p>
               <p class="text-light">
                 <b>Barang yang ditemukan/dicari:</b> <br />
-                {{ item.title }}
+                {{ limitTitle(item.title) }}
               </p>
               <p class="text-light">
-                <b>Lokasi terakhir Barang</b> : <br />{{ item.location }}
+                <b>Lokasi terakhir Barang</b> : <br />{{
+                  limitTitle(item.location)
+                }}
               </p>
             </b-card-text>
           </b-card>
@@ -264,6 +258,9 @@ export default {
         .then((response) => {
           this.contact = response.data.datas;
         });
+    },
+    limitTitle(text) {
+      return text.slice(0, 20) + " ...";
     },
   },
 };

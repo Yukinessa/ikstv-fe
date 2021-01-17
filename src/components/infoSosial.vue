@@ -9,26 +9,24 @@
           </h3>
           <v-row>
             <v-col md="6" v-for="loker in lokers.slice(0, 2)" :key="loker.id">
-              <v-card href="#">
+              <v-card class="mx-auto" max-height="200">
                 <v-card-title
                   style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
                 >
-                  <img
-                    v-if="loker.partner_id != null"
-                    class="ml-3 mr-3 mt-5"
-                    v-bind:src="urlImg + 'loker/' + loker.partner.logo"
-                    width="180"
-                  />
-                  <img
-                    v-else
-                    class="ml-3 mr-3 mt-5"
-                    src="../assets/img-mobile.png"
-                    width="180"
-                  />
                   <v-card-subtitle style="font-size:16px; text-align:left">
-                    <p style="color:red">{{ loker.position }}</p>
-                    <p>{{ loker.title }}</p>
-                    <p>{{ loker.address }}</p>
+                    <p style="color:red">{{ limitTitle(loker.position) }}</p>
+                    <p>
+                      <img
+                        src="../assets/ic_baseline-corporate-fare.png"
+                        alt="iks"
+                      />
+
+                      {{ limitText(loker.title) }}
+                    </p>
+                    <p>
+                      <img src="../assets/entypo_location-pin.png" alt="iks" />
+                      {{ limitText(loker.address) }}
+                    </p>
                   </v-card-subtitle>
                   <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
                 </v-card-title>
@@ -47,26 +45,23 @@
               v-for="sosial in sosials.slice(0, 2)"
               :key="sosial.id"
             >
-              <v-card href="#">
+              <v-card>
                 <v-card-title
                   style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
                 >
-                  <img
-                    v-if="sosial.photo != null"
-                    class="ml-3 mr-3 mt-5"
-                    v-bind:src="urlImg + 'sosial/' + sosial.photo"
-                    width="180"
-                  />
-                  <img
-                    v-else
-                    class="ml-3 mr-3 mt-5"
-                    src="../assets/img-mobile.png"
-                    width="180"
-                  />
                   <v-card-subtitle style="font-size:16px; text-align:left">
-                    <p style="color:red">{{ sosial.title }}</p>
-                    <p>{{ sosial.ig_pelapor }}</p>
-                    <p>{{ sosial.description }}</p>
+                    <p style="color:red">{{ limitText(sosial.title) }}</p>
+                    <p>
+                      <img
+                        src="../assets/ant-design_instagram-outlined.png"
+                        alt=""
+                      />
+                      {{ sosial.ig_pelapor }}
+                    </p>
+                    <p>
+                      <img src="../assets/entypo_location-pin.png" alt="iks" />
+                      {{ limitText(sosial.description) }}
+                    </p>
                   </v-card-subtitle>
                   <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
                 </v-card-title>
@@ -269,6 +264,12 @@ export default {
         .then((response) => {
           this.sosials = response.data.datas;
         });
+    },
+    limitTitle(text) {
+      return text.slice(0, 30) + " ...";
+    },
+    limitText(text) {
+      return text.slice(0, 15) + " ...";
     },
   },
 };

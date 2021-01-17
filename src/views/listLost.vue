@@ -14,9 +14,12 @@
           <v-expansion-panel-header>
             <v-row>
               <v-col cols="12" md="8">
-                <h4 style="padding-left:1rem; color:white">
+                <h4 class="ml-2 text-light font-weight-bold">
                   {{ limitTitle(item.title) }}
                 </h4>
+                <p class="ml-2 text-light">
+                  {{ item.created_at | moment("dddd, MMMM Do YYYY") }}
+                </p>
               </v-col>
               <v-col cols="6" sm="6" md="4">
                 <v-btn
@@ -44,12 +47,6 @@
               </v-col>
               <v-col cols="12" sm="6" md="8">
                 <p><b>IG Pelapor</b> : {{ item.ig_pelapor }}</p>
-                <p>
-                  <b>Tanggal Publish</b> :
-                  {{ item.created_at | moment("dddd, MMMM Do YYYY") }}
-                </p>
-                <p><b>Barang yang ditemukan / dicari</b> : {{ item.title }}</p>
-                <p><b>Lokasi terakhir Barang</b> : {{ item.location }}</p>
                 <p><b>Deskripsi Barang</b> : {{ item.description }}</p>
               </v-col>
             </v-row>
