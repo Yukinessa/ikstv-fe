@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!$isMobile()">
+  <div>
     <p class="font-weight-medium text-align: left">Berita Terkini</p>
     <v-sheet class="mx-auto" elevation="10" max-width="1200">
       <v-slide-group class="pa-4" multiple show-arrows>
@@ -83,92 +83,6 @@
       </a>
     </router-link>
   </div>
-  <!-- Mobile Version -->
-  <div v-else>
-    <h5 class="font-weight-medium ml-2">Berita Terkini</h5>
-    <swiper ref="mySwiper" :options="swiperOptions" class="ml-2">
-      <swiper-slide v-for="item in news" :key="item.id">
-        <b-card
-          :img-src="urlImg + 'news/mobile/' + item.photo_mobile"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 18rem;"
-          class="mb-2 shadow"
-          v-if="item.photo_mobile != null"
-        >
-          <b-card-text class="font-weight-bold">
-            <p>{{ limitTitle(item.title) }}</p>
-          </b-card-text>
-
-          <b-card-text>
-            <p class="text-muted" style="font-size: 11px">
-              {{ limitText(item.description) }}
-            </p>
-          </b-card-text>
-          <b-badge
-            variant="danger"
-            v-if="item.content_status == 1"
-            style="font-size: 10px"
-          >
-            Berita Sensitif
-          </b-badge>
-          <b-badge v-else style="font-size: 10px;">
-            Berita Normal
-          </b-badge>
-          <br />
-          <router-link :to="'/News/' + strReplace(item.title)" tag="button">
-            <b-button
-              href="#"
-              variant="primary"
-              style="font-size: 10px; color: white; margin-top: 1rem;"
-              >Baca Selengkapnya</b-button
-            >
-          </router-link>
-        </b-card>
-        <b-card
-          tag="article"
-          style="max-width: 18rem; height: 100%"
-          class="mb-2 shadow"
-          v-else
-        >
-          <img
-            src="@/assets/empty-image.png"
-            alt=""
-            width="159"
-            height="109"
-            class="card-img-top"
-          />
-
-          <b-card-text class="font-weight-bold">
-            <p>{{ limitTitle(item.title) }}</p>
-          </b-card-text>
-          <b-card-text>
-            <p class="text-muted text-justify" style="font-size: 13px">
-              {{ limitText(item.description) }}
-            </p>
-          </b-card-text>
-          <b-badge
-            variant="danger"
-            v-if="item.content_status == 1"
-            style="font-size: 10px"
-          >
-            Berita Sensitif
-          </b-badge>
-          <br />
-          <router-link :to="'/News/' + strReplace(item.title)" tag="button">
-            <b-button
-              href="#"
-              variant="primary"
-              style="font-size: 10px; color: white"
-              >Baca Selengkapnya</b-button
-            >
-          </router-link>
-        </b-card>
-      </swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
-  </div>
 </template>
 <style>
 .theme--light.v-sheet {
@@ -214,50 +128,59 @@ export default {
     return {
       news: [],
       urlImg: loadImg,
-      swiperOptions: {
-        slidesPerView: 1,
-        // spaceBetween: -6,
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        loop: true,
-        // Some Swiper option/callback...
-        breakpoints: {
-          // when window width is >= 320px
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          360: {
-            slidesPerView: 1,
-            spaceBetween: -20,
-          },
-          375: {
-            slidesPerView: 1,
-            spaceBetween: -30,
-          },
-          // when window width is >= 480px
-          400: {
-            slidesPerView: 1,
-            spaceBetween: -80,
-          },
-          // when window width is >= 640px
-          640: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-          },
-        },
+      options: {
+        // rewind: true,
+        // width: 300,
+        perPage: 1,
+        pagination: false,
+        gap: ".5rem",
+        fixedWidth: "15rem",
+        arrows: false,
       },
+      // swiperOptions: {
+      //   slidesPerView: 1,
+      //   // spaceBetween: -6,
+      //   pagination: {
+      //     el: ".swiper-pagination",
+      //   },
+      //   loop: true,
+      //   // Some Swiper option/callback...
+      //   breakpoints: {
+      //     // when window width is >= 320px
+      //     320: {
+      //       slidesPerView: 1,
+      //       spaceBetween: 10,
+      //     },
+      //     360: {
+      //       slidesPerView: 1,
+      //       spaceBetween: -20,
+      //     },
+      //     375: {
+      //       slidesPerView: 1,
+      //       spaceBetween: -30,
+      //     },
+      //     // when window width is >= 480px
+      //     400: {
+      //       slidesPerView: 1,
+      //       spaceBetween: -80,
+      //     },
+      //     // when window width is >= 640px
+      //     640: {
+      //       slidesPerView: 4,
+      //       spaceBetween: 40,
+      //     },
+      //   },
+      // },
     };
   },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper;
-    },
-  },
+  // computed: {
+  //   swiper() {
+  //     return this.$refs.mySwiper.$swiper;
+  //   },
+  // },
   mounted() {
     this.getNews();
-    this.swiper.slideTo(2, 1000, false);
+    // this.swiper.slideTo(2, 1000, false);
   },
   methods: {
     strReplace(str) {
