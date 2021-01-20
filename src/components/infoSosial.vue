@@ -88,7 +88,7 @@
           </router-link>
         </v-col>
       </v-row>
-      <router-link to="/list-lost">
+      <router-link to="/all-loker">
         <a
           class="mt-5"
           id="lanjut"

@@ -18,6 +18,7 @@
       </v-row>
     </v-container>
   </div>
+  <!-- Mobile Version -->
   <div v-else>
     <b-container>
       <h4 style="color:white;" class="font-weight-bold text-center mb-4">

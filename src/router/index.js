@@ -44,9 +44,14 @@ const routes = [
     component: () => import("../components/modalLoker.vue"),
   },
   {
-    path: "/list-loker/",
-    name: "listLoker",
+    path: "/all-loker",
+    name: "allLoker",
     component: () => import("../views/listLoker.vue"),
+  },
+  {
+    path: "/list-news",
+    name: "list-news",
+    component: () => import("../views/listNews.vue"),
   },
 ];
 
