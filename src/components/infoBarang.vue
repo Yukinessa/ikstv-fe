@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!$isMobile()">
+  <div>
     <v-container>
       <v-row>
         <v-col md="6">
@@ -7,7 +7,7 @@
             Info Kehilangan / Pencarian
           </h3>
           <v-row>
-            <v-col md="6" v-for="item in content" :key="item.id">
+            <v-col md="6" v-for="item in content.slice(0, 2)" :key="item.id">
               <v-card :class="`rounded-lg`" style="padding-right:3px">
                 <v-card-title
                   style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;"
@@ -104,120 +104,6 @@
         </a>
       </router-link>
     </v-container>
-  </div>
-  <div v-else>
-    <b-container>
-      <h5 class="font-weight-bold text-light">Info Kehilangan</h5>
-      <b-row v-for="item in content.slice(0, 2)" :key="item.id">
-        <b-col sm="1">
-          <b-card
-            style="max-width: 25rem;background-color: #800000"
-            class="mb-2 shadow mx-auto"
-          >
-            <b-card-text>
-              <h5 class="text-center font-weight-bold" style="color: #f3ae5cff">
-                INFO BARANG<br />
-                HILANG
-              </h5>
-            </b-card-text>
-            <img
-              class="d-block mx-auto"
-              v-bind:src="urlImg + '/info/' + item.photo"
-              width="180"
-              height="180"
-              style="border-radius: 10px"
-            />
-            <b-card-text class="mt-4">
-              <p class="text-light mb-3">
-                <b>IG Pelapor :</b> {{ item.ig_pelapor }}
-              </p>
-              <p class="text-light">
-                <b>Tgl Publish</b> : <br />
-                {{ item.created_at | moment("dddd, DD MMMM  YYYY") }}
-              </p>
-              <p class="text-light">
-                <b>Barang yang ditemukan/dicari:</b> <br />
-                {{ limitTitle(item.title) }}
-              </p>
-              <p class="text-light">
-                <b>Lokasi terakhir Barang</b> : <br />{{
-                  limitTitle(item.location)
-                }}
-              </p>
-            </b-card-text>
-          </b-card>
-        </b-col>
-      </b-row>
-      <div class="text-center">
-        <b-button
-          href="#"
-          style="background-color: #800000; color: #f3ae5cff; border:none"
-          class="text-center font-weight-bold"
-          >LEBIH LENGKAP</b-button
-        >
-      </div>
-    </b-container>
-    <b-container>
-      <h5 class="font-weight-bold text-light">Kontak Penting</h5>
-      <b-card style="background-color: #800000" class="shadow">
-        <table
-          style="border-collapse: collapse; width: 100%; text-align:center; justify-content:center;"
-        >
-          <tr
-            style="font-size:12px; border-bottom: 1px solid #6A0505"
-            v-for="item in contact.slice(0, 4)"
-            :key="item.id"
-          >
-            <td>
-              <h6 class="font-weight-bold text-light">
-                <b>{{ item.name }}</b>
-              </h6>
-
-              <span class="text-light">{{ item.region }}</span>
-            </td>
-            <!-- <td>{</td> -->
-            <td id="nohp">
-              <br />
-              <div class="mt-3"></div>
-              <span class="text-light">
-                {{ item.phone }}
-              </span>
-            </td>
-            <td>
-              <br />
-              <img
-                class="d-block mx-auto"
-                src="@/assets/icon-copy.png"
-                style="border-radius: 10px"
-                @click="clipboard(item.phone), (snackbar = true)"
-              />
-            </td>
-            <v-snackbar v-model="snackbar"
-              >Nomor Berhasil Dicopy
-              <template v-slot:action="{ attrs }">
-                <v-btn
-                  color="pink"
-                  text
-                  v-bind="attrs"
-                  @click="snackbar = false"
-                  >Close</v-btn
-                >
-              </template>
-            </v-snackbar>
-          </tr>
-        </table>
-
-        <div class="text-center mt-2">
-          <router-link to="list-number">
-            <b-button
-              class="text-center font-weight-bold"
-              style="background-color: white; border:none; color: #800000"
-              >LEBIH LENGKAP</b-button
-            >
-          </router-link>
-        </div>
-      </b-card>
-    </b-container>
   </div>
 </template>
 
