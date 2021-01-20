@@ -73,13 +73,15 @@
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
-    <a
-      id="lanjut"
-      style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
-      href=""
-    >
-      Lebih Lanjut >
-    </a>
+    <router-link to="list-news">
+      <a
+        id="lanjut"
+        style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
+        href=""
+      >
+        Lebih Lanjut >
+      </a>
+    </router-link>
   </div>
 </template>
 <style>
