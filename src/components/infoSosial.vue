@@ -27,8 +27,17 @@
                       <img src="../assets/entypo_location-pin.png" alt="iks" />
                       {{ limitText(loker.address) }}
                     </p>
+                    <p>
+                      <img
+                        src="../assets/ant-design_dollar-circle-filled.png"
+                        alt="iks"
+                      />
+                      Rp. 5.000.000
+                    </p>
                   </v-card-subtitle>
-                  <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
+                  <v-router-link :to="'/list-loker/' + loker.id">
+                    <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
+                  </v-router-link>
                 </v-card-title>
               </v-card>
             </v-col>
@@ -81,8 +90,9 @@
       </v-row>
       <router-link to="/list-lost">
         <a
+          class="mt-5"
           id="lanjut"
-          style="padding-top:0.2rem; color:white; display:block; padding-left:27rem; margin-top:-1.2rem"
+          style="padding-top:0.2rem; color:white; display:block"
           href=""
         >
           Lebih Lengkap >
@@ -126,6 +136,9 @@ export default {
     },
     limitText(text) {
       return text.slice(0, 15) + " ...";
+    },
+    goInstagram() {
+      location.href = "https://www.instagram.com/p/CKIwg94FiRs/";
     },
   },
 };
