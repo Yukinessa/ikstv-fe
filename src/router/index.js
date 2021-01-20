@@ -39,7 +39,12 @@ const routes = [
     component: () => import("../views/kuduRetiArticle.vue"),
   },
   {
-    path: "/list-loker",
+    path: "/list-loker/:id",
+    name: "listLoker",
+    component: () => import("../components/modalLoker.vue"),
+  },
+  {
+    path: "/list-loker/",
     name: "listLoker",
     component: () => import("../views/listLoker.vue"),
   },
