@@ -56,15 +56,15 @@ export default {
         },
         // Some Swiper option/callback...
       },
-      computed: {
-        swiper() {
-          return this.$refs.mySwiper.$swiper;
-        },
-      },
-      mounted() {
-        this.swiper.slideTo(1, 1000, false);
-      },
     };
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.$swiper;
+    },
+  },
+  mounted() {
+    this.swiper.slideTo(1, 1000, false);
   },
 };
 </script>
