@@ -59,7 +59,7 @@
       <v-container>
         <h3 style="color:white;">Berita untuk anda</h3>
         <v-row>
-          <v-col v-for="item in news" :key="item" cols="12" sm="4">
+          <v-col v-for="item in news" :key="item.id" cols="12" sm="4">
             <v-card
               :class="`rounded-lg`"
               style="background-color:white !important"
