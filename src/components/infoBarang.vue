@@ -7,7 +7,7 @@
             Info Kehilangan / Pencarian
           </h3>
           <v-row>
-            <v-col md="6" v-for="item in content" :key="item.id">
+            <v-col md="6" v-for="item in content.slice(0, 2)" :key="item.id">
               <v-card :class="`rounded-lg`" style="padding-right:3px">
                 <v-card-title
                   style="font-weight:bold; background-color:#800000ff; color:#f3ae5cff; text-align:center; justify-content: center;"
@@ -57,7 +57,7 @@
                   v-for="item in contact.slice(0, 6)"
                   :key="item.id"
                 >
-                  <td>{{ item.name }}</td>
+                  <td>{{ stringReplace(item.name) }}</td>
                   <td>{{ item.region }}</td>
                   <td id="nohp">{{ item.phone }}</td>
                   <v-btn
@@ -105,6 +105,7 @@
       </router-link>
     </v-container>
   </div>
+  <!-- Mobile Version -->
   <div v-else>
     <b-container>
       <h5 class="font-weight-bold text-light">Info Kehilangan</h5>
@@ -261,6 +262,9 @@ export default {
     },
     limitTitle(text) {
       return text.slice(0, 20) + " ...";
+    },
+    stringReplace(str) {
+      return str.replaceAll("Rumah Sakit", "RS. ");
     },
   },
 };

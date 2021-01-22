@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="!$isMobile()">
+  <v-container>
     <v-container>
       <!-- Loker Section -->
       <v-row>
@@ -35,12 +35,22 @@
                       Rp. 5.000.000
                     </p>
                   </v-card-subtitle>
-                  <v-router-link :to="'/list-loker/' + loker.id">
-                    <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
-                  </v-router-link>
+                  <v-btn @click="openModal(loker.id)" depressed color="error"
+                    >Lihat lebih lengkap</v-btn
+                  >
                 </v-card-title>
               </v-card>
             </v-col>
+            <router-link to="/all-loker">
+              <a
+                id="lanjut"
+                class="pt-12 pl-4"
+                style="color:white; display:block"
+                href=""
+              >
+                Lebih Lengkap >
+              </a>
+            </router-link>
           </v-row>
         </v-col>
         <!-- Sosial Section -->
@@ -67,9 +77,11 @@
                       />
                       {{ sosial.ig_pelapor }}
                     </p>
-                    <p>
-                      <img src="../assets/entypo_location-pin.png" alt="iks" />
-                      {{ limitText(sosial.description) }}
+                    <img src="../assets/entypo_location-pin.png" alt="iks" />
+                    {{ stringReplace(limitText(sosial.location)) }}
+                    <p class="pt-3 pl-1">
+                      <img src="../assets/info-icon.png" alt="iks" />
+                      {{ stringReplace(limitText(sosial.description)) }}
                     </p>
                   </v-card-subtitle>
                   <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
@@ -88,176 +100,33 @@
           </router-link>
         </v-col>
       </v-row>
-      <router-link to="/all-loker">
-        <a
-          class="mt-5"
-          id="lanjut"
-          style="padding-top:0.2rem; color:white; display:block"
-          href=""
-        >
-          Lebih Lengkap >
-        </a>
-      </router-link>
     </v-container>
-  </v-container>
-  <!-- Mobile Version -->
-  <v-container v-else>
-    <h6 style="color:white; padding-bottom:1rem" class="font-weight-bold">
-      Info Lowongan Kerja
-    </h6>
-    <b-row>
-      <b-col sm="1" v-for="loker in lokers.slice(0, 2)" :key="loker.id">
-        <b-card
-          v-if="loker.partner_id != null"
-          :img-src="urlImg + 'loker/' + loker.partner.logo"
-          img-alt="Image"
-          img-top
-          img-width="100%"
-          img-height="109"
-          tag="article"
-          style="max-width: 20rem;"
-          class="mb-2 d-block mx-auto"
-        >
-          <b-card-text>
-            <p class="font-weight-bold" style="color: #D60909">
-              {{ loker.position }}
-            </p>
-            <p
-              v-if="loker.partner_id != null"
-              class="font-weight-bold"
-              style="font-size: 15px"
-            >
-              {{ loker.partner.name }}
-            </p>
-            <p v-else style="font-size: 15px" class="font-weight-bold">
-              {{ loker.title }}
-            </p>
-            <p class="text-muted" style="font-size: 12px">
-              {{ loker.address }}
-            </p>
-          </b-card-text>
-
-          <div class="text-center">
-            <b-button
-              href="#"
-              variant="danger"
-              style="color: white"
-              @click="goInstagram()"
-              >Info Lebih Lanjut ></b-button
-            >
-          </div>
-        </b-card>
-        <b-card
-          v-else
-          tag="article"
-          style="max-width: 20rem;"
-          class="mb-2 mx-auto"
-        >
-          <img
-            src="@/assets/empty-image.png"
-            alt=""
-            style="width:100%; height:109"
-            class="card-img-top"
-          />
-          <b-card-text>
-            <p class="font-weight-bold" style="color: #D60909">
-              {{ loker.position }}
-            </p>
-            <p
-              v-if="loker.partner_id != null"
-              class="font-weight-bold"
-              style="font-size: 15px"
-            >
-              {{ loker.partner.name }}
-            </p>
-            <p v-else class="font-weight-bold" style="font-size: 15px">
-              {{ loker.title }}
-            </p>
-            <p class="text-muted" style="font-size: 12px">
-              {{ loker.address }}
-            </p>
-          </b-card-text>
-          <div class="text-center">
-            <b-button href="#" variant="danger" style="color: white"
-              >Info Lebih Lanjut ></b-button
-            >
-          </div>
-        </b-card>
-      </b-col>
-    </b-row>
-    <h6 style="color:white; padding-bottom:1rem" class="font-weight-bold mt-4">
-      Info Sosial
-    </h6>
-    <b-row>
-      <b-col sm="1" v-for="sosial in sosials.slice(0, 2)" :key="sosial.id">
-        <b-card
-          v-if="sosial.photo != null"
-          :img-src="urlImg + 'sosial/' + sosial.photo"
-          img-alt="Image"
-          img-top
-          img-width="100%"
-          img-height="109"
-          tag="article"
-          style="max-width: 20rem;"
-          class="mb-2"
-        >
-          <b-card-text>
-            <p class="font-weight-bold" style="color: #D60909">
-              {{ sosial.title }}
-            </p>
-            <p class="font-weight-bold" style="font-size: 15px">
-              {{ sosial.ig_pelapor }}
-            </p>
-            <p class="text-muted" style="font-size: 12px">
-              {{ sosial.description }}
-            </p>
-          </b-card-text>
-
-          <div class="text-center">
-            <b-button href="#" variant="danger" style="color: white"
-              >Info Lebih Lanjut ></b-button
-            >
-          </div>
-        </b-card>
-        <b-card v-else tag="article" style="max-width: 20rem;" class="mb-2">
-          <img
-            src="@/assets/empty-image.png"
-            alt=""
-            style="width:100%;
-          height:109"
-            class="card-img-top"
-          />
-          <b-card-text>
-            <p class="font-weight-bold" style="color: #D60909">
-              {{ sosial.title }}
-            </p>
-            <p class="font-weight-bold" style="font-size: 15px">
-              {{ sosial.ig_pelapor }}
-            </p>
-            <p class="text-muted" style="font-size: 12px">
-              {{ sosial.description }}
-            </p>
-          </b-card-text>
-
-          <div class="text-center">
-            <b-button href="#" variant="danger" style="color: white"
-              >Info Lebih Lanjut ></b-button
-            >
-          </div>
-        </b-card>
-      </b-col>
-    </b-row>
+    <template v-if="childLoaded">
+      <modalLoker
+        :lokerID="this.lokerID"
+        :childLoaded.sync="childLoaded"
+        :parentDialog="parentDialog"
+      />
+    </template>
   </v-container>
 </template>
 
 <script>
 import loadImg from "../../config";
+import modalLoker from "../components/modalLoker";
+
 export default {
+  components: {
+    modalLoker,
+  },
   data() {
     return {
       lokers: [],
       sosials: [],
       urlImg: loadImg,
+      lokerID: 0,
+      childLoaded: false,
+      parentDialog: false,
     };
   },
   mounted() {
@@ -280,13 +149,22 @@ export default {
         });
     },
     limitTitle(text) {
-      return text.slice(0, 30) + " ...";
+      return this.stringReplace(text.slice(0, 30) + " ...");
     },
     limitText(text) {
       return text.slice(0, 15) + " ...";
     },
     goInstagram() {
       location.href = "https://www.instagram.com/p/CKIwg94FiRs/";
+    },
+    stringReplace(str) {
+      return str.replace(/<\/?[^>]+(>|$)/g, "");
+    },
+    openModal(id) {
+      // this.$refs.modalLoker.dialog = true;
+      this.childLoaded = true;
+      this.lokerID = id;
+      this.parentDialog = true;
     },
   },
 };

@@ -9,7 +9,7 @@
               :class="`rounded-lg`"
               class="mx-1 "
               max-width="316"
-              max-height="360"
+              max-height="460"
             >
               <v-img
                 v-if="item.photo != null"
@@ -46,7 +46,7 @@
               </v-img>
               <v-card-text class="text--primary">
                 <div class="grey--text mb-1">
-                  {{ limitText(item.description) }}
+                  <p v-html="limitText(item.description)"></p>
                 </div>
               </v-card-text>
               <v-chip
@@ -60,9 +60,7 @@
               <v-chip class="grey darken-4" v-else> </v-chip>
 
               <v-card-actions>
-                <router-link
-                  :to="'/News/' + strReplace(item.title)"
-                  tag="button"
+                <router-link :to="'/News/' + strReplace(item.title)"
                   ><v-btn color="blue" text
                     >Baca Selanjutnya</v-btn
                   ></router-link

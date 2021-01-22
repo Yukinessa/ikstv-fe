@@ -38,14 +38,17 @@
         </v-card>
       </v-col>
     </v-row>
-    <a
-      id="lanjut"
-      style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
-      href=""
-    >
-      Lebih Lanjut >
-    </a>
+    <router-link to="/list-kudureti">
+      <a
+        id="lanjut"
+        style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
+        href=""
+      >
+        Lebih Lanjut >
+      </a>
+    </router-link>
   </div>
+  <!-- Mobile Version -->
   <div v-else>
     <b-container>
       <b-row>

@@ -53,6 +53,11 @@ const routes = [
     name: "list-news",
     component: () => import("../views/listNews.vue"),
   },
+  {
+    path: "/list-kudureti",
+    name: "list-kudureti",
+    component: () => import("../views/listKuduReti.vue"),
+  },
 ];
 
 const router = new VueRouter({
