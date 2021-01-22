@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <div class="grey darken-4">
-        <v-container>
+        <v-container v-if="!$isMobile()">
           <div id="navbar">
             <Navbar @testing="onClickChild" />
           </div>
@@ -56,6 +56,46 @@
             <Footer @testing="onClickChild" />
           </div>
         </v-container>
+        <v-container v-else>
+          <div id="navbar">
+            <Navbar @testing="onClickChild" />
+          </div>
+
+          <div id="advertise-top" style="padding-top:0.1rem">
+            <AdvertiseDiamond />
+          </div>
+
+          <div id="highlight-news" class="mt-4" ref="news">
+            <HighlightMobile />
+          </div>
+
+          <div id="category-article-video">
+            <CategoryMobile />
+          </div>
+
+          <div id="advertise-mid" style="padding-top:2.5rem">
+            <AdvertiseGold />
+          </div>
+
+          <div id="kudu-reti" style="padding-top:2.5rem">
+            <KuduRetiMobile />
+          </div>
+
+          <div id="advertise-bottom" style="padding-top:1rem">
+            <AdvertiseSilver />
+          </div>
+
+          <div id="info" style="padding-top:2rem"><InfoMobile /></div>
+
+          <div id="our-partner" style="padding-top:2rem">
+            <hr size="3" width="100%" color="white" />
+            <PartnerMobile />
+          </div>
+
+          <div id="footer" style="padding-top:2rem">
+            <FooterMobile @testing="onClickChild" />
+          </div>
+        </v-container>
       </div>
     </v-main>
   </v-app>
@@ -76,6 +116,14 @@ import Footer from "../components/Footer";
 import Partner from "../components/Partner";
 import KuduReti from "../components/KuduReti";
 
+// mobile component
+import HighlightMobile from "../components/HighlightMobile";
+import CategoryMobile from "../components/CategoryMobile";
+import KuduRetiMobile from "../components/KuduRetiMobile";
+import InfoMobile from "../components/InfoMobile";
+import PartnerMobile from "../components/PartnerMobile";
+import FooterMobile from "../components/FooterMobile";
+
 export default {
   name: "Home",
   components: {
@@ -87,11 +135,17 @@ export default {
     AdvertiseSilver,
     infoBarang,
     infoSosial,
-    // Youtube,
-    // Advertise2,
     Footer,
     Partner,
     KuduReti,
+
+    // mobile component
+    HighlightMobile,
+    CategoryMobile,
+    KuduRetiMobile,
+    InfoMobile,
+    PartnerMobile,
+    FooterMobile,
   },
   data: () => ({
     //

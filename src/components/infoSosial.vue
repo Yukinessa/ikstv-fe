@@ -101,6 +101,7 @@
         </v-col>
       </v-row>
     </v-container>
+<<<<<<< HEAD
     <template v-if="childLoaded">
       <modalLoker
         :lokerID="this.lokerID"
@@ -108,6 +109,8 @@
         :parentDialog="parentDialog"
       />
     </template>
+=======
+>>>>>>> aa54ebcb1021cb612cb8ee9399fc7f278d225b62
   </v-container>
 </template>
 

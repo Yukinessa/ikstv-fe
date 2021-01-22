@@ -10,7 +10,10 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import VueAwesomeSwiper from "vue-awesome-swiper";
+import VueSplide from "@splidejs/vue-splide";
 import "swiper/swiper-bundle.css";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import vueNumeralFilterInstaller from "vue-numeral-filter";
 
 Vue.use(VueClipboard);
 VueClipboard.config.autoSetContainer = true;
@@ -21,6 +24,8 @@ Vue.use(VueMobileDetection);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueAwesomeSwiper);
+Vue.use(VueSplide);
+Vue.use(vueNumeralFilterInstaller);
 window.loadImg = "http://192.168.1.20:8000/uploads/";
 
 new Vue({
