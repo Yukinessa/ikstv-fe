@@ -154,14 +154,10 @@ export default {
     limitText(text) {
       return text.slice(0, 15) + " ...";
     },
-    goInstagram() {
-      location.href = "https://www.instagram.com/p/CKIwg94FiRs/";
-    },
     stringReplace(str) {
       return str.replace(/<\/?[^>]+(>|$)/g, "");
     },
     openModal(id) {
-      // this.$refs.modalLoker.dialog = true;
       this.childLoaded = true;
       this.lokerID = id;
       this.parentDialog = true;

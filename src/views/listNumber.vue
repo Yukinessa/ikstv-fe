@@ -20,7 +20,7 @@
                 <b>Instansi</b>
               </th>
               <th class="text-left">
-                <b>Daerah</b>
+                <b>Alamat</b>
               </th>
               <th class="text-left">
                 <b>Kontak</b>
