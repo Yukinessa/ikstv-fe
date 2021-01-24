@@ -96,7 +96,8 @@ const routes = [
     path: "/list-kudu-reti/mobile",
     name: "listKuduRetiMobile",
     component: () => import("../views/listKuduRetiMobile.vue"),
-  }
+  },
+  {
     path: "/list-kudureti",
     name: "list-kudureti",
     component: () => import("../views/listKuduReti.vue"),
