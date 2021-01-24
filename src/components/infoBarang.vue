@@ -33,8 +33,14 @@
                 </v-card-title>
               </v-card>
             </v-col>
+            <router-link to="/list-lost" class="ml-auto mt-5">
+              <a id="lanjut" style="color:white; display:block;" href="">
+                Lebih Lengkap >
+              </a>
+            </router-link>
           </v-row>
         </v-col>
+
         <v-col md="6">
           <h3 style="color:white; padding-bottom:1rem;">
             Nomer Penting Semarang
@@ -46,27 +52,36 @@
               <table
                 style="border-collapse: collapse; width: 100%; text-align:center; justify-content:center;"
               >
-                <tr>
-                  <th>Instansi</th>
-                  <th>Daerah</th>
-                  <th>Kontak</th>
-                  <th></th>
-                </tr>
                 <tr
                   style="font-size:12px"
-                  v-for="item in contact.slice(0, 6)"
+                  v-for="item in contact.slice(0, 3)"
                   :key="item.id"
                 >
-                  <td>{{ item.name }}</td>
+                  <td>
+                    <p style="text-weight:bold; font-size:17px">
+                      {{ stringReplace(item.name) }}
+                    </p>
+                    <p id="nohp" style="margin-top:-1.5rem;">
+                      {{ item.phone }}
+                    </p>
+                    <p style="margin-top:-1.5rem; font-size:10px">
+                      <!-- {{ item.region }} -->
+                      Jl. DR. Sutomo No.16, Randusari, Kec. Semarang Sel.
+                    </p>
+                    <hr style="border:0.5px solid white" />
+                  </td>
+                  <!-- <td>{{ stringReplace(item.name) }}</td>
                   <td>{{ item.region }}</td>
-                  <td id="nohp">{{ item.phone }}</td>
-                  <v-btn
-                    class="ma-2"
-                    outlined
-                    color="white"
-                    @click="clipboard(item.phone), (snackbar = true)"
-                    >Copy!</v-btn
-                  >
+                  <td id="nohp">{{ item.phone }}</td> -->
+                  <div class="mt-5" style="text-align:right">
+                    <v-btn
+                      class="ma-2"
+                      outlined
+                      color="white"
+                      @click="clipboard(item.phone), (snackbar = true)"
+                      >Copy!</v-btn
+                    >
+                  </div>
                   <v-snackbar v-model="snackbar"
                     >Nomor Berhasil Dicopy
                     <template v-slot:action="{ attrs }">
@@ -94,15 +109,6 @@
           </router-link>
         </v-col>
       </v-row>
-      <router-link to="/list-lost">
-        <a
-          id="lanjut"
-          style="padding-top:0.2rem; color:white; display:block; padding-left:27rem; margin-top:-1.2rem"
-          href=""
-        >
-          Lebih Lengkap >
-        </a>
-      </router-link>
     </v-container>
   </div>
 </template>
@@ -147,6 +153,9 @@ export default {
     },
     limitTitle(text) {
       return text.slice(0, 20) + " ...";
+    },
+    stringReplace(str) {
+      return str.replaceAll("Rumah Sakit", "RS. ");
     },
   },
 };

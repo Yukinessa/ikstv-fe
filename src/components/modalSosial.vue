@@ -53,26 +53,26 @@ export default {
   data() {
     return {
       dialog: this.parentDialog,
-      loker: [],
+      sosial: [],
       urlImg: loadImg,
-      id: this.lokerID,
+      id: this.sosialID,
     };
   },
   props: {
-    lokerID: Number,
+    sosialID: Number,
     childLoaded: Boolean,
     parentDialog: Boolean,
   },
   mounted() {
-    this.getLoker();
+    this.getSosial();
     console.log(this.id);
   },
   methods: {
-    getLoker() {
+    getSosial() {
       this.axios
-        .get(process.env.VUE_APP_IP_ADDRESS + "info/loker/" + this.lokerID)
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/sosial/" + this.sosialID)
         .then((response) => {
-          this.loker = response.data.datas;
+          this.sosial = response.data.datas;
           console.log(response);
         });
     },

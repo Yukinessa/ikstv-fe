@@ -35,12 +35,22 @@
                       Rp. 5.000.000
                     </p>
                   </v-card-subtitle>
-                  <v-router-link :to="'/list-loker/' + loker.id">
-                    <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
-                  </v-router-link>
+                  <v-btn @click="openModal(loker.id)" depressed color="error"
+                    >Lihat lebih lengkap</v-btn
+                  >
                 </v-card-title>
               </v-card>
             </v-col>
+            <router-link to="/all-loker">
+              <a
+                id="lanjut"
+                class="pt-12 pl-4"
+                style="color:white; display:block"
+                href=""
+              >
+                Lebih Lengkap >
+              </a>
+            </router-link>
           </v-row>
         </v-col>
         <!-- Sosial Section -->
@@ -67,9 +77,11 @@
                       />
                       {{ sosial.ig_pelapor }}
                     </p>
-                    <p>
-                      <img src="../assets/entypo_location-pin.png" alt="iks" />
-                      {{ limitText(sosial.description) }}
+                    <img src="../assets/entypo_location-pin.png" alt="iks" />
+                    {{ stringReplace(limitText(sosial.location)) }}
+                    <p class="pt-3 pl-1">
+                      <img src="../assets/info-icon.png" alt="iks" />
+                      {{ stringReplace(limitText(sosial.description)) }}
                     </p>
                   </v-card-subtitle>
                   <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
@@ -88,28 +100,36 @@
           </router-link>
         </v-col>
       </v-row>
-      <router-link to="/all-loker">
-        <a
-          class="mt-5"
-          id="lanjut"
-          style="padding-top:0.2rem; color:white; display:block"
-          href=""
-        >
-          Lebih Lengkap >
-        </a>
-      </router-link>
     </v-container>
+<<<<<<< HEAD
+    <template v-if="childLoaded">
+      <modalLoker
+        :lokerID="this.lokerID"
+        :childLoaded.sync="childLoaded"
+        :parentDialog="parentDialog"
+      />
+    </template>
+=======
+>>>>>>> aa54ebcb1021cb612cb8ee9399fc7f278d225b62
   </v-container>
 </template>
 
 <script>
 import loadImg from "../../config";
+import modalLoker from "../components/modalLoker";
+
 export default {
+  components: {
+    modalLoker,
+  },
   data() {
     return {
       lokers: [],
       sosials: [],
       urlImg: loadImg,
+      lokerID: 0,
+      childLoaded: false,
+      parentDialog: false,
     };
   },
   mounted() {
@@ -132,13 +152,18 @@ export default {
         });
     },
     limitTitle(text) {
-      return text.slice(0, 30) + " ...";
+      return this.stringReplace(text.slice(0, 30) + " ...");
     },
     limitText(text) {
       return text.slice(0, 15) + " ...";
     },
-    goInstagram() {
-      location.href = "https://www.instagram.com/p/CKIwg94FiRs/";
+    stringReplace(str) {
+      return str.replace(/<\/?[^>]+(>|$)/g, "");
+    },
+    openModal(id) {
+      this.childLoaded = true;
+      this.lokerID = id;
+      this.parentDialog = true;
     },
   },
 };
