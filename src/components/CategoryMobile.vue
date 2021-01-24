@@ -6,11 +6,11 @@
     <splide :slides="category" :options="options" style="margin-left:-.5rem">
       <splide-slide v-for="item in category" :key="item.id">
         <router-link :to="'/detail-category/' + item.id">
-          <v-img
-            :class="`rounded-lg`"
+          <b-img
             :src="urlImg + 'channel_category/' + item.url"
-            style="width: 100%"
-          ></v-img>
+            style="width:100%; border-radius: 5px"
+          >
+          </b-img>
         </router-link>
       </splide-slide>
     </splide>
