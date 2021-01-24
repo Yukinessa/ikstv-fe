@@ -5,7 +5,7 @@
         <h6 class="font-weight-bold ml-2 text-light">Berita Terkini</h6>
       </b-col>
       <b-col cols="4">
-        <router-link :to="'/'" style="color: #D50000">
+        <router-link :to="'/list-news/mobile'" style="color: #D50000">
           <span class="font-weight-bold text-right" style="font-size: 11px;">
             Lihat Semua
           </span>
