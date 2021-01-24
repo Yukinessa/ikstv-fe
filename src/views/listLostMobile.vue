@@ -1,9 +1,9 @@
 <template>
   <div class="grey darken-4">
     <v-container>
-      <Navbar />
+      <NavbarMobile />
       <AdvertiseDiamond />
-      <h4 class="pt-6" style="color:white">Barang Hilang</h4>
+      <h6 class="pt-6" style="color:white">Barang Hilang</h6>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
           style="background-color:red"
@@ -93,27 +93,26 @@
       <br />
       <AdvertiseSilver />
       <br />
-      <Footer />
     </v-container>
+    <br />
+    <FooterMobile />
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import NavbarMobile from "../components/NavbarMobile";
+import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseGold from "../components/advertiseGold";
-import AdvertiseSilver from "../components/advertiseSilver";
 import loadImg from "../../config.js";
 import moment from "moment";
 
 export default {
   components: {
-    Navbar,
-    Footer,
+    NavbarMobile,
+    FooterMobile,
     AdvertiseDiamond,
     AdvertiseGold,
-    AdvertiseSilver,
   },
   data() {
     return {
