@@ -54,8 +54,13 @@ const routes = [
   },
   {
     path: "/kudu-reti/:title",
-    name: "kuduReti",
+    name: "kuduRetiMobile",
     component: () => import("../views/kuduRetiArticle.vue"),
+  },
+  {
+    path: "/kudu-reti/mobile/:title",
+    name: "kuduReti",
+    component: () => import("../views/kuduRetiArticleMobile.vue"),
   },
   {
     path: "/list-loker/:id",
@@ -83,6 +88,15 @@ const routes = [
     component: () => import("../views/listNews.vue"),
   },
   {
+    path: "/list-news/mobile",
+    name: "listNewsMobile",
+    component: () => import("../views/listNewsMobile.vue"),
+  },
+  {
+    path: "/list-kudu-reti/mobile",
+    name: "listKuduRetiMobile",
+    component: () => import("../views/listKuduRetiMobile.vue"),
+  }
     path: "/list-kudureti",
     name: "list-kudureti",
     component: () => import("../views/listKuduReti.vue"),

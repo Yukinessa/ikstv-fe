@@ -58,7 +58,7 @@
         </v-container>
         <v-container v-else>
           <div id="navbar">
-            <Navbar @testing="onClickChild" />
+            <NavbarMobile @testing="onClickChild" />
           </div>
 
           <div id="advertise-top" style="padding-top:0.1rem">
@@ -117,6 +117,7 @@ import Partner from "../components/Partner";
 import KuduReti from "../components/KuduReti";
 
 // mobile component
+import NavbarMobile from "../components/NavbarMobile";
 import HighlightMobile from "../components/HighlightMobile";
 import CategoryMobile from "../components/CategoryMobile";
 import KuduRetiMobile from "../components/KuduRetiMobile";
@@ -140,6 +141,7 @@ export default {
     KuduReti,
 
     // mobile component
+    NavbarMobile,
     HighlightMobile,
     CategoryMobile,
     KuduRetiMobile,

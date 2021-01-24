@@ -2,7 +2,7 @@
   <div class="grey darken-4">
     <v-container>
       <div class="mb-6">
-        <Navbar />
+        <NavbarMobile />
       </div>
       <AdvertiseDiamond />
       <br />
@@ -18,47 +18,6 @@
           @keyup="searchContact"
         ></v-text-field>
       </v-col>
-      <!-- <v-simple-table
-        class="red accent-4"
-        fixed-header
-        :class="`rounded-lg`"
-        style="text-align:center; "
-      >
-        <template v-slot:default>
-          <tbody>
-            <tr
-              v-for="item in contact.slice(0, 5)"
-              :key="item.id"
-              style="color:white"
-            >
-              <td>
-                <p class="font-weight-bold mt-4" style="font-size: 12px">
-                  {{ item.name }}
-                </p>
-                <p style="font-size: 11px; margin-top: -1rem">
-                  {{ item.region }}
-                </p>
-              </td>
-
-              <td>
-                <p class="text-light font-weight-bold" style="font-size: 12px">
-                  {{ item.phone }}
-                </p>
-              </td>
-              <td>
-                <v-img
-                  src="@/assets/icon-copy.png"
-                  max-width="25"
-                  @click="clipboard(item.phone, (snackbar = true))"
-                >
-                </v-img>
-              </td>
-
-              
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table> -->
       <b-table
         id="my-table"
         :items="items"
@@ -71,13 +30,14 @@
       >
         <template #cell(fullname)="data">
           <div class="p-2">
-            <b style="font-size: 13px">{{ data.item.name }}</b>
-            <p style="font-size: 10px">{{ data.item.region }}</p>
-          </div>
-        </template>
-        <template #cell()="data">
-          <div class="p-2 mt-1">
-            <p style="font-size: 11px">{{ data.item.phone }}</p>
+            <p class="font-weight-bold" style="font-size: 14px">
+              {{ data.item.name }}
+            </p>
+
+            <p style="font-size: 10px" class="text-light">
+              {{ data.item.phone }}
+            </p>
+            <p style="font-size: 11px">{{ data.item.region }}</p>
           </div>
         </template>
         <template #cell(actions)="data">
@@ -109,29 +69,25 @@
       ></b-pagination>
       <br />
       <AdvertiseGold />
-      <br />
-      <AdvertiseSilver />
       <div style="padding-top:4rem">
-        <Footer />
+        <FooterMobile />
       </div>
     </v-container>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import NavbarMobile from "../components/NavbarMobile";
+import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseGold from "../components/advertiseGold";
-import AdvertiseSilver from "../components/advertiseSilver";
 
 export default {
   components: {
-    Navbar,
-    Footer,
+    NavbarMobile,
+    FooterMobile,
     AdvertiseDiamond,
     AdvertiseGold,
-    AdvertiseSilver,
   },
   data() {
     return {
@@ -142,7 +98,6 @@ export default {
       currentPage: 1,
       fields: [
         { key: "fullName", label: "Full Name" },
-        "phone",
         { key: "actions", label: "Action here" },
       ],
     };

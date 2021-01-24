@@ -1,17 +1,17 @@
 <template>
   <div class="grey darken-4">
     <v-container>
-      <div style="padding-bottom:4rem">
+      <div style="padding-bottom:1rem">
         <Navbar />
       </div>
-      <div style="padding-bottom:2rem">
+      <div style="padding-bottom:1rem">
         <AdvertiseDiamond />
       </div>
       <b-row>
         <b-col cols="12">
-          <h3 class="pt-6" style="color:white">
+          <h5 class="pt-6" style="color:white">
             {{ content.title }}
-          </h3>
+          </h5>
           <p class="pb-1" style="color:grey; font-size: 12px">
             {{ convertDate(content.created_at) }}
           </p>
@@ -53,7 +53,6 @@
             <v-img
               :class="`rounded-lg`"
               v-bind:src="urlImg + 'news/mobile/' + content.photo_mobile"
-              width="1200"
               v-if="content.photo_mobile != null"
             ></v-img>
             <v-img
