@@ -69,19 +69,17 @@
         <AdvertiseGold />
       </div>
       <br />
-      <AdvertiseSilver />
-      <br />
-      <Footer />
     </v-container>
+    <br />
+    <FooterMobile />
   </div>
 </template>
 
 <script>
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseGold from "../components/advertiseGold";
-import AdvertiseSilver from "../components/advertiseSilver";
 import loadImg from "../../config.js";
 import moment from "moment";
 export default {
@@ -94,10 +92,9 @@ export default {
   },
   components: {
     Navbar,
-    Footer,
+    FooterMobile,
     AdvertiseDiamond,
     AdvertiseGold,
-    AdvertiseSilver,
   },
   mounted() {
     this.getLoker();
@@ -127,10 +124,8 @@ export default {
     convertDate(textDate) {
       let now = moment();
       let date = moment(textDate);
-      //   return moment(textDate).format("dddd, DD MMMM YYYY");
       let diff = now.diff(date, "minutes");
       if (diff >= 0 && diff < 60) {
-        // return now.diff(date, "hours") + " jam yang lalu";
         return "Beberapa menit yang lalu";
       } else if (diff >= 60 && diff < 1440) {
         return now.diff(date, "hours") + " jam yang lalu";
