@@ -53,6 +53,11 @@ const routes = [
     component: () => import("../views/detailCategory.vue"),
   },
   {
+    path: "/detail-category/mobile/:playlist",
+    name: "detailCategoryMobile",
+    component: () => import("../views/detailCategoryMobile.vue"),
+  },
+  {
     path: "/kudu-reti/:title",
     name: "kuduRetiMobile",
     component: () => import("../views/kuduRetiArticle.vue"),
@@ -73,7 +78,7 @@ const routes = [
     component: () => import("../views/listLoker.vue"),
   },
   {
-    path: "/list-loker/mobile",
+    path: "/loker",
     name: "listLokerMobile",
     component: () => import("../views/listLokerMobile.vue"),
   },

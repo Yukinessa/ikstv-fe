@@ -1,13 +1,13 @@
 <template>
   <div class="grey darken-4">
     <v-container>
-      <Navbar />
+      <NavbarMobile />
       <AdvertiseDiamond />
       <h6 class="pt-6" style="color:white">Lowongan Pekerjaan</h6>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
           style="background-color:red"
-          v-for="item in content"
+          v-for="item in content.slice(0, loadMoreSize)"
           :key="item.id"
         >
           <v-expansion-panel-header>
@@ -70,7 +70,17 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <div style="margin-top: -8rem">
+      <div class="text-center">
+        <v-btn
+          color="error"
+          v-if="loadMoreSize < totalSize"
+          small
+          @click="loadMore(5)"
+        >
+          Muat Lebih
+        </v-btn>
+      </div>
+      <div style="margin-top: 2rem">
         <AdvertiseGold />
       </div>
       <br />
@@ -81,7 +91,7 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
+import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseGold from "../components/advertiseGold";
@@ -90,7 +100,7 @@ import moment from "moment";
 
 export default {
   components: {
-    Navbar,
+    NavbarMobile,
     FooterMobile,
     AdvertiseDiamond,
     AdvertiseGold,
@@ -99,6 +109,8 @@ export default {
     return {
       content: [],
       urlImg: loadImg,
+      totalSize: 0,
+      loadMoreSize: 5,
     };
   },
   methods: {
@@ -107,6 +119,7 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "info/loker")
         .then((response) => {
           this.content = response.data.datas;
+          this.totalSize = this.content.length;
         });
     },
     limitTitle(text) {
@@ -126,6 +139,9 @@ export default {
         return now.diff(date, "days") + " hari yang lalu";
       }
     },
+    loadMore(number) {
+      return (this.loadMoreSize += number);
+    },
   },
   mounted() {
     this.getContent();
@@ -134,4 +150,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-expansion-panels {
+  padding-bottom: 2rem !important;
+}
+</style>

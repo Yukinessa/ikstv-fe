@@ -13,7 +13,7 @@
       </b-col>
     </b-row>
     <splide :slides="kudureti" :options="options" style="margin-left: -.6rem">
-      <splide-slide v-for="item in kudureti" :key="item.id">
+      <splide-slide v-for="item in kudureti.slice(0, 5)" :key="item.id">
         <router-link :to="'/kudu-reti/' + strReplace(item.title)">
           <b-img
             :src="urlImg + 'article/mobile/' + item.url_mobile"
