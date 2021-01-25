@@ -1,14 +1,13 @@
 <template>
   <b-navbar toggleable="lg" type="dark">
-    <b-navbar-brand>
+    <b-navbar-brand class="d-block mx-auto mb-2">
       <router-link :to="'/'">
-        <v-img
+        <b-img
           alt="Logo-navbar"
-          class="shrink mr-2"
           contain
-          src="../assets/logo-white.png"
+          :src="require('../assets/logo-white.png')"
           width="60"
-        />
+        ></b-img>
       </router-link>
     </b-navbar-brand>
   </b-navbar>

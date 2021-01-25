@@ -4,33 +4,32 @@
       <NavbarMobile />
       <AdvertiseDiamond />
       <h6 class="pt-6" style="color:white">Barang Hilang</h6>
-      <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
+      <v-expansion-panels>
         <v-expansion-panel
           style="background-color:red"
-          v-for="item in content"
+          v-for="item in content.slice(0, loadMoreSize)"
           :key="item.id"
         >
           <v-expansion-panel-header>
             <v-row>
               <v-col cols="12" md="8">
-                <h5 class="ml-2 text-light font-weight-bold">
+                <h6 class="ml-2 text-light font-weight-bold">
                   {{ item.title }}
-                </h5>
-                <p class="ml-2 text-light">
-                  <!-- {{ item.created_at | moment("dddd, D MMMM YYYY") }} -->
+                </h6>
+                <p class="ml-2 text-light" style="font-size: 10px">
                   {{ convertDate(item.created_at) }}
                 </p>
               </v-col>
               <v-col cols="12">
                 <v-btn
                   x-small
-                  class="ma-2 text-center"
-                  color="white"
+                  class="ma-2 text-center text-light"
+                  color="red"
                   v-if="item.category == 'kehilangan'"
                 >
                   Kehilangan
                 </v-btn>
-                <v-btn x-small class="ma-2 text-center" color="white" v-else>
+                <v-btn x-small class="ma-2 text-center" color="info" v-else>
                   Penemuan
                 </v-btn>
                 <v-btn
@@ -87,13 +86,21 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <div style="margin-top: -8rem">
+      <div class="text-center p-4">
+        <v-btn
+          color="error"
+          small
+          @click="loadMore(5)"
+          v-if="loadMoreSize < totalSize"
+        >
+          Muat Lebih
+        </v-btn>
+      </div>
+      <div class="mb-5">
         <AdvertiseGold />
       </div>
-      <br />
-      <AdvertiseSilver />
-      <br />
     </v-container>
+    <br />
     <br />
     <FooterMobile />
   </div>
@@ -118,6 +125,8 @@ export default {
     return {
       content: [],
       urlImg: loadImg,
+      totalSize: 0,
+      loadMoreSize: 5,
     };
   },
   methods: {
@@ -126,6 +135,7 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "info/items")
         .then((response) => {
           this.content = response.data.datas;
+          this.totalSize = this.content.length;
         });
     },
     limitTitle(text) {
@@ -133,6 +143,9 @@ export default {
     },
     convertDate(textDate) {
       return moment(textDate).format("dddd, DD MMMM YYYY");
+    },
+    loadMore(number) {
+      return (this.loadMoreSize += number);
     },
   },
   mounted() {
@@ -142,4 +155,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.v-expansion-panel {
+  background-color: #212121 !important;
+  border-bottom: 1px solid white;
+}
+.theme--light.v-expansion-panels
+  .v-expansion-panel-header
+  .v-expansion-panel-header__icon
+  .v-icon {
+  color: white !important;
+}
+</style>

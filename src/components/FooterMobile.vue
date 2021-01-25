@@ -5,13 +5,13 @@
 
       <v-icon small style="color: white">mdi-home</v-icon>
     </v-btn>
-    <v-btn>
+    <v-btn :to="'/list-news/mobile'">
       <span style="color: white">Berita</span>
 
       <v-icon small style="color: white">mdi-newspaper-variant-outline</v-icon>
     </v-btn>
 
-    <v-btn :to="'/list-loker/mobile'">
+    <v-btn :to="'/loker'">
       <span style="color: white">Loker</span>
 
       <v-icon small style="color: white"
