@@ -65,7 +65,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <div style="margin-top: -8rem">
+      <div>
         <AdvertiseGold />
       </div>
       <br />
