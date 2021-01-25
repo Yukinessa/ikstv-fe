@@ -52,7 +52,7 @@ import loadImg from "../../config.js";
 export default {
   data() {
     return {
-      dialog: this.parentDialog,
+      dialog: this.parentDialogLoker,
       loker: [],
       urlImg: loadImg,
       id: this.lokerID,
@@ -60,8 +60,8 @@ export default {
   },
   props: {
     lokerID: Number,
-    childLoaded: Boolean,
-    parentDialog: Boolean,
+    childLoadedLoker: Boolean,
+    parentDialogLoker: Boolean,
   },
   mounted() {
     this.getLoker();
@@ -77,7 +77,7 @@ export default {
         });
     },
     handleDialog() {
-      this.$emit("update:childLoaded", false);
+      this.$emit("update:childLoadedLoker", false);
       this.dialog = false;
     },
   },

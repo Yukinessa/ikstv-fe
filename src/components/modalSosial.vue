@@ -1,35 +1,35 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="1000" height="500" persistent>
+    <v-dialog v-model="dialogSosial" width="1000" height="500" persistent>
       <v-card class="overflow-hidden">
         <b-row>
           <b-col cols="3">
             <v-img
-              max-height="150"
-              max-width="250"
-              :src="urlImg + 'loker/' + loker.url"
+              max-height="50"
+              max-width="150"
+              :src="urlImg + 'sosial/' + sosial.photo"
             />
             <p
               class="mt-3 text-center"
               style="font-size:18px; color:white; font-weight:bold"
             >
-              {{ loker.title }}
+              {{ sosial.title }}
             </p>
             <p class="text-center" style="color:white; font-size:13px">
-              {{ loker.phone }}
+              {{ sosial.phone }}
             </p>
             <p class="text-center" style="color:white; font-size:13px">
-              {{ loker.email }}
+              {{ sosial.email }}
             </p>
             <p class="text-center" style="color:white; font-size:13px">
-              {{ loker.address }}
+              {{ sosial.location }}
+            </p>
+            <p class="text-center" style="color:white; font-size:13px">
+              {{ sosial.ig_pelapor }}
             </p>
           </b-col>
           <b-col>
-            <h4 class="pt-3" style="color:white; font-weight:bold">
-              {{ loker.position }}
-            </h4>
-            <p style="color:white" v-html="loker.description"></p>
+            <p style="color:white" v-html="sosial.description"></p>
           </b-col>
         </b-row>
         <v-card-text> </v-card-text>
@@ -52,7 +52,7 @@ import loadImg from "../../config.js";
 export default {
   data() {
     return {
-      dialog: this.parentDialog,
+      dialogSosial: this.parentDialogSosial,
       sosial: [],
       urlImg: loadImg,
       id: this.sosialID,
@@ -60,8 +60,8 @@ export default {
   },
   props: {
     sosialID: Number,
-    childLoaded: Boolean,
-    parentDialog: Boolean,
+    childLoadedSosial: Boolean,
+    parentDialogSosial: Boolean,
   },
   mounted() {
     this.getSosial();
@@ -70,14 +70,14 @@ export default {
   methods: {
     getSosial() {
       this.axios
-        .get(process.env.VUE_APP_IP_ADDRESS + "info/sosial/" + this.sosialID)
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/sosial/" + this.id)
         .then((response) => {
           this.sosial = response.data.datas;
           console.log(response);
         });
     },
     handleDialog() {
-      this.$emit("update:childLoaded", false);
+      this.$emit("update:childLoadedSosial", false);
       this.dialog = false;
     },
   },

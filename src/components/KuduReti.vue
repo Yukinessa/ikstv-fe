@@ -2,7 +2,12 @@
   <div v-if="!$isMobile()">
     <h3 style="color:white; ">Kudu Reti Lur</h3>
     <v-row>
-      <v-col v-for="item in kudureti" :key="item.id" cols="12" sm="4">
+      <v-col
+        v-for="item in kudureti.slice(0, 3)"
+        :key="item.id"
+        cols="12"
+        sm="4"
+      >
         <v-card
           :class="`rounded-lg`"
           style="background-color:white !important"
@@ -13,7 +18,7 @@
             :class="`rounded-lg`"
             class="white--text align-end"
             height="200px"
-            v-bind:src="urlImg + 'article/' + item.url"
+            v-bind:src="urlImg + 'article/desktop/' + item.url"
           >
             <v-card-title>
               <v-img src="@/assets/label-tittle.png" height="40px">
@@ -25,8 +30,7 @@
               </v-img>
             </v-card-title>
           </v-img>
-          <v-card-text class="text--primary">
-            {{ limitText(item.text) }}
+          <v-card-text class="text--primary" v-html="limitText(item.text)">
           </v-card-text>
           <v-card-actions>
             <router-link :to="'/kudu-reti/' + strReplace(item.title)">
@@ -47,50 +51,6 @@
         Lebih Lanjut >
       </a>
     </router-link>
-  </div>
-  <!-- Mobile Version -->
-  <div v-else>
-    <b-container>
-      <b-row>
-        <h5 style="color:white; " class="font-weight-bold">Kudu Reti Lur</h5>
-        <swiper ref="mySwiper" :options="swiperOptions" class="ml-2">
-          <swiper-slide v-for="item in kudureti" :key="item.id">
-            <b-card
-              :img-src="urlImg + 'article/' + item.url"
-              img-alt="Image"
-              img-top
-              img-width="156"
-              img-height="150"
-              tag="article"
-              style="max-width: 18rem; height: 370px"
-              class="mb-2 shadow"
-            >
-              <b-card-text class="font-weight-bold">
-                <p>{{ limitTitle(item.title) }}</p>
-              </b-card-text>
-
-              <b-card-text>
-                <p class="text-muted" style="font-size: 11px">
-                  {{ limitText(item.text) }}
-                </p>
-              </b-card-text>
-              <router-link
-                :to="'/kudu-reti/' + strReplace(item.title)"
-                tag="button"
-              >
-                <b-button
-                  href="#"
-                  variant="primary"
-                  style="font-size: 10px; color: white; margin-top: 1rem"
-                  >Baca Selengkapnya</b-button
-                >
-              </router-link>
-            </b-card>
-          </swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
-        </swiper>
-      </b-row>
-    </b-container>
   </div>
 </template>
 

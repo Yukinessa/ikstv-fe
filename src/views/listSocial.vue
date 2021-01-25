@@ -4,7 +4,7 @@
       <Navbar />
       <br />
       <br />
-      <h1 class="pt-6" style="color:white">Lowongan Pekerjaan</h1>
+      <h1 class="pt-6" style="color:white">Sosial dan Donasi</h1>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
           style="background-color:red"

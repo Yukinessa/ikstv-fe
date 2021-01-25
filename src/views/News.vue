@@ -46,7 +46,7 @@
       <div style="padding-top:1rem; padding-bottom:2rem">
         <v-img
           :class="`rounded-lg`"
-          v-bind:src="urlImg + 'news/' + content.photo"
+          v-bind:src="urlImg + 'news/desktop/' + content.photo"
           width="1200"
           height="500px"
         ></v-img>
@@ -59,7 +59,12 @@
       <v-container>
         <h3 style="color:white;">Berita untuk anda</h3>
         <v-row>
-          <v-col v-for="item in news" :key="item.id" cols="12" sm="4">
+          <v-col
+            v-for="item in news.slice(0, 3)"
+            :key="item.id"
+            cols="12"
+            sm="4"
+          >
             <v-card
               :class="`rounded-lg`"
               style="background-color:white !important"
@@ -70,7 +75,7 @@
                 :class="`rounded-lg`"
                 class="white--text align-end"
                 height="200px"
-                v-bind:src="urlImg + 'news/' + item.photo"
+                v-bind:src="urlImg + 'news/desktop/' + item.photo"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">

@@ -35,7 +35,10 @@
                       Rp. 5.000.000
                     </p>
                   </v-card-subtitle>
-                  <v-btn @click="openModal(loker.id)" depressed color="error"
+                  <v-btn
+                    @click="openModalLoker(loker.id)"
+                    depressed
+                    color="error"
                     >Lihat lebih lengkap</v-btn
                   >
                 </v-card-title>
@@ -84,7 +87,12 @@
                       {{ stringReplace(limitText(sosial.description)) }}
                     </p>
                   </v-card-subtitle>
-                  <v-btn depressed color="error">Lihat lebih lengkap</v-btn>
+                  <v-btn
+                    @click="openModalSosial(sosial.id)"
+                    depressed
+                    color="error"
+                    >Lihat lebih lengkap</v-btn
+                  >
                 </v-card-title>
               </v-card>
             </v-col>
@@ -101,26 +109,32 @@
         </v-col>
       </v-row>
     </v-container>
-<<<<<<< HEAD
-    <template v-if="childLoaded">
+    <template v-if="childLoadedLoker">
       <modalLoker
         :lokerID="this.lokerID"
-        :childLoaded.sync="childLoaded"
-        :parentDialog="parentDialog"
+        :childLoadedLoker.sync="childLoadedLoker"
+        :parentDialogLoker="parentDialogLoker"
       />
     </template>
-=======
->>>>>>> aa54ebcb1021cb612cb8ee9399fc7f278d225b62
+    <template v-if="childLoadedSosial">
+      <modalSosial
+        :sosialID="this.sosialID"
+        :childLoadedSosial.sync="childLoadedSosial"
+        :parentDialogSosial="parentDialogSosial"
+      />
+    </template>
   </v-container>
 </template>
 
 <script>
 import loadImg from "../../config";
 import modalLoker from "../components/modalLoker";
+import modalSosial from "../components/modalSosial";
 
 export default {
   components: {
     modalLoker,
+    modalSosial,
   },
   data() {
     return {
@@ -128,8 +142,11 @@ export default {
       sosials: [],
       urlImg: loadImg,
       lokerID: 0,
-      childLoaded: false,
-      parentDialog: false,
+      sosialId: 0,
+      childLoadedLoker: false,
+      childLoadedSosial: false,
+      parentDialogSosial: false,
+      parentDialogLoker: false,
     };
   },
   mounted() {
@@ -160,10 +177,16 @@ export default {
     stringReplace(str) {
       return str.replace(/<\/?[^>]+(>|$)/g, "");
     },
-    openModal(id) {
-      this.childLoaded = true;
+    openModalLoker(id) {
+      this.childLoadedLoker = true;
       this.lokerID = id;
-      this.parentDialog = true;
+      this.parentDialogLoker = true;
+    },
+    openModalSosial(id) {
+      this.childLoadedSosial = true;
+      this.sosialID = id;
+      this.parentDialogSosial = true;
+      // alert(id);
     },
   },
 };

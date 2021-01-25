@@ -47,23 +47,29 @@
             (snackbar = true)
         "
       />
-      <div style="padding-top:1rem; padding-bottom:2rem">
+      <div style="padding-top:1rem;">
         <v-img
           :class="`rounded-lg`"
-          v-bind:src="urlImg + '/article/' + content.url"
+          class="mb-8"
+          v-bind:src="urlImg + '/article/desktop/' + content.url"
           width="1200"
           height="500px"
         ></v-img>
       </div>
       <p
-        style="font-size:20px; color:white; text-align:justify; margin-bottom:12rem; margin-top:2rem"
-      >
-        {{ content.text }}
-      </p>
+        class="mb-9"
+        style="font-size:20px; color:white; text-align:justify;"
+        v-html="content.text"
+      ></p>
       <v-container>
         <h3 style="color:white;">Berita untuk anda</h3>
         <v-row>
-          <v-col v-for="item in kuduReti" :key="item" cols="12" sm="4">
+          <v-col
+            v-for="item in kuduReti.slice(0, 3)"
+            :key="item"
+            cols="12"
+            sm="4"
+          >
             <v-card
               :class="`rounded-lg`"
               style="background-color:white !important"
@@ -74,7 +80,7 @@
                 :class="`rounded-lg`"
                 class="white--text align-end"
                 height="200px"
-                v-bind:src="urlImg + '/article/' + item.url"
+                v-bind:src="urlImg + '/article/desktop/' + item.url"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">

@@ -69,7 +69,6 @@
 <script>
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import modalVideo from "../components/modalVideo";
 
 export default {
   data() {
@@ -82,7 +81,6 @@ export default {
   components: {
     Navbar,
     Footer,
-    modalVideo,
   },
   methods: {
     openModal(videoID, videoTitle) {
