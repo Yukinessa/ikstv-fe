@@ -97,7 +97,7 @@
               </v-card>
             </v-col>
           </v-row>
-          <router-link to="list-number">
+          <router-link to="all-sosial">
             <a
               id="lanjut"
               style="padding-top:0.4rem; color:white; margin-left:auto; display:block; text-align:right"

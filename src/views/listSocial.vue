@@ -7,16 +7,19 @@
       <h1 class="pt-6" style="color:white">Sosial dan Donasi</h1>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
-          style="background-color:red"
-          v-for="item in loker"
+          class="grey darken-3"
+          v-for="item in sosial"
           :key="item"
         >
           <v-expansion-panel-header>
             <v-row>
               <v-col cols="12" md="8">
-                <h4 style="padding-left:1rem; color:white">
-                  {{ item.position }}
-                </h4>
+                <h6 style="padding-left:1rem; color:white">
+                  <b>{{ item.title }}</b>
+                </h6>
+                <p style="padding-left:1rem; color:white">
+                  {{ item.ig_pelapor }}
+                </p>
               </v-col>
               <v-col cols="6" sm="6" md="4"> </v-col>
             </v-row>
@@ -25,7 +28,7 @@
             <b-row>
               <b-col sm="3">
                 <v-img
-                  v-bind:src="urlImg + 'loker/' + item.url"
+                  v-bind:src="urlImg + 'sosial/' + item.photo"
                   :class="`rounded-lg`"
                   style="display:block; margin-left:auto; margin-right:auto; margin-bottom:1rem"
                   max-width="180"
@@ -37,7 +40,7 @@
                   {{ item.address }}
                 </p>
                 <p class=" text-light ">
-                  <b>Email</b> : <br />{{ item.email }}
+                  <b>Lokasi</b> : <br />{{ item.location }}
                 </p>
                 <p class="text-light ">
                   <b>Kontak</b> : <br />{{ item.phone }}
@@ -65,19 +68,19 @@ export default {
   },
   data() {
     return {
-      loker: [],
+      sosial: [],
       urlImg: loadImg,
     };
   },
   mounted() {
-    this.getLoker();
+    this.getSosial();
   },
   methods: {
-    getLoker() {
+    getSosial() {
       this.axios
-        .get(process.env.VUE_APP_IP_ADDRESS + "info/loker")
+        .get(process.env.VUE_APP_IP_ADDRESS + "info/sosial")
         .then((response) => {
-          this.loker = response.data.datas;
+          this.sosial = response.data.datas;
           console.log(response);
         });
     },
@@ -94,4 +97,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.theme--light.v-expansion-panels
+  .v-expansion-panel-header
+  .v-expansion-panel-header__icon
+  .v-icon {
+  color: white;
+}
+</style>

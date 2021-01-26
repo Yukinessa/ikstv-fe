@@ -1,13 +1,14 @@
 <template>
   <v-container>
     <div>
-      <h2 style="color:white; text-align:center;">
+      <h2 class="mb-8" style="color:white; text-align:center;">
         Our Partner
       </h2>
     </div>
     <v-row>
       <v-col md="3" v-for="item in partner.slice(0, 8)" :key="item.id">
         <img
+          class="d-block mx-auto"
           v-bind:src="urlImg + '/partner/' + item.logo"
           width="100"
           height="100"

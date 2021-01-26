@@ -31,22 +31,17 @@
             <AdvertiseSilver />
           </div>
 
-          <div id="info-barang-hilang" style="padding-top:2rem">
+          <div
+            id="info-barang-hilang"
+            style="padding-top:2rem"
+            ref="infoBarang"
+          >
             <infoBarang />
           </div>
 
           <div id="info-loke-sosial" style="padding-top:1rem">
             <infoSosial />
           </div>
-
-          <!-- <div id="hiburan" style="padding-top:2rem">
-          <Youtube />
-        </div> -->
-
-          <!-- <div id="advertise-divide2" style="padding-top:2rem">
-            <Advertise2 />
-          </div> -->
-
           <div id="our-partner" style="padding-top:2rem">
             <hr size="3" width="100%" color="white" />
             <Partner />
@@ -56,6 +51,8 @@
             <Footer @testing="onClickChild" />
           </div>
         </v-container>
+
+        <!-- Mobile Component -->
         <v-container v-else>
           <div id="navbar">
             <NavbarMobile @testing="onClickChild" />
@@ -110,8 +107,6 @@ import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseSilver from "../components/advertiseSilver";
 import infoBarang from "../components/infoBarang";
 import infoSosial from "../components/infoSosial";
-// import Youtube from "../components/Youtube";
-// import Advertise2 from "../components/Advertise2";
 import Footer from "../components/Footer";
 import Partner from "../components/Partner";
 import KuduReti from "../components/KuduReti";

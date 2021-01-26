@@ -53,6 +53,7 @@
       </div>
       <p
         style="font-size:20px; color:white; text-align:justify; margin-bottom:12rem; margin-top:2rem"
+        v-html="content.description"
       >
         {{ content.description }}
       </p>

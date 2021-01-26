@@ -48,13 +48,11 @@
         "
       />
       <div style="padding-top:1rem;">
-        <v-img
+        <b-img
           :class="`rounded-lg`"
-          class="mb-8"
-          v-bind:src="urlImg + '/article/desktop/' + content.url"
-          width="1200"
-          height="500px"
-        ></v-img>
+          class="mb-8 img-fluid"
+          v-bind:src="urlImg + 'article/desktop/' + content.url"
+        ></b-img>
       </div>
       <p
         class="mb-9"
@@ -80,7 +78,7 @@
                 :class="`rounded-lg`"
                 class="white--text align-end"
                 height="200px"
-                v-bind:src="urlImg + '/article/desktop/' + item.url"
+                v-bind:src="urlImg + 'article/desktop/' + item.url"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">

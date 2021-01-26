@@ -18,7 +18,7 @@
             :class="`rounded-lg`"
             class="white--text align-end"
             height="200px"
-            v-bind:src="urlImg + 'article/desktop/' + item.url"
+            v-bind:src="urlImg + '/article/desktop/' + item.url"
           >
             <v-card-title>
               <v-img src="@/assets/label-tittle.png" height="40px">

@@ -1,197 +1,121 @@
 <template>
-  <div v-if="!$isMobile()">
-    <div class="footer" style="background-color:red">
-      <v-container>
-        <v-layout row>
-          <!-- About IKS section -->
-          <v-flex
-            xs12
-            md4
-            style="padding-left:140px; padding-top:30px"
-            class="container-footer"
-          >
-            <a href="">
-              <img src="@/assets/logo-white.png" width="100" />
-            </a>
-            <p style="color:white; text-align:justify; padding-top:20px">
-              Kami memberikan informasi se-kota semarang mulai dari info
-              kecelakaan hingga info sosial. Ikuti pembaruan berita kami melalui
-              website dan sosial media yang tersedia
-            </p>
-          </v-flex>
-          <!-- Explore section -->
-          <v-flex
-            xs12
-            md4
-            style="padding-left:150px; padding-top:40px; padding-bottom:60px"
-          >
-            <h3
-              style="color: white; font-weight:bold; position: absolute; top:42px"
-            >
-              EXPLORE
-            </h3>
-            <br />
-            <br />
-            <a id="beranda" style="color:white; font-size:15px" href=""
-              >Beranda</a
-            >
-            <br />
-            <br />
-            <a
-              id="news"
-              style="color:white; font-size:15px"
-              @click="test('news')"
-              >Berita Terkini</a
-            >
-            <br />
-            <br />
-            <a id="lost-item" style="color:white; font-size:15px" href=""
-              >Info Kehilangan</a
-            >
-            <br />
-            <br />
-            <a id="advertise" style="color:white; font-size:15px" href=""
-              >Iklan</a
-            >
-          </v-flex>
-          <!-- Update section -->
-          <v-flex xs12 md4>
-            <h3
-              style="color: white; font-weight:bold; position: absolute; left: 1065px; top:42px"
-            >
-              FOLLOW US
-            </h3>
-            <br />
-            <br />
-            <v-flex xs6 md3>
-              <a href="">
-                <img
-                  src="@/assets/icon-instagram.png"
-                  width="70"
-                  style="position: absolute;
-                    right:310px; 
-                    top: 82px;
-                    padding: 10px;"
-                />
-              </a>
-              <a href="">
-                <img
-                  src="@/assets/icon-youtube.png"
-                  width="70"
-                  style="position: absolute;
-                    top:82px;
-                    right: 200px;
-                    padding: 10px;"
-                />
-              </a>
-              <h3
-                style="position:absolute; left: 1070px; top:170px; color:white; font-weight:bold"
+  <div class="footer" style="background-color:red">
+    <v-container>
+      <b-row>
+        <b-col class="mt-5">
+          <a href="">
+            <img src="@/assets/logo-white.png" width="100" />
+          </a>
+          <p class="mt-6" style="color:white; text-align:justify">
+            Kami memberikan informasi se-kota semarang mulai dari info
+            kecelakaan hingga info sosial. Ikuti pembaruan berita kami melalui
+            website dan sosial media yang tersedia
+          </p>
+        </b-col>
+        <b-col class="mt-6 text-center">
+          <h3 class="mb-5" style="color: white; font-weight:bold;">
+            EXPLORE
+          </h3>
+          <div class="mb-4 ">
+            <div class="mb-4">
+              <router-link to="/" tag="button">
+                <a
+                  class="mt-5 mb-4"
+                  id="beranda"
+                  style="color:white; font-size:15px"
+                >
+                  Beranda
+                </a>
+              </router-link>
+            </div>
+            <div class="mb-4 d-block">
+              <a
+                class=""
+                id="news"
+                style="color:white; font-size:15px"
+                @click="smoothScroll('news')"
               >
-                CONTACT
-              </h3>
-            </v-flex>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </div>
-  </div>
-  <div v-else>
-    <div class="footer" style="background-color: red">
-      <b-container>
-        <b-row>
-          <b-col sm="1">
-            <img
-              src="@/assets/logo-white.png"
-              width="100"
-              style="display: block; margin-left:auto; margin-right: auto"
-            />
-            <!-- </a> -->
-            <p style="color:white; text-align:justify; padding-top:20px">
-              Kami memberikan informasi se-kota semarang mulai dari info
-              kecelakaan hingga info sosial. Ikuti pembaruan berita kami melalui
-              website dan sosial media yang tersedia
-            </p>
-          </b-col>
-          <b-col sm="1">
-            <h3
-              style="color: white; font-weight:bold; top:42px; text-align:center"
-            >
-              EXPLORE
-            </h3>
-            <br />
-            <br />
-            <a
-              id="beranda"
-              style="color:white; font-size:15px; text-align:center; display:block"
-              href=""
-              >Beranda</a
-            >
-            <br />
-            <br />
-            <a
-              id="news"
-              style="color:white; font-size:15px;text-align:center; display:block"
-              @click="test('news')"
-              >Berita Terkini</a
-            >
-            <br />
-            <br />
-            <a
-              id="lost-item"
-              style="color:white; font-size:15px;text-align:center; display:block"
-              href=""
-              >Info Kehilangan</a
-            >
-            <br />
-            <br />
-            <a
-              id="advertise"
-              style="color:white; font-size:15px; text-align:center; display:block"
-              href=""
-              >Iklan</a
-            >
-          </b-col>
-          <b-col sm="1">
-            <h3 style="color:white;  text-align:center">
-              FOLLOW US
-            </h3>
-            <div style="text-align:center; margin-top: 1rem">
-              <a href="">
-                <img src="@/assets/icon-instagram.png" width="30" />
-              </a>
-              <a href="">
-                <img
-                  src="@/assets/icon-youtube.png"
-                  width="30"
-                  style="margin-left:1rem"
-                />
-              </a>
-              <a href="">
-                <img
-                  src="@/assets/icon-wa.png"
-                  width="25"
-                  style="margin-left:1rem"
-                />
+                Berita Terkini
               </a>
             </div>
-          </b-col>
-        </b-row>
-      </b-container>
+            <div class="d-block mb-4">
+              <a
+                class=" mb-2"
+                id="lost-item"
+                style="color:white; font-size:15px"
+                @click="smoothScroll('infoBarang')"
+              >
+                Info Kehilangan
+              </a>
+            </div>
+            <div class="d-block mb-4">
+              <a
+                @click="goWhatsapp"
+                id="advertise"
+                style="color:white; font-size:15px"
+              >
+                Iklan
+              </a>
+            </div>
+          </div>
+        </b-col>
+        <b-col class="text-center mt-6">
+          <h3 class="mb-5 text-light " style="font-weight:bold">
+            FOLLOW US
+          </h3>
+          <a href="" @click="goInstagram">
+            <img class="mr-10" src="@/assets/icon-instagram.png" width="50" />
+          </a>
+          <a href="" @click="goYoutube">
+            <img class="ml-2" src="@/assets/icon-youtube.png" width="50" />
+          </a>
+        </b-col>
+      </b-row>
+    </v-container>
+    <!-- <template v-if="childLoadedContact">
+      <modalContact
+        :childLoadedContact.sync="childLoadedContact"
+        :parentDialogContact="parentDialogContact"
+      />
+    </template> -->
+    <div class="text-center text-light mt-15">
+      <p>© Copyright 2020 Ikstv.id | All right reserved.</p>
     </div>
   </div>
 </template>
 
 <script>
+// import modalContact from "../components/modalContact";
+
 export default {
-  data() {
-    return {
-      urlImgFooter: "../assets/logo-white.png",
-    };
-  },
+  // components: {
+  //   modalContact,
+  // },
+  // data() {
+  //   return {
+  //     childLoadedContact: false,
+  //     parentDialogContact: false,
+  //   };
+  // },
   methods: {
-    test(refName) {
+    smoothScroll(refName) {
       this.$emit("testing", refName);
     },
+    goInstagram() {
+      window.open("https://www.instagram.com/infokejadiansemarang/");
+    },
+    goYoutube() {
+      window.open("https://www.youtube.com/channel/UCSS_5sakJUZPxud7SHUweuQ");
+    },
+    goWhatsapp() {
+      window.open(
+        "https://wa.me/6282180888164?text=Saya%20ingin%20mengiklankan%20produk%20saya%20prosedurnya%20bagaimana"
+      );
+    },
+    // openModalContact() {
+    //   this.childLoadedContact = true;
+    //   this.parentDialogContact = true;
+    // },
   },
 };
 </script>

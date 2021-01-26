@@ -4,10 +4,10 @@
       <Navbar />
       <br />
       <br />
-      <h1 class="pt-6" style="color:white">Barang Hilang</h1>
+      <h2 class="pt-6" style="color:white">Barang Hilang</h2>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
-          style="background-color:red"
+          class="grey darken-3"
           v-for="item in content"
           :key="item"
         >
@@ -47,7 +47,10 @@
               </v-col>
               <v-col cols="12" sm="6" md="8">
                 <p><b>IG Pelapor</b> : {{ item.ig_pelapor }}</p>
-                <p><b>Deskripsi Barang</b> : {{ item.description }}</p>
+                <span
+                  ><b>Deskripsi : </b><br />
+                  <p v-html="item.description"></p
+                ></span>
               </v-col>
             </v-row>
           </v-expansion-panel-content>

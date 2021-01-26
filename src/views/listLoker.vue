@@ -4,21 +4,26 @@
       <Navbar />
       <br />
       <br />
-      <h1 class="pt-6" style="color:white">Lowongan Pekerjaan</h1>
+      <h2 class="pt-6" style="color:white">Lowongan Pekerjaan</h2>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
-          style="background-color:red"
+          class="grey darken-3"
           v-for="item in loker"
           :key="item"
         >
           <v-expansion-panel-header>
             <v-row>
               <v-col cols="12" md="8">
-                <h4 style="padding-left:1rem; color:white">
-                  {{ item.position }}
-                </h4>
+                <h6 style="padding-left:1rem; color:white">
+                  <b>{{ item.position }}</b>
+                </h6>
+                <p style="padding-left:1rem; color:white">{{ item.title }}</p>
               </v-col>
-              <v-col cols="6" sm="6" md="4"> </v-col>
+              <v-col cols="6" sm="6" md="4">
+                <p class="text-light" style="font-weight:bold">
+                  IDR {{ item.salary }}
+                </p>
+              </v-col>
             </v-row>
           </v-expansion-panel-header>
           <v-expansion-panel-content style="color:white">
@@ -94,4 +99,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.theme--light.v-expansion-panels
+  .v-expansion-panel-header
+  .v-expansion-panel-header__icon
+  .v-icon {
+  color: white;
+}
+</style>
