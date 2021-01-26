@@ -7,7 +7,7 @@
             <v-img
               max-height="50"
               max-width="150"
-              :src="urlImg + 'sosial/' + sosial.photo"
+              :src="urlImg + '/sosial/' + sosial.photo"
             />
             <p
               class="mt-3 text-center"

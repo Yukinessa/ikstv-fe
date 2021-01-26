@@ -7,7 +7,7 @@
             <v-img
               max-height="150"
               max-width="250"
-              :src="urlImg + 'loker/' + loker.url"
+              :src="urlImg + '/loker/' + loker.url"
             />
             <p
               class="mt-3 text-center"
