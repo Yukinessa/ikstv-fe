@@ -51,7 +51,7 @@
             <div class="d-block mb-4">
               <a
                 @click="goWhatsapp"
-                id="advertise"
+                id="iklan"
                 style="color:white; font-size:15px"
               >
                 Iklan
@@ -131,28 +131,28 @@ export default {
 #beranda:link,
 #news:link,
 #lost-item:link,
-#advertise:link {
+#iklan:link {
   text-decoration: none;
 }
 
 #beranda:visited,
 #news:visited,
 #lost-item:visited,
-#advertise:visited {
+#iklan:visited {
   text-decoration: none;
 }
 
 #beranda:hover,
 #news:hover,
 #lost-item:hover,
-#advertise:hover {
+#iklan:hover {
   text-decoration: underline;
 }
 
 #beranda:active,
 #news:active,
 #lost-item:active,
-#advertise:active {
+#iklan:active {
   text-decoration: underline;
 }
 </style>
