@@ -63,10 +63,10 @@
           <h3 class="mb-5 text-light " style="font-weight:bold">
             FOLLOW US
           </h3>
-          <a href="" @click="goInstagram">
+          <a @click="goInstagram">
             <img class="mr-10" src="@/assets/icon-instagram.png" width="50" />
           </a>
-          <a href="" @click="goYoutube">
+          <a @click="goYoutube">
             <img class="ml-2" src="@/assets/icon-youtube.png" width="50" />
           </a>
         </b-col>

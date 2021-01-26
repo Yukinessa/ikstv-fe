@@ -18,7 +18,7 @@
     <v-btn text>
       <span class="mr-2" @click="test('news')">News</span>
     </v-btn>
-    <v-btn text>
+    <v-btn text @click="goWhatsapp">
       <span class="mr-2">Contact</span>
     </v-btn>
   </v-app-bar>
@@ -29,6 +29,11 @@ export default {
   methods: {
     test(refName) {
       this.$emit("testing", refName);
+    },
+    goWhatsapp() {
+      window.open(
+        "https://wa.me/6282180888164?text=Saya%20ingin%20mengiklankan%20produk%20saya%20prosedurnya%20bagaimana"
+      );
     },
   },
 };
