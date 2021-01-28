@@ -7,11 +7,15 @@
       <h2 class="pt-8 pb-9" style="color:white; font-weight:bold">
         Berita Terkini
       </h2>
-      <b-row class="mb-5" v-for="item in news" :key="item">
+      <b-row
+        class="mb-5"
+        v-for="(item, i) in news.slice(0, loadMoreLength)"
+        :key="i"
+      >
         <b-col md="3" class="py-5 px-3 d-flex justify-content-center">
           <b-img
             :class="`rounded-lg`"
-            v-bind:src="urlImg + 'news/desktop/' + item.photo"
+            v-bind:src="urlImg + '/news/desktop/' + item.photo"
             fluid
             class="text-center w-100"
           ></b-img>
@@ -32,7 +36,14 @@
           </router-link>
         </b-col>
       </b-row>
-      <b-btn v-if="totalData > 5">Load More</b-btn>
+      <div class="text-center mb-6">
+        <b-btn
+          variant="danger"
+          v-if="loadMoreLength < totalSize"
+          @click="loadMore(5)"
+          >Muat Lebih</b-btn
+        >
+      </div>
       <Footer />
     </v-container>
   </div>
@@ -48,6 +59,8 @@ export default {
     return {
       news: [],
       urlImg: loadImg,
+      totalSize: 0,
+      loadMoreLength: 5,
     };
   },
   components: {
@@ -66,11 +79,14 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "news")
         .then((response) => {
           this.news = response.data.datas;
-          console.log(response);
+          this.totalSize = this.news.length;
         });
     },
     strReplace(str) {
       return str.replace(" ", "-");
+    },
+    loadMore(number) {
+      return (this.loadMoreLength += number);
     },
   },
 };

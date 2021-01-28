@@ -1,60 +1,47 @@
 <template>
-  <v-container v-if="!$isMobile()">
+  <v-container>
     <div :class="`rounded-lg`">
-      <!-- <img v-bind:src="logo" /> -->
-      <v-carousel
-        :class="`rounded-lg`"
-        cycle
-        hide-delimiters
-        show-arrows-on-hover
-      >
-        <v-carousel-item
-          v-for="(item, i) in items"
-          :key="i"
-          :src="item.src"
-        ></v-carousel-item>
-      </v-carousel>
-    </div>
-  </v-container>
-  <v-container v-else>
-    <b-row>
       <swiper ref="mySwiper" :options="swiperOptions">
-        <swiper-slide v-for="(item, i) in items" :key="i" :src="item.src">
-          <v-img
+        <swiper-slide v-for="(item, i) in items" :key="i">
+          <b-img
+            v-if="!$isMobile()"
+            style="height:300px; width:100%"
             :class="`rounded-lg`"
-            :src="item.src"
+            :src="urlImg + '/iklan/' + item.photo"
+          ></b-img>
+          <b-img
+            v-else
+            :class="`rounded-lg`"
+            :src="urlImg + '/iklan/' + item.photo"
             width="500"
             height="125"
-          ></v-img>
+          >
+          </b-img>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
-    </b-row>
+    </div>
   </v-container>
 </template>
 
 <script>
+import loadImg from "../../config";
 export default {
   data() {
     return {
-      items: [
-        {
-          src: require("../assets/Advertise.jpg"),
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-        },
-      ],
+      items: [],
+      urlImg: loadImg,
       swiperOptions: {
+        loop: true,
+
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
         slidesPerView: 1,
-        // spaceBetween: 20,
         pagination: {
           el: ".swiper-pagination",
         },
-        // Some Swiper option/callback...
       },
     };
   },
@@ -64,7 +51,18 @@ export default {
     },
   },
   mounted() {
-    this.swiper.slideTo(1, 1000, false);
+    this.getAdvertise();
+    // this.$refs.mySwiper.swiper.autoplay.start();
+  },
+  methods: {
+    getAdvertise() {
+      this.axios
+        .get(process.env.VUE_APP_IP_ADDRESS + "advert/")
+        .then((response) => {
+          this.items = response.data.diamond;
+          console.log(this.items);
+        });
+    },
   },
 };
 </script>

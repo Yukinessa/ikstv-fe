@@ -7,10 +7,14 @@
       <h2 class="pt-8 pb-9" style="color:white; font-weight:bold">
         Kudu Reti Lurr
       </h2>
-      <b-row class="mb-5" v-for="item in article" :key="item">
+      <b-row
+        class="mb-5"
+        v-for="(item, i) in article.slice(0, loadMoreSize)"
+        :key="i"
+      >
         <b-col md="3" class="py-5 px-3 d-flex justify-content-center">
           <b-img
-            v-bind:src="urlImg + 'article/desktop/' + item.url"
+            v-bind:src="urlImg + '/article/desktop/' + item.url"
             fluid
             class="text-center w-100"
           ></b-img>
@@ -34,6 +38,14 @@
           </router-link>
         </b-col>
       </b-row>
+      <div class="text-center mb-6">
+        <b-btn
+          variant="danger"
+          v-if="loadMoreSize < totalSize"
+          @click="loadMore(5)"
+          >Muat Lebih</b-btn
+        >
+      </div>
       <Footer />
     </v-container>
   </div>
@@ -49,6 +61,8 @@ export default {
     return {
       article: [],
       urlImg: loadImg,
+      totalSize: 0,
+      loadMoreSize: 5,
     };
   },
   components: {
@@ -67,11 +81,15 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "info/funfact")
         .then((response) => {
           this.article = response.data.datas;
+          this.totalSize = this.article.length;
           console.log(response);
         });
     },
     strReplace(str) {
       return str.replaceAll(" ", "-");
+    },
+    loadMore(number) {
+      return (this.loadMoreSize += number);
     },
   },
 };

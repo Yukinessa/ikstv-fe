@@ -7,7 +7,7 @@
             <Navbar @testing="onClickChild" />
           </div>
 
-          <div id="advertise-top" style="padding-top:0.1rem">
+          <div id="advertise-top">
             <AdvertiseDiamond />
           </div>
 
