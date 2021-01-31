@@ -45,8 +45,16 @@
       />
       <div style="padding-top:1rem; padding-bottom:2rem">
         <v-img
+          v-if="content.photo != null"
           :class="`rounded-lg`"
           v-bind:src="urlImg + '/news/desktop/' + content.photo"
+          width="1200"
+          height="500px"
+        ></v-img>
+        <v-img
+          v-else
+          :class="`rounded-lg`"
+          src="../assets/img-news.png"
           width="1200"
           height="500px"
         ></v-img>
