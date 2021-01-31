@@ -1,14 +1,18 @@
 <template>
   <v-app-bar app color="Dark" dark>
-    <div class="d-flex align-center">
-      <v-img
-        alt="Logo-navbar"
-        class="shrink mr-2"
-        contain
-        src="../assets/logo-white.png"
-        width="60"
-      />
-    </div>
+    <router-link to="/" tag="button">
+      <a>
+        <div class="d-flex align-center">
+          <v-img
+            alt="Logo-navbar"
+            class="shrink mr-2"
+            contain
+            src="../assets/logo-white.png"
+            width="60"
+          />
+        </div>
+      </a>
+    </router-link>
     <v-spacer></v-spacer>
     <v-btn text>
       <router-link to="/" tag="button"

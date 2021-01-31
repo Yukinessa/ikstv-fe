@@ -60,7 +60,7 @@
         v-html="content.text"
       ></p>
       <v-container>
-        <h3 style="color:white;">Berita untuk anda</h3>
+        <h3 style="color:white;">Artikel Lainnya</h3>
         <v-row>
           <v-col
             v-for="item in kuduReti.slice(0, 3)"
@@ -90,8 +90,7 @@
                   </v-img>
                 </v-card-title>
               </v-img>
-              <v-card-text class="text--primary">
-                {{ limitText(item.text) }}
+              <v-card-text class="text--primary" v-html="limitText(item.text)">
               </v-card-text>
               <v-card-actions>
                 <router-link

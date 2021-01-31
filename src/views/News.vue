@@ -88,8 +88,10 @@
                   </v-img>
                 </v-card-title>
               </v-img>
-              <v-card-text class="text--primary">
-                {{ limitText(item.description) }}
+              <v-card-text
+                class="text--primary"
+                v-html="limitText(item.description)"
+              >
               </v-card-text>
               <v-card-actions>
                 <router-link
