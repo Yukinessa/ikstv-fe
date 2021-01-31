@@ -22,7 +22,7 @@
         >
           <b-list-group-item>
             <b-row>
-              <b-col cols="4" v-if="item.thumnail != null">
+              <b-col cols="4" v-if="item.thumbnail != null">
                 <b-img
                   :src="urlImg + 'channel/' + item.thumbnail"
                   class="shadow"
