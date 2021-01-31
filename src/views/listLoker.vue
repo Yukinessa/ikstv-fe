@@ -30,7 +30,7 @@
             <b-row>
               <b-col sm="3">
                 <v-img
-                  v-bind:src="urlImg + 'loker/' + item.url"
+                  v-bind:src="urlImg + '/loker/' + item.url"
                   :class="`rounded-lg`"
                   style="display:block; margin-left:auto; margin-right:auto; margin-bottom:1rem"
                   max-width="180"

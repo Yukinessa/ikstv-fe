@@ -14,8 +14,16 @@
       >
         <b-col md="3" class="py-5 px-3 d-flex justify-content-center">
           <b-img
+            v-if="item.photo != null"
             :class="`rounded-lg`"
             v-bind:src="urlImg + '/news/desktop/' + item.photo"
+            fluid
+            class="text-center w-100"
+          ></b-img>
+          <b-img
+            v-else
+            :class="`rounded-lg`"
+            src="@/assets/example-pict.png"
             fluid
             class="text-center w-100"
           ></b-img>

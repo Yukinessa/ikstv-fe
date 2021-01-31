@@ -10,7 +10,7 @@
                 :class="`rounded-lg`"
                 max-height="140"
                 max-width="330"
-                :src="urlImg + 'channel_category/' + item.url"
+                :src="urlImg + '/channel_category/' + item.url"
               ></v-img>
             </a>
           </router-link>

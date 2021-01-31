@@ -1,25 +1,18 @@
 <template>
   <v-container>
     <div :class="`rounded-lg`">
-      <swiper ref="mySwiper" :options="swiperOptions">
-        <swiper-slide v-for="(item, i) in items" :key="i">
-          <b-img
-            v-if="!$isMobile()"
-            style="height:300px; width:100%"
-            :class="`rounded-lg`"
-            :src="urlImg + '/iklan/' + item.photo"
-          ></b-img>
-          <b-img
-            v-else
-            :class="`rounded-lg`"
-            :src="urlImg + '/iklan/' + item.photo"
-            width="500"
-            height="125"
-          >
-          </b-img>
-        </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
-      </swiper>
+      <v-carousel
+        :class="`rounded-lg`"
+        cycle
+        hide-delimiters
+        show-arrows-on-hover
+      >
+        <v-carousel-item
+          v-for="(item, i) in items"
+          :key="i"
+          :src="urlImg + '/iklan/' + item.photo"
+        ></v-carousel-item>
+      </v-carousel>
     </div>
   </v-container>
 </template>
@@ -31,18 +24,6 @@ export default {
     return {
       items: [],
       urlImg: loadImg,
-      swiperOptions: {
-        loop: true,
-
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        slidesPerView: 1,
-        pagination: {
-          el: ".swiper-pagination",
-        },
-      },
     };
   },
   computed: {
@@ -52,7 +33,6 @@ export default {
   },
   mounted() {
     this.getAdvertise();
-    // this.$refs.mySwiper.swiper.autoplay.start();
   },
   methods: {
     getAdvertise() {
