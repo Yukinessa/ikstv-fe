@@ -46,7 +46,7 @@
       <div style="padding-top:1rem; padding-bottom:2rem">
         <v-img
           :class="`rounded-lg`"
-          v-bind:src="urlImg + 'news/desktop/' + content.photo"
+          v-bind:src="urlImg + '/news/desktop/' + content.photo"
           width="1200"
           height="500px"
         ></v-img>
@@ -76,7 +76,7 @@
                 :class="`rounded-lg`"
                 class="white--text align-end"
                 height="200px"
-                v-bind:src="urlImg + 'news/desktop/' + item.photo"
+                v-bind:src="urlImg + '/news/desktop/' + item.photo"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">
