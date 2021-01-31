@@ -32,7 +32,7 @@
                         src="../assets/ant-design_dollar-circle-filled.png"
                         alt="iks"
                       />
-                      Rp. 5.000.000
+                      {{ limitText(loker.salary) }}
                     </p>
                   </v-card-subtitle>
                   <v-btn
