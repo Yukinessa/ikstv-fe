@@ -2,12 +2,23 @@
   <div class="text-center">
     <v-dialog v-model="dialogSosial" width="1000" height="500" persistent>
       <v-card class="overflow-hidden">
-        <b-row>
+        <b-row class="p-5">
           <b-col cols="3">
             <v-img
-              max-height="50"
-              max-width="150"
+              height="auto"
+              width="100%"
               :src="urlImg + '/sosial/' + sosial.photo"
+              style="border-radius: 5px"
+              class="shadow"
+              v-if="sosial.photo != null"
+            />
+            <img
+              height="auto"
+              width="100%"
+              :src="require('../assets/lost-item.png')"
+              style="border-radius: 5px"
+              class="shadow"
+              v-else
             />
             <p
               class="mt-3 text-center"
@@ -39,7 +50,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="primary" text @click="handleDialog">
-            Close
+            Tutup
           </v-btn>
         </v-card-actions>
       </v-card>
