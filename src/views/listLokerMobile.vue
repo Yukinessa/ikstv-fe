@@ -2,11 +2,11 @@
   <div class="grey darken-4">
     <v-container>
       <NavbarMobile />
-      <AdvertiseDiamond />
+      <AdvertiseDiamondMobile />
       <h6 class="pt-6" style="color:white">Lowongan Pekerjaan</h6>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
-          style="background-color:red"
+          style="background-color: #212121"
           v-for="item in content.slice(0, loadMoreSize)"
           :key="item.id"
         >
@@ -14,11 +14,10 @@
             <v-row>
               <v-col cols="6" md="8">
                 <b-img
-                  :src="urlImg + 'loker/' + item.url"
-                  fluid
+                  :src="urlImg + '/loker/' + item.url"
                   alt="Responsive image"
                   class="shadow"
-                  style="height: 80px; border-radius: 5px"
+                  style="width:100%; height: auto; border-radius: 5px"
                 ></b-img>
               </v-col>
               <v-col cols="6">
@@ -80,8 +79,8 @@
           Muat Lebih
         </v-btn>
       </div>
-      <div style="margin-top: 2rem">
-        <AdvertiseGold />
+      <div class="mt-5 mb-5">
+        <AdvertiseGoldMobile />
       </div>
       <br />
     </v-container>
@@ -93,8 +92,8 @@
 <script>
 import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
-import AdvertiseDiamond from "../components/advertiseDiamond";
-import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import loadImg from "../../config.js";
 import moment from "moment";
 
@@ -102,8 +101,8 @@ export default {
   components: {
     NavbarMobile,
     FooterMobile,
-    AdvertiseDiamond,
-    AdvertiseGold,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
   },
   data() {
     return {
@@ -153,5 +152,8 @@ export default {
 <style>
 .v-expansion-panels {
   padding-bottom: 2rem !important;
+}
+.v-icon {
+  color: white !important;
 }
 </style>
