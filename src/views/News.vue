@@ -47,9 +47,9 @@
         <v-img
           v-if="content.photo != null"
           :class="`rounded-lg`"
-          v-bind:src="urlImg + '/news/desktop/' + content.photo"
-          width="1200"
-          height="500px"
+          v-bind:src="urlImg + '/news/' + content.photo"
+          width="100%"
+          height="auto"
         ></v-img>
         <v-img
           v-else
@@ -83,8 +83,8 @@
               <v-img
                 :class="`rounded-lg`"
                 class="white--text align-end"
-                height="200px"
-                v-bind:src="urlImg + '/news/desktop/' + item.photo"
+                height="auto"
+                v-bind:src="urlImg + '/news/' + item.photo"
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">
