@@ -12,13 +12,17 @@
         </router-link>
       </b-col>
     </b-row>
-    <splide :slides="kudureti" :options="options" style="margin-left: -.6rem">
+    <splide
+      :slides="kudureti"
+      :options="options"
+      style="margin-left: -.6rem; margin-top: 1rem"
+    >
       <splide-slide v-for="item in kudureti.slice(0, 5)" :key="item.id">
-        <router-link :to="'/kudu-reti/' + strReplace(item.title)">
+        <router-link :to="'/kudu-reti/mobile/' + strReplace(item.title)">
           <b-img
-            :src="urlImg + 'article/mobile/' + item.url_mobile"
+            :src="urlImg + '/article/' + item.url"
             class="shadow"
-            style="border-radius: 5px; width: 100%; height: 60%"
+            style="border-radius: 5px; width: 100%; height: auto"
             v-if="item.url_mobile != null"
           >
           </b-img>
@@ -29,18 +33,6 @@
             v-else
           />
           <br />
-          <p
-            class="font-weight-bold mt-3 text-light ml-1"
-            style="font-size: 14px"
-          >
-            {{ limitTitle(item.title) }}
-          </p>
-          <b-button
-            variant="danger"
-            class="font-weight-bold"
-            style="font-size: 12px"
-            >Baca Lengkap</b-button
-          >
         </router-link>
       </splide-slide>
     </splide>
