@@ -59,7 +59,7 @@
           </div>
 
           <div id="advertise-top" style="padding-top:0.1rem">
-            <AdvertiseDiamond />
+            <AdvertiseDiamondMobile />
           </div>
 
           <div id="highlight-news" class="mt-4" ref="news">
@@ -71,7 +71,7 @@
           </div>
 
           <div id="advertise-mid" style="padding-top:2.5rem">
-            <AdvertiseGold />
+            <AdvertiseGoldMobile />
           </div>
 
           <div id="kudu-reti" style="padding-top:2.5rem">
@@ -79,7 +79,7 @@
           </div>
 
           <div id="advertise-bottom" style="padding-top:1rem">
-            <AdvertiseSilver />
+            <AdvertiseSilverMobile />
           </div>
 
           <div id="info" style="padding-top:2rem"><InfoMobile /></div>
@@ -113,6 +113,9 @@ import KuduReti from "../components/KuduReti";
 
 // mobile component
 import NavbarMobile from "../components/NavbarMobile";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
+import AdvertiseSilverMobile from "../components/advertiseSilverMobile";
 import HighlightMobile from "../components/HighlightMobile";
 import CategoryMobile from "../components/CategoryMobile";
 import KuduRetiMobile from "../components/KuduRetiMobile";
@@ -137,6 +140,9 @@ export default {
 
     // mobile component
     NavbarMobile,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
+    AdvertiseSilverMobile,
     HighlightMobile,
     CategoryMobile,
     KuduRetiMobile,
