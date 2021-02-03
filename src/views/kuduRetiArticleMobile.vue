@@ -1,11 +1,11 @@
 <template>
   <div class="grey darken-4">
     <v-container>
-      <div style="padding-bottom:4rem">
+      <div style="padding-bottom:2rem">
         <NavbarMobile />
       </div>
-      <div style="padding-bottom:2rem">
-        <AdvertiseDiamond />
+      <div>
+        <AdvertiseDiamondMobile />
       </div>
       <h5 class="pt-6" style="color:white">
         {{ content.title }}
@@ -50,7 +50,7 @@
       <div>
         <b-img
           :class="`rounded-lg`"
-          :src="urlImg + 'article/desktop/' + content.url"
+          :src="urlImg + '/article/' + content.url"
           class="d-block mx-auto mt-5 img-fluid"
         ></b-img>
       </div>
@@ -72,9 +72,9 @@
             <splide-slide v-for="item in kuduReti" :key="item.id">
               <router-link :to="'/News/mobile/' + strReplace(item.title)">
                 <b-img
-                  :src="urlImg + 'article/mobile/' + item.url_mobile"
+                  :src="urlImg + '/article/' + item.url"
                   class="shadow"
-                  style="border-radius: 10px; width: 100%; height: 60%"
+                  style="border-radius: 10px; width: 100%; height: auto"
                   v-if="item.url_mobile != null"
                 >
                 </b-img>
@@ -85,21 +85,17 @@
                   v-else
                 />
                 <br />
-                <p
-                  class="font-weight-bold mt-3 text-light ml-1"
-                  style="font-size: 14px"
-                >
-                  {{ limitTitle(item.title) }}
-                </p>
               </router-link>
             </splide-slide>
           </splide>
         </b-col>
       </b-row>
-      <div style="margin-top: -2rem" class="mb-4">
-        <AdvertiseGold />
+      <div class="mb-5 mt-5">
+        <AdvertiseGoldMobile />
       </div>
     </v-container>
+    <br />
+    <br />
     <FooterMobile />
   </div>
 </template>
@@ -107,8 +103,8 @@
 <script>
 import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
-import AdvertiseDiamond from "../components/advertiseDiamond";
-import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import loadImg from "../../config.js";
 import moment from "moment";
 
@@ -117,8 +113,8 @@ export default {
   components: {
     NavbarMobile,
     FooterMobile,
-    AdvertiseDiamond,
-    AdvertiseGold,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
   },
   data() {
     return {
