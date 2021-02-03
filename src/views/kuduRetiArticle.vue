@@ -11,7 +11,7 @@
         {{ content.title }}
       </h1>
       <p class="pb-1" style="color:grey">
-        {{ content.created_at | moment("dddd, MMMM Do YYYY") }}
+        {{ formatDate(content.created_at) }}
       </p>
       <img
         src="../assets/whatsapp.png"
@@ -47,18 +47,22 @@
             (snackbar = true)
         "
       />
-      <div style="padding-top:1rem;">
+      <div class="mt-4">
         <b-img
           :class="`rounded-lg`"
-          class="mb-8 img-fluid"
-          v-bind:src="urlImg + '/article/desktop/' + content.url"
+          class="d-block mx-auto mb-5"
+          v-bind:src="urlImg + '/article/' + content.url"
+          height="auto"
         ></b-img>
       </div>
       <p
-        class="mb-9"
+        class="mt-10"
         style="font-size:20px; color:white; text-align:justify;"
         v-html="content.text"
       ></p>
+      <p class="text-light font-weight-bold" style="cursor: pointer">
+        Sumber : <a :href="content.source">{{ content.source }}</a>
+      </p>
       <v-container>
         <h3 style="color:white;">Artikel Lainnya</h3>
         <v-row>
@@ -128,6 +132,7 @@ import Footer from "../components/Footer";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseGold from "../components/advertiseGold";
 import loadImg from "../../config.js";
+import moment from "moment";
 
 export default {
   name: "News",
@@ -149,6 +154,7 @@ export default {
   mounted() {
     this.getContent();
     this.getArticle();
+    moment.locale("id");
   },
   methods: {
     getContent() {
@@ -194,11 +200,8 @@ export default {
     strReturn(str) {
       return str.replaceAll("-", " ");
     },
-    limitText(text) {
-      return text.slice(0, 50) + " ...";
-    },
-    limitTitle(text) {
-      return text.slice(0, 25) + " ...";
+    formatDate(strDate) {
+      return moment(strDate).format("dddd, DD MMMM YYYY");
     },
   },
 };
