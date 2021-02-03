@@ -7,7 +7,7 @@
       <splide-slide v-for="item in category" :key="item.id">
         <router-link :to="'/detail-category/mobile/' + item.id">
           <b-img
-            :src="urlImg + 'channel_category/' + item.url"
+            :src="urlImg + '/channel_category/' + item.url"
             style="width:100%; border-radius: 5px"
           >
           </b-img>
