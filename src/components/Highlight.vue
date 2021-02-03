@@ -4,70 +4,73 @@
     <v-sheet class="mx-auto" elevation="10" max-width="1200">
       <v-slide-group class="pa-4" multiple show-arrows>
         <v-slide-item v-for="item in news" :key="item.id">
-          <v-card class="pa-2" rounded="true">
-            <v-card
-              :class="`rounded-lg`"
-              class="mx-1 "
-              max-width="316"
-              max-height="460"
-            >
-              <v-img
-                v-if="item.photo != null"
-                class="dark--text align-end"
-                height="200px"
-                v-bind:src="urlImg + '/news/desktop/' + item.photo"
+          <router-link :to="'/News/' + strReplace(item.title)">
+            <v-card class="pa-2" rounded="true">
+              <v-card
+                :class="`rounded-lg`"
+                class="mx-1 "
+                max-width="316"
+                max-height="460"
               >
-                <v-card-title>
-                  <v-img src="@/assets/label-tittle.png" height="50px">
-                    <div class="my-4 ml-8 subtitle-2">
-                      <span class="white--text">{{
-                        limitTitle(item.title)
-                      }}</span>
-                    </div>
-                  </v-img>
-                </v-card-title>
-              </v-img>
-              <!-- condition if the image aren't null -->
-              <v-img
-                v-else
-                class="dark--text align-end"
-                height="200px"
-                src="../assets/empty-image.png"
-              >
-                <v-card-title>
-                  <v-img src="@/assets/label-tittle.png" height="50px">
-                    <div class="my-4 ml-8 subtitle-2">
-                      <span class="white--text">{{
-                        limitTitle(item.title)
-                      }}</span>
-                    </div>
-                  </v-img>
-                </v-card-title>
-              </v-img>
-              <v-card-text class="text--primary">
-                <div class="grey--text mb-1">
-                  <p v-html="limitText(item.description)"></p>
-                </div>
-              </v-card-text>
-              <v-chip
-                class="ma-2 red accent-4"
-                x-small
-                v-if="item.content_status == 1"
-                style="color:white"
-              >
-                Berita Sensitif
-              </v-chip>
-              <v-chip class="grey darken-4" v-else> </v-chip>
-
-              <v-card-actions>
-                <router-link :to="'/News/' + strReplace(item.title)"
-                  ><v-btn color="blue" text
-                    >Baca Selanjutnya</v-btn
-                  ></router-link
+                <v-img
+                  v-if="item.photo != null"
+                  class="dark--text align-end"
+                  height="auto"
+                  width="100%"
+                  v-bind:src="urlImg + '/news/' + item.photo"
                 >
-              </v-card-actions>
+                  <v-chip
+                    class="ma-2"
+                    color="red darken-3"
+                    label
+                    text-color="white"
+                    style="margin-top: -24rem !important; margin-left: 16rem !important"
+                    v-if="item.content_status == 1"
+                  >
+                    <v-icon center>
+                      mdi-eye-off-outline
+                    </v-icon>
+                  </v-chip>
+                  <v-card-title>
+                    <v-img src="@/assets/label-tittle.png" height="50px">
+                      <div class="my-4 ml-8 subtitle-2">
+                        <span class="white--text">{{
+                          limitTitle(item.title)
+                        }}</span>
+                      </div>
+                    </v-img>
+                  </v-card-title>
+                </v-img>
+                <!-- condition if the image aren't null -->
+                <v-img
+                  v-else
+                  class="dark--text align-end"
+                  height="200px"
+                  src="../assets/empty-image.png"
+                >
+                  <v-card-title>
+                    <v-img src="@/assets/label-tittle.png" height="50px">
+                      <div class="my-4 ml-8 subtitle-2">
+                        <span class="white--text">{{
+                          limitTitle(item.title)
+                        }}</span>
+                      </div>
+                    </v-img>
+                  </v-card-title>
+                </v-img>
+
+                <!-- <v-chip
+                  class="ma-2 red accent-4"
+                  x-small
+                  v-if="item.content_status == 1"
+                  style="color:white;"
+                >
+                  Berita Sensitif
+                </v-chip>
+                <v-chip class="grey darken-4" v-else> </v-chip> -->
+              </v-card>
             </v-card>
-          </v-card>
+          </router-link>
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
@@ -115,9 +118,9 @@
 #lanjut:active {
   text-decoration: underline;
 }
-/* .swiper-slide {
-  width: 165px !important;
-} */
+.v-slide-group__content a:hover {
+  text-decoration: none !important;
+}
 </style>
 <script>
 import loadImg from "../../config.js";
@@ -144,11 +147,12 @@ export default {
     strReplace(str) {
       return str.replaceAll(" ", "-");
     },
-    limitText(text) {
-      return text.slice(0, 50) + " ...";
-    },
     limitTitle(text) {
-      return text.slice(0, 30) + " ...";
+      if (text.length > 30) {
+        return text.slice(0, 30) + " ...";
+      } else {
+        return text;
+      }
     },
     getNews() {
       this.axios

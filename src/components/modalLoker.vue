@@ -2,12 +2,14 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="1000" height="500" persistent>
       <v-card class="overflow-hidden">
-        <b-row>
+        <b-row class="p-4 mt-6">
           <b-col cols="3">
             <v-img
-              max-height="150"
+              height="auto"
               max-width="250"
               :src="urlImg + '/loker/' + loker.url"
+              style="border-radius: 5px;"
+              class="shadow"
             />
             <p
               class="mt-3 text-center"
@@ -38,8 +40,8 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="handleDialog">
-            Close
+          <v-btn color="red" text @click="handleDialog">
+            Tutup
           </v-btn>
         </v-card-actions>
       </v-card>

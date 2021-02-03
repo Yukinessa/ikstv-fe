@@ -1,20 +1,18 @@
 <template>
-  <v-container>
-    <div :class="`rounded-lg`">
-      <v-carousel
-        :class="`rounded-lg`"
-        cycle
-        hide-delimiters
-        show-arrows-on-hover
-      >
-        <v-carousel-item
-          v-for="(item, i) in items"
-          :key="i"
+  <div>
+    <splide :slides="items" :options="options">
+      <splide-slide v-for="(item, i) in items" :key="i">
+        <b-img
+          v-if="item.photo != null"
           :src="urlImg + '/iklan/' + item.photo"
-        ></v-carousel-item>
-      </v-carousel>
-    </div>
-  </v-container>
+          :class="`rounded-lg`"
+          class="shadow"
+          style="width:777px; height: 437px;"
+        >
+        </b-img>
+      </splide-slide>
+    </splide>
+  </div>
 </template>
 
 <script>
@@ -24,12 +22,24 @@ export default {
     return {
       items: [],
       urlImg: loadImg,
+      options: {
+        type: "loop",
+        perPage: 1,
+        perMove: 1,
+        pagination: false,
+        gap: ".5rem",
+        autoWidth: true,
+        focus: "center",
+        autoplay: true,
+        padding: {
+          right: "5rem",
+          left: "5rem",
+        },
+        // start: 2,
+        rewind: true,
+        trimSpace: false,
+      },
     };
-  },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper;
-    },
   },
   mounted() {
     this.getAdvertise();
@@ -37,10 +47,9 @@ export default {
   methods: {
     getAdvertise() {
       this.axios
-        .get(process.env.VUE_APP_IP_ADDRESS + "advert/")
+        .get(process.env.VUE_APP_IP_ADDRESS + "iklan/")
         .then((response) => {
           this.items = response.data.silver;
-          console.log(this.items);
         });
     },
   },

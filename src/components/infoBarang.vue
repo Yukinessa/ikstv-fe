@@ -19,7 +19,7 @@
                     class="ml-3 mr-3"
                     v-bind:src="urlImg + '/info/' + item.photo"
                     width="180"
-                    height="180"
+                    height="auto"
                   />
                   <v-card-subtitle
                     style="color:white; font-size:16px; text-align:left"
@@ -33,10 +33,12 @@
                 </v-card-title>
               </v-card>
             </v-col>
-            <router-link to="/list-lost" class="ml-auto mt-5">
-              <a id="lanjut" style="color:white; display:block;" href="">
-                Lebih Lengkap >
-              </a>
+            <router-link
+              to="/list-lost"
+              class="ml-auto mt-5 text-light"
+              v-if="content.length > 2"
+            >
+              Lebih Lengkap >
             </router-link>
           </v-row>
         </v-col>
@@ -65,14 +67,10 @@
                       {{ item.phone }}
                     </p>
                     <p style="margin-top:-1.5rem; font-size:10px">
-                      <!-- {{ item.region }} -->
-                      Jl. DR. Sutomo No.16, Randusari, Kec. Semarang Sel.
+                      {{ item.region }}
                     </p>
                     <hr style="border:0.5px solid white" />
                   </td>
-                  <!-- <td>{{ stringReplace(item.name) }}</td>
-                  <td>{{ item.region }}</td>
-                  <td id="nohp">{{ item.phone }}</td> -->
                   <div class="mt-5" style="text-align:right">
                     <v-btn
                       class="ma-2"
@@ -98,7 +96,7 @@
               </table>
             </v-card-title>
           </v-card>
-          <router-link to="list-number">
+          <router-link to="list-number" v-if="contact.length > 3">
             <a
               id="lanjut"
               style="padding-top:0.4rem; color:white; margin-left:auto; display:block; text-align:right"

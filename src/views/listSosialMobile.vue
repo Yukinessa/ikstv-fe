@@ -1,14 +1,14 @@
 <template>
   <div class="grey darken-4">
     <v-container>
-      <Navbar />
-      <AdvertiseDiamond />
+      <NavbarMobile />
+      <AdvertiseDiamondMobile />
       <h6 style="color:white;" class="font-weight-bold mt-3 p-1">
         Info Sosial
       </h6>
       <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
         <v-expansion-panel
-          style="background-color:red"
+          style="background:#212121"
           v-for="item in sosials"
           :key="item.id"
         >
@@ -16,11 +16,11 @@
             <v-row>
               <v-col cols="6" md="8" v-if="item.photo != null">
                 <b-img
-                  :src="urlImg + 'sosial/' + item.photo"
+                  :src="urlImg + '/sosial/' + item.photo"
                   fluid
                   alt="Responsive image"
                   class="shadow"
-                  style="height: 80px; border-radius: 5px"
+                  style="height: auto; border-radius: 5px"
                 ></b-img>
               </v-col>
               <v-col cols="6" md="8" v-else>
@@ -65,8 +65,8 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <div>
-        <AdvertiseGold />
+      <div class="mb-5">
+        <AdvertiseGoldMobile />
       </div>
       <br />
     </v-container>
@@ -76,10 +76,10 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
+import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
-import AdvertiseDiamond from "../components/advertiseDiamond";
-import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import loadImg from "../../config.js";
 import moment from "moment";
 export default {
@@ -91,10 +91,10 @@ export default {
     };
   },
   components: {
-    Navbar,
+    NavbarMobile,
     FooterMobile,
-    AdvertiseDiamond,
-    AdvertiseGold,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
   },
   mounted() {
     this.getLoker();

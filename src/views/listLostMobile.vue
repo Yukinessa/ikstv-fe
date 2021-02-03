@@ -2,7 +2,7 @@
   <div class="grey darken-4">
     <v-container>
       <NavbarMobile />
-      <AdvertiseDiamond />
+      <AdvertiseDiamondMobile />
       <h6 class="pt-6" style="color:white">Barang Hilang</h6>
       <v-expansion-panels>
         <v-expansion-panel
@@ -50,6 +50,7 @@
                   v-bind:src="urlImg + '/info/' + item.photo"
                   :class="`rounded-lg`"
                   max-width="180"
+                  height="auto"
                   class="mx-auto"
                 ></v-img>
               </v-col>
@@ -57,13 +58,12 @@
                 <p class="text-center">
                   <b>{{ item.ig_pelapor }}</b> | <b>{{ item.contact }}</b>
                 </p>
-                <!-- <p><b>Kontak</b> : </p> -->
               </v-col>
             </v-row>
             <v-row style="margin-top: -2rem">
               <v-col cols="12">
                 <div style="font-size: 14px">
-                  <p class="text-justify">{{ item.description }}</p>
+                  <p class="text-justify" v-html="item.description"></p>
                 </div>
               </v-col>
               <v-col cols="12" style="margin-top:-1rem">
@@ -97,7 +97,7 @@
         </v-btn>
       </div>
       <div class="mb-5">
-        <AdvertiseGold />
+        <AdvertiseGoldMobile />
       </div>
     </v-container>
     <br />
@@ -109,8 +109,8 @@
 <script>
 import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
-import AdvertiseDiamond from "../components/advertiseDiamond";
-import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import loadImg from "../../config.js";
 import moment from "moment";
 
@@ -118,8 +118,8 @@ export default {
   components: {
     NavbarMobile,
     FooterMobile,
-    AdvertiseDiamond,
-    AdvertiseGold,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
   },
   data() {
     return {
@@ -158,7 +158,7 @@ export default {
 <style>
 .v-expansion-panel {
   background-color: #212121 !important;
-  border-bottom: 1px solid white;
+  /* border-bottom: 1px solid white; */
 }
 .theme--light.v-expansion-panels
   .v-expansion-panel-header

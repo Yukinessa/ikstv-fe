@@ -14,14 +14,14 @@
           <v-expansion-panel-header>
             <v-row>
               <v-col cols="12" md="8">
-                <h6 style="padding-left:1rem; color:white">
+                <h6 style="padding-left:1rem; color:white;">
                   <b>{{ item.position }}</b>
                 </h6>
                 <p style="padding-left:1rem; color:white">{{ item.title }}</p>
               </v-col>
               <v-col cols="6" sm="6" md="4">
-                <p class="text-light" style="font-weight:bold">
-                  IDR {{ item.salary }}
+                <p class="text-light" style="font-weight:bold;">
+                  IDR {{ item.salary | numeral("0,0") }}
                 </p>
               </v-col>
             </v-row>

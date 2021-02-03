@@ -5,7 +5,7 @@
         <NavbarMobile />
       </div>
       <div>
-        <AdvertiseDiamond />
+        <AdvertiseDiamondMobile />
       </div>
       <b-row>
         <b-col cols="12">
@@ -35,11 +35,11 @@
                   {{ formatDate(item.created_at) }}
                 </p>
               </b-col>
-              <b-col cols="4" v-if="item.photo_mobile != null">
+              <b-col cols="4" v-if="item.photo != null">
                 <b-img
-                  :src="urlImg + 'news/mobile/' + item.photo_mobile"
+                  :src="urlImg + '/news/' + item.photo"
                   class="shadow"
-                  style="border-radius: 10px; width: 100%; max-height: 80%"
+                  style="border-radius: 10px; width: 100%; height:auto"
                 >
                 </b-img>
               </b-col>
@@ -70,7 +70,7 @@
     </v-container>
     <br />
     <div class="pb-3">
-      <AdvertiseGold />
+      <AdvertiseGoldMobile />
     </div>
     <br />
     <br />
@@ -81,8 +81,8 @@
 <script>
 import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
-import AdvertiseDiamond from "../components/advertiseDiamond";
-import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import loadImg from "../../config.js";
 import moment from "moment";
 export default {
@@ -97,8 +97,8 @@ export default {
   components: {
     NavbarMobile,
     FooterMobile,
-    AdvertiseDiamond,
-    AdvertiseGold,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
   },
   watch: {
     loader() {

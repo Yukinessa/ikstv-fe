@@ -7,7 +7,7 @@
           :src="urlImg + '/iklan/' + item.photo"
           :class="`rounded-lg`"
           class="shadow"
-          style="width:777px; height: auto;"
+          style="width:280px; height: 159px;"
         >
         </b-img>
       </splide-slide>
@@ -49,7 +49,7 @@ export default {
       this.axios
         .get(process.env.VUE_APP_IP_ADDRESS + "iklan/")
         .then((response) => {
-          this.items = response.data.gold;
+          this.items = response.data.silver;
         });
     },
   },

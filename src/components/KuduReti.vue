@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!$isMobile()">
+  <div>
     <h3 style="color:white; ">Kudu Reti Lur</h3>
     <v-row>
       <v-col
@@ -8,38 +8,22 @@
         cols="12"
         sm="4"
       >
-        <v-card
-          :class="`rounded-lg`"
-          style="background-color:white !important"
-          class="mx-auto"
-          max-width="300"
-        >
-          <v-img
+        <router-link :to="'/kudu-reti/' + strReplace(item.title)">
+          <v-card
             :class="`rounded-lg`"
-            class="white--text align-end"
-            height="200px"
-            v-bind:src="urlImg + '/article/desktop/' + item.url"
+            style="background-color:white !important"
+            class="mx-auto"
+            max-width="300"
           >
-            <v-card-title>
-              <v-img src="@/assets/label-tittle.png" height="40px">
-                <div class="my-2 ml-8 subtitle-2">
-                  <span class="white--text" style="font-size:14px;">{{
-                    limitTitle(item.title)
-                  }}</span>
-                </div>
-              </v-img>
-            </v-card-title>
-          </v-img>
-          <v-card-text class="text--primary" v-html="limitText(item.text)">
-          </v-card-text>
-          <v-card-actions>
-            <router-link :to="'/kudu-reti/' + strReplace(item.title)">
-              <v-btn color="blue" text>
-                Baca Selanjutnya
-              </v-btn>
-            </router-link>
-          </v-card-actions>
-        </v-card>
+            <v-img
+              :class="`rounded-lg`"
+              class="white--text align-end"
+              height="auto"
+              v-bind:src="urlImg + '/article/' + item.url"
+            >
+            </v-img>
+          </v-card>
+        </router-link>
       </v-col>
     </v-row>
     <router-link to="/list-kudureti">
@@ -61,50 +45,10 @@ export default {
     return {
       kudureti: [],
       urlImg: loadImg,
-      swiperOptions: {
-        slidesPerView: 1,
-        // spaceBetween: -6,
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        loop: true,
-        // Some Swiper option/callback...
-        breakpoints: {
-          // when window width is >= 320px
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          360: {
-            slidesPerView: 1,
-            spaceBetween: -20,
-          },
-          375: {
-            slidesPerView: 1,
-            spaceBetween: -30,
-          },
-          // when window width is >= 480px
-          400: {
-            slidesPerView: 1,
-            spaceBetween: -80,
-          },
-          // when window width is >= 640px
-          640: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-          },
-        },
-      },
     };
-  },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper;
-    },
   },
   mounted() {
     this.getArticle();
-    this.swiper.slideTo(2, 1000, false);
   },
   methods: {
     limitText(text) {

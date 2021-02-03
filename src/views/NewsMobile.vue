@@ -2,10 +2,10 @@
   <div class="grey darken-4">
     <v-container>
       <div style="padding-bottom:1rem">
-        <Navbar />
+        <NavbarMobile />
       </div>
       <div style="padding-bottom:1rem">
-        <AdvertiseDiamond />
+        <AdvertiseDiamondMobile />
       </div>
       <b-row>
         <b-col cols="12">
@@ -52,8 +52,8 @@
           <div class="mt-5">
             <v-img
               :class="`rounded-lg`"
-              v-bind:src="urlImg + 'news/mobile/' + content.photo_mobile"
-              v-if="content.photo_mobile != null"
+              v-bind:src="urlImg + '/news/' + content.photo"
+              v-if="content.photo != null"
             ></v-img>
             <v-img
               :class="`rounded-lg`"
@@ -69,7 +69,7 @@
       </b-row>
 
       <div style="padding-bottom:2rem; padding-top:2rem">
-        <AdvertiseGold />
+        <AdvertiseGoldMobile />
       </div>
 
       <b-row>
@@ -130,31 +130,29 @@
         </template>
       </v-snackbar>
       <div style="padding-bottom:2rem; padding-top:1rem">
-        <AdvertiseSilver />
+        <AdvertiseSilverMobile />
       </div>
     </v-container>
 
-    <Footer />
+    <FooterMobile />
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import AdvertiseGold from "../components/advertiseGold";
-import AdvertiseDiamond from "../components/advertiseDiamond";
-import AdvertiseSilver from "../components/advertiseSilver";
+import NavbarMobile from "../components/NavbarMobile";
+import FooterMobile from "../components/FooterMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
 import loadImg from "../../config.js";
 import moment from "moment";
 
 export default {
   name: "News",
   components: {
-    Navbar,
-    Footer,
-    AdvertiseGold,
-    AdvertiseDiamond,
-    AdvertiseSilver,
+    NavbarMobile,
+    FooterMobile,
+    AdvertiseGoldMobile,
+    AdvertiseDiamondMobile,
   },
   data() {
     return {
