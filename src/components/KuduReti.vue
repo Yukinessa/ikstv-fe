@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 style="color:white; ">Kudu Reti Lur</h3>
-    <v-row>
+    <v-row class="mt-3">
       <v-col
         v-for="item in kudureti.slice(0, 3)"
         :key="item.id"
@@ -26,15 +26,19 @@
         </router-link>
       </v-col>
     </v-row>
-    <router-link to="/list-kudureti">
+    <router-link to="/list-kudureti" v-if="kudureti.length > 3">
       <a
         id="lanjut"
-        style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
+        style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right; margin-top: 1rem"
         href=""
       >
-        Lebih Lanjut >
+        Lebih Lanjut
+        <v-icon style="color: #EF5350">
+          mdi-arrow-right-bold-circle-outline
+        </v-icon>
       </a>
     </router-link>
+    <br />
   </div>
 </template>
 
