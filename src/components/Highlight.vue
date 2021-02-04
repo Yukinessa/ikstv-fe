@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="font-weight-medium text-align: left">Berita Terkini</p>
+    <h3 class="font-weight-medium text-align: left mt-3">Berita Terkini</h3>
     <v-sheet class="mx-auto" elevation="10" max-width="1200">
       <v-slide-group class="pa-4" multiple show-arrows>
         <v-slide-item v-for="item in news" :key="item.id">
@@ -58,29 +58,22 @@
                     </v-img>
                   </v-card-title>
                 </v-img>
-
-                <!-- <v-chip
-                  class="ma-2 red accent-4"
-                  x-small
-                  v-if="item.content_status == 1"
-                  style="color:white;"
-                >
-                  Berita Sensitif
-                </v-chip>
-                <v-chip class="grey darken-4" v-else> </v-chip> -->
               </v-card>
             </v-card>
           </router-link>
         </v-slide-item>
       </v-slide-group>
     </v-sheet>
-    <router-link to="list-news">
+    <router-link to="list-news" v-if="news.length > 5">
       <a
         id="lanjut"
-        style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right"
+        style="padding-top:1rem; color:white; margin-left:auto; display:block; text-align:right; margin-top: 1rem"
         href=""
       >
-        Lebih Lanjut >
+        Lebih Lanjut
+        <v-icon style="color: #EF5350">
+          mdi-arrow-right-bold-circle-outline
+        </v-icon>
       </a>
     </router-link>
   </div>
