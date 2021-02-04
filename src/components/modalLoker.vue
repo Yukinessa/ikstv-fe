@@ -2,7 +2,10 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="1000" height="500" persistent>
       <v-card class="overflow-hidden">
-        <b-row class="p-4 mt-6">
+        <v-btn icon dark @click="handleDialog" class="float-right">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+        <b-row class="p-3 mt-1">
           <b-col cols="3">
             <v-img
               height="auto"
@@ -29,9 +32,9 @@
           </b-col>
           <b-col>
             <h4 class="pt-3" style="color:white; font-weight:bold">
-              {{ loker.position }}
+              {{ loker.position }} ( Rp. {{ loker.salary | numeral(",") }} )
             </h4>
-            <p style="color:white" v-html="loker.description"></p>
+            <p style="color:white" class="ml-4" v-html="loker.description"></p>
           </b-col>
         </b-row>
         <v-card-text> </v-card-text>
