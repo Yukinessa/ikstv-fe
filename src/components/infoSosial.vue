@@ -14,25 +14,24 @@
                   style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
                 >
                   <v-card-subtitle style="font-size:16px; text-align:left">
-                    <p style="color:red">{{ limitTitle(loker.position) }}</p>
-                    <p>
-                      <img
-                        src="../assets/ic_baseline-corporate-fare.png"
-                        alt="iks"
-                      />
+                    <p
+                      style="color:red; font-size: 14px"
+                      class="text-center font-weight-bold"
+                    >
+                      {{ limitPosition(loker.position) }}
+                    </p>
+                    <p style="font-size: 13px" class="font-weight-bold">
+                      <v-icon style="color: #EF5350 !important">
+                        mdi-home-circle-outline
+                      </v-icon>
+                      {{ loker.title }}
+                    </p>
 
-                      {{ limitText(loker.title) }}
-                    </p>
-                    <p>
-                      <img src="../assets/entypo_location-pin.png" alt="iks" />
-                      {{ limitText(loker.address) }}
-                    </p>
-                    <p>
-                      <img
-                        src="../assets/ant-design_dollar-circle-filled.png"
-                        alt="iks"
-                      />
-                      {{ limitText(loker.salary) }}
+                    <p style="font-size: 13px" class="font-weight-bold">
+                      <v-icon style="color: #EF5350 !important">
+                        mdi-currency-usd
+                      </v-icon>
+                      IDR {{ loker.salary | numeral(",") }}
                     </p>
                   </v-card-subtitle>
                   <v-btn
@@ -44,14 +43,21 @@
                 </v-card-title>
               </v-card>
             </v-col>
-            <router-link to="/all-loker">
+            <router-link
+              to="/all-loker"
+              class="float-right"
+              v-if="lokers.length > 2"
+            >
               <a
                 id="lanjut"
-                class="pt-12 pl-4"
+                class="mt-7 ml-3"
                 style="color:white; display:block"
                 href=""
               >
-                Lebih Lengkap >
+                Lebih Lengkap
+                <v-icon style="color: #EF5350">
+                  mdi-arrow-right-bold-circle-outline
+                </v-icon>
               </a>
             </router-link>
           </v-row>
@@ -72,19 +78,23 @@
                   style="font-weight:bold; background-color:white; color:#f3ae5cff; text-align:center; justify-content: center;"
                 >
                   <v-card-subtitle style="font-size:16px; text-align:left">
-                    <p style="color:red">{{ limitText(sosial.title) }}</p>
-                    <p>
-                      <img
-                        src="../assets/ant-design_instagram-outlined.png"
-                        alt=""
-                      />
-                      {{ sosial.ig_pelapor }}
+                    <p
+                      style="color:red; font-size: 14px"
+                      class="text-center font-weight-bold"
+                    >
+                      {{ limitTitleSosial(sosial.title) }}
                     </p>
-                    <img src="../assets/entypo_location-pin.png" alt="iks" />
-                    {{ stringReplace(limitText(sosial.location)) }}
-                    <p class="pt-3 pl-1">
-                      <img src="../assets/info-icon.png" alt="iks" />
-                      {{ stringReplace(limitText(sosial.description)) }}
+                    <p style="font-size:13px" class="font-weight-bold ml-1">
+                      <v-icon style="color: #EF5350 !important">
+                        mdi-cellphone-sound
+                      </v-icon>
+                      {{ sosial.phone }}
+                    </p>
+                    <p style="font-size: 13px" class="font-weight-bold">
+                      <v-icon style="color: #EF5350 !important">
+                        mdi-instagram
+                      </v-icon>
+                      {{ sosial.ig_pelapor }}
                     </p>
                   </v-card-subtitle>
                   <v-btn
@@ -97,13 +107,16 @@
               </v-card>
             </v-col>
           </v-row>
-          <router-link to="all-sosial">
+          <router-link to="all-sosial" v-if="sosials.length > 2">
             <a
               id="lanjut"
-              style="padding-top:0.4rem; color:white; margin-left:auto; display:block; text-align:right"
+              style="padding-top:0.4rem; color:white; margin-left:auto; display:block; text-align:right; margin-top: 1rem"
               href=""
             >
-              Lebih Lanjut >
+              Lebih Lanjut
+              <v-icon style="color: #EF5350">
+                mdi-arrow-right-bold-circle-outline
+              </v-icon>
             </a>
           </router-link>
         </v-col>
@@ -168,15 +181,28 @@ export default {
           this.sosials = response.data.datas;
         });
     },
-    limitTitle(text) {
-      return this.stringReplace(text.slice(0, 30) + " ...");
+    limitPosition(str) {
+      if (str.length > 22) {
+        return str.slice(0, 22) + "..";
+      } else {
+        return str;
+      }
     },
-    limitText(text) {
-      return text.slice(0, 15) + " ...";
+    limitAddress(str) {
+      if (str.length > 23) {
+        return str.slice(0, 22) + "..";
+      } else {
+        return str;
+      }
     },
-    stringReplace(str) {
-      return str.replace(/<\/?[^>]+(>|$)/g, "");
+    limitTitleSosial(str) {
+      if (str.length > 20) {
+        return str.slice(0, 19) + "..";
+      } else {
+        return str;
+      }
     },
+
     openModalLoker(id) {
       this.childLoadedLoker = true;
       this.lokerID = id;
