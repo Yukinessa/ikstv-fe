@@ -2,6 +2,9 @@
   <div class="text-center">
     <v-dialog v-model="dialogSosial" width="1000" height="500" persistent>
       <v-card class="overflow-hidden">
+        <v-btn icon dark @click="handleDialog" class="float-right">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
         <b-row class="p-5">
           <b-col cols="3">
             <v-img
@@ -21,26 +24,32 @@
               v-else
             />
             <p
-              class="mt-3 text-center"
-              style="font-size:18px; color:white; font-weight:bold"
+              class="text-center mt-3 font-weight-bold"
+              style="color:white; font-size:13px"
             >
-              {{ sosial.title }}
+              <v-icon style="color: #EF5350 !important; margin-left: -1.5rem">
+                mdi-instagram
+              </v-icon>
+              {{ sosial.ig_pelapor }}
             </p>
-            <p class="text-center" style="color:white; font-size:13px">
+            <p
+              class="text-center mt-3 font-weight-bold"
+              style="color:white; font-size:13px"
+            >
+              <v-icon style="color: #EF5350 !important">
+                mdi-cellphone-sound
+              </v-icon>
               {{ sosial.phone }}
             </p>
             <p class="text-center" style="color:white; font-size:13px">
               {{ sosial.email }}
             </p>
-            <p class="text-center" style="color:white; font-size:13px">
-              {{ sosial.location }}
-            </p>
-            <p class="text-center" style="color:white; font-size:13px">
-              {{ sosial.ig_pelapor }}
-            </p>
           </b-col>
           <b-col>
-            <p style="color:white" v-html="sosial.description"></p>
+            <p style="font-size:18px; color:white; font-weight:bold">
+              {{ sosial.title }}
+            </p>
+            <p style="color:white" class="ml-3" v-html="sosial.description"></p>
           </b-col>
         </b-row>
         <v-card-text> </v-card-text>
@@ -49,7 +58,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="handleDialog">
+          <v-btn color="red" text @click="handleDialog">
             Tutup
           </v-btn>
         </v-card-actions>

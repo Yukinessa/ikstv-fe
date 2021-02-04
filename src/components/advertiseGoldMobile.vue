@@ -7,7 +7,7 @@
           :src="urlImg + '/iklan/' + item.photo"
           :class="`rounded-lg`"
           class="shadow"
-          style="width:280px; height: 437px;"
+          style="width:280px; height: 159px;"
         >
         </b-img>
       </splide-slide>

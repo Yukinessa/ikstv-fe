@@ -17,36 +17,45 @@
                 <h6 style="padding-left:1rem; color:white">
                   <b>{{ item.title }}</b>
                 </h6>
-                <p style="padding-left:1rem; color:white">
-                  {{ item.ig_pelapor }}
+                <p class="font-weight-bold text-light ml-3">
+                  <v-icon style="color: #EF5350 !important">
+                    mdi-instagram
+                  </v-icon>
+                  {{ item.ig_pelapor }} |
+                  <v-icon style="color: #EF5350 !important">
+                    mdi-cellphone-sound
+                  </v-icon>
+                  {{ item.phone }}
                 </p>
               </v-col>
-              <v-col cols="6" sm="6" md="4"> </v-col>
             </v-row>
           </v-expansion-panel-header>
-          <v-expansion-panel-content style="color:white">
+          <v-expansion-panel-content style="color:white; margin-left: 2rem">
             <b-row>
-              <b-col sm="3">
+              <b-col sm="12">
                 <v-img
                   v-bind:src="urlImg + '/sosial/' + item.photo"
                   :class="`rounded-lg`"
-                  style="display:block; margin-left:auto; margin-right:auto; margin-bottom:1rem"
-                  max-width="180"
+                  width="50%"
+                  height="auto"
+                  v-if="item.photo != null"
                 />
-                <p class="text-light text-center" style="font-size:20px">
-                  <b>{{ upperCase(item.title) }}</b>
-                </p>
-                <p class="mb-6 text-light text-center" style="font-size:15px">
-                  {{ item.address }}
-                </p>
-                <p class=" text-light ">
-                  <b>Lokasi</b> : <br />{{ item.location }}
-                </p>
-                <p class="text-light ">
-                  <b>Kontak</b> : <br />{{ item.phone }}
+                <v-img
+                  :src="require('@/assets/lost-item.png')"
+                  :class="`rounded-lg`"
+                  width="50%"
+                  height="30%"
+                  v-else
+                />
+
+                <p v-html="item.description" class="ml-3"></p>
+                <p class="text-light" style="margin-left: -.5rem">
+                  <v-icon style="color: #EF5350 !important">
+                    mdi-map-marker
+                  </v-icon>
+                  {{ item.location }}
                 </p>
               </b-col>
-              <b-col sm="9" v-html="item.description"></b-col>
             </b-row>
           </v-expansion-panel-content>
         </v-expansion-panel>

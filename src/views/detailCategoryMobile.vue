@@ -5,7 +5,7 @@
         <NavbarMobile />
       </div>
       <div>
-        <AdvertiseDiamond />
+        <AdvertiseDiamondMobile />
       </div>
       <b-row>
         <b-col cols="12">
@@ -24,7 +24,7 @@
             <b-row>
               <b-col cols="4" v-if="item.thumbnail != null">
                 <b-img
-                  :src="urlImg + 'channel/' + item.thumbnail"
+                  :src="urlImg + '/channel/' + item.thumbnail"
                   class="shadow"
                   style="border-radius: 10px; width: 100%; max-height: 80%"
                 >
@@ -57,6 +57,9 @@
           </b-list-group-item>
         </b-list-group>
       </b-row>
+      <div class="mt-5 mb-4">
+        <AdvertiseGoldMobile />
+      </div>
     </v-container>
     <br />
     <br />
@@ -66,7 +69,8 @@
 
 <script>
 import NavbarMobile from "../components/NavbarMobile";
-import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import FooterMobile from "../components/FooterMobile";
 import loadImg from "../../config.js";
 import moment from "moment";
@@ -85,7 +89,8 @@ export default {
   },
   components: {
     NavbarMobile,
-    AdvertiseDiamond,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
     FooterMobile,
   },
   mounted() {

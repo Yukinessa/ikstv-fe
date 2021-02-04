@@ -13,15 +13,22 @@
         >
           <v-expansion-panel-header>
             <v-row>
-              <v-col cols="12" md="8">
-                <h6 style="padding-left:1rem; color:white;">
+              <v-col cols="12">
+                <h5 style="padding-left:1rem; color:white;">
                   <b>{{ item.position }}</b>
-                </h6>
-                <p style="padding-left:1rem; color:white">{{ item.title }}</p>
-              </v-col>
-              <v-col cols="6" sm="6" md="4">
-                <p class="text-light" style="font-weight:bold;">
-                  IDR {{ item.salary | numeral("0,0") }}
+                </h5>
+                <p
+                  style="padding-left:1rem; font-size: 13px"
+                  class="text-light font-weight-bold"
+                >
+                  <v-icon style="color: #EF5350 !important">
+                    mdi-home-circle-outline
+                  </v-icon>
+                  {{ item.title }} |
+                  <v-icon style="color: #EF5350 !important">
+                    mdi-currency-usd
+                  </v-icon>
+                  IDR {{ item.salary | numeral(",") }}
                 </p>
               </v-col>
             </v-row>
@@ -35,20 +42,32 @@
                   style="display:block; margin-left:auto; margin-right:auto; margin-bottom:1rem"
                   max-width="180"
                 />
-                <p class="text-light text-center" style="font-size:20px">
-                  <b>{{ upperCase(item.title) }}</b>
-                </p>
                 <p class="mb-6 text-light text-center" style="font-size:15px">
                   {{ item.address }}
                 </p>
-                <p class=" text-light ">
-                  <b>Email</b> : <br />{{ item.email }}
+              </b-col>
+              <b-col sm="9">
+                <p class="font-weight-bold" style="margin-left: -1rem">
+                  Job Description :
                 </p>
-                <p class="text-light ">
-                  <b>Kontak</b> : <br />{{ item.phone }}
+                <p v-html="item.description"></p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col sm="12">
+                <p class="text-light ml-4">
+                  <v-icon style="color: #EF5350 !important">
+                    mdi-email-plus
+                  </v-icon>
+                  {{ item.email }}
+                </p>
+                <p class="text-light ml-4">
+                  <v-icon style="color: #EF5350 !important">
+                    mdi-phone-forward
+                  </v-icon>
+                  {{ item.phone }}
                 </p>
               </b-col>
-              <b-col sm="9" v-html="item.description"></b-col>
             </b-row>
           </v-expansion-panel-content>
         </v-expansion-panel>
