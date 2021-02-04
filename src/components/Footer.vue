@@ -72,31 +72,14 @@
         </b-col>
       </b-row>
     </v-container>
-    <!-- <template v-if="childLoadedContact">
-      <modalContact
-        :childLoadedContact.sync="childLoadedContact"
-        :parentDialogContact="parentDialogContact"
-      />
-    </template> -->
     <div class="text-center text-light mt-15">
-      <p>© Copyright 2020 Ikstv.id | All right reserved.</p>
+      <p>© Copyright 2020 Info Kejadian Semarang | All right reserved.</p>
     </div>
   </div>
 </template>
 
 <script>
-// import modalContact from "../components/modalContact";
-
 export default {
-  // components: {
-  //   modalContact,
-  // },
-  // data() {
-  //   return {
-  //     childLoadedContact: false,
-  //     parentDialogContact: false,
-  //   };
-  // },
   methods: {
     smoothScroll(refName) {
       this.$emit("testing", refName);
@@ -113,9 +96,6 @@ export default {
       );
     },
     // openModalContact() {
-    //   this.childLoadedContact = true;
-    //   this.parentDialogContact = true;
-    // },
   },
 };
 </script>
