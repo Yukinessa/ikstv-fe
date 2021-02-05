@@ -8,8 +8,9 @@
             <a class="v-list-item v-list-item--link theme--dark" href="#">
               <v-img
                 :class="`rounded-lg`"
-                max-height="140"
-                max-width="330"
+                height="auto"
+                width="350"
+                class="mb-4"
                 :src="urlImg + '/channel_category/' + item.url"
               ></v-img>
             </a>
@@ -48,5 +49,8 @@ export default {
 <style>
 .v-btn:not(.v-btn--round).v-size--x-large {
   height: 100px;
+}
+.theme--dark.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+  color: #212121 !important;
 }
 </style>
