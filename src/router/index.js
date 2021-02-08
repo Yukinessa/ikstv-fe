@@ -110,6 +110,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  mode: "history",
   routes,
   scrollBehavior: function(to) {
     if (to.hash) {
