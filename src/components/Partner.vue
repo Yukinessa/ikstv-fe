@@ -2,19 +2,29 @@
   <v-container>
     <div>
       <h2 class="mb-8" style="color:white; text-align:center;">
-        Our Partner
+        Mitra Kami
       </h2>
     </div>
-    <v-row>
-      <v-col md="3" v-for="item in partner.slice(0, 8)" :key="item.id">
+    <!-- <v-row>
+      <v-col v-for="item in partner.slice(0, 8)" :key="item.id">
         <img
           class="d-block mx-auto"
           v-bind:src="urlImg + '/partner/' + item.logo"
           width="100"
-          height="100"
+          height="auto"
         />
       </v-col>
-    </v-row>
+    </v-row> -->
+    <b-row>
+      <b-col cols="2" v-for="item in partner" :key="item.id">
+        <b-img
+          :src="urlImg + '/partner/' + item.logo"
+          width="100px"
+          height="auto"
+        >
+        </b-img>
+      </b-col>
+    </b-row>
   </v-container>
 </template>
 
