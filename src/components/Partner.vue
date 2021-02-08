@@ -5,24 +5,14 @@
         Mitra Kami
       </h2>
     </div>
-    <!-- <v-row>
-      <v-col v-for="item in partner.slice(0, 8)" :key="item.id">
-        <img
-          class="d-block mx-auto"
-          v-bind:src="urlImg + '/partner/' + item.logo"
-          width="100"
-          height="auto"
-        />
-      </v-col>
-    </v-row> -->
     <b-row>
-      <b-col cols="2" v-for="item in partner" :key="item.id">
-        <b-img
+      <b-col cols="2" v-for="item in partner.slice(0, 8)" :key="item.id">
+        <v-img
           :src="urlImg + '/partner/' + item.logo"
           width="100px"
           height="auto"
         >
-        </b-img>
+        </v-img>
       </b-col>
     </b-row>
   </v-container>
