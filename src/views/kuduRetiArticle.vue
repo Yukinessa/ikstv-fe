@@ -54,21 +54,22 @@
           v-bind:src="urlImg + '/article/' + content.url"
           height="auto"
         ></b-img>
+        <p
+          class="mt-10 ml-3"
+          style="font-size:20px; color:white; text-align:justify;"
+          v-html="content.text"
+        ></p>
+        <p class="text-light font-weight-bold ml-3" style="cursor: pointer">
+          Sumber : <a :href="content.source">{{ content.source }}</a>
+        </p>
       </div>
-      <p
-        class="mt-10"
-        style="font-size:20px; color:white; text-align:justify;"
-        v-html="content.text"
-      ></p>
-      <p class="text-light font-weight-bold" style="cursor: pointer">
-        Sumber : <a :href="content.source">{{ content.source }}</a>
-      </p>
+
       <v-container>
-        <h3 style="color:white;">Artikel Lainnya</h3>
-        <v-row>
+        <h4 class="text-light mb-3">Artikel Lainnya</h4>
+        <v-row style="margin-left: -2.5rem">
           <v-col
             v-for="item in kuduReti.slice(0, 3)"
-            :key="item"
+            :key="item.id"
             cols="12"
             sm="4"
           >
@@ -81,30 +82,10 @@
               <v-img
                 :class="`rounded-lg`"
                 class="white--text align-end"
-                height="200px"
-                v-bind:src="urlImg + '/article/desktop/' + item.url"
+                height="auto"
+                v-bind:src="urlImg + '/article/' + item.url"
               >
-                <v-card-title>
-                  <v-img src="@/assets/label-tittle.png" height="40px">
-                    <div class="my-2 ml-8 subtitle-2">
-                      <span class="white--text" style="font-size:14px;">{{
-                        limitTitle(item.title)
-                      }}</span>
-                    </div>
-                  </v-img>
-                </v-card-title>
               </v-img>
-              <v-card-text class="text--primary" v-html="limitText(item.text)">
-              </v-card-text>
-              <v-card-actions>
-                <router-link
-                  :to="'/kudu-reti/' + strReplace(item.title)"
-                  tag="button"
-                  ><v-btn color="blue" text
-                    >Baca Selanjutnya</v-btn
-                  ></router-link
-                >
-              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -149,11 +130,12 @@ export default {
       kuduReti: [],
       snackbar: false,
       urlImg: loadImg,
+      content_id: "",
     };
   },
   mounted() {
     this.getContent();
-    this.getArticle();
+    setTimeout(this.getArticle, 3000);
     moment.locale("id");
   },
   methods: {
@@ -166,16 +148,17 @@ export default {
         )
         .then((response) => {
           this.content = response.data.datas;
-          console.log(response);
+          this.content_id = response.data.datas;
         });
     },
     // get content of artikel kudu-reti
     getArticle() {
       this.axios
-        .get(process.env.VUE_APP_IP_ADDRESS + "info/funfact/")
+        .post(process.env.VUE_APP_IP_ADDRESS + "info/funfact/limit/three", {
+          id: this.content_id,
+        })
         .then((response) => {
           this.kuduReti = response.data.datas;
-          console.log(response);
         });
     },
     shareWA(link) {

@@ -37,12 +37,25 @@
               </v-icon>
             </v-chip>
           </v-img>
-          <img
+          <v-img
             src="@/assets/empty-image.png"
             class="shadow"
             style="border-radius: 10px; width: 100%; height: 60%"
             v-else
-          />
+          >
+            <v-chip
+              class="ma-2"
+              color="red darken-3"
+              label
+              text-color="white"
+              style="margin-left: 11.5rem !important"
+              v-if="item.content_status == 1"
+            >
+              <v-icon center>
+                mdi-eye-off-outline
+              </v-icon>
+            </v-chip>
+          </v-img>
           <br />
           <p class="font-weight-bold text-light ml-1" style="font-size: 14px">
             {{ limitTitle(item.title) }}

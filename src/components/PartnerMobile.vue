@@ -9,8 +9,8 @@
       <v-col md="4" v-for="item in partner.slice(0, 8)" :key="item.id">
         <img
           v-bind:src="urlImg + '/partner/' + item.logo"
-          width="60"
-          height="60"
+          width="100%"
+          height="auto"
           class="d-block mx-auto"
         />
       </v-col>
