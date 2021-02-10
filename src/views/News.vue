@@ -11,7 +11,7 @@
         {{ content.title }}
       </h1>
       <p class="pb-1" style="color:grey">
-        {{ content.created_at | moment("dddd, MMMM Do YYYY") }}
+        {{ convertDate(content.created_at) }}
       </p>
       <img
         src="../assets/whatsapp.png"
@@ -66,8 +66,8 @@
         {{ content.description }}
       </p>
       <v-container>
-        <h3 style="color:white;">Berita untuk anda</h3>
-        <v-row>
+        <h4 class="text-light mb-3">Berita untuk anda</h4>
+        <v-row style="margin-left: -2.5rem">
           <v-col
             v-for="item in news.slice(0, 3)"
             :key="item.id"
@@ -96,20 +96,6 @@
                   </v-img>
                 </v-card-title>
               </v-img>
-              <v-card-text
-                class="text--primary"
-                v-html="limitText(item.description)"
-              >
-              </v-card-text>
-              <v-card-actions>
-                <router-link
-                  :to="'/News/' + strReplace(item.title)"
-                  tag="button"
-                  ><v-btn color="blue" text
-                    >Baca Selanjutnya</v-btn
-                  ></router-link
-                >
-              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -137,6 +123,7 @@ import Footer from "../components/Footer";
 import AdvertiseGold from "../components/advertiseGold";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import loadImg from "../../config.js";
+import moment from "moment";
 
 export default {
   name: "News",
@@ -153,11 +140,13 @@ export default {
       news: [],
       snackbar: false,
       urlImg: loadImg,
+      content_id: "",
     };
   },
   mounted() {
     this.getContent();
-    this.getNews();
+    setTimeout(this.getNews, 3000);
+    moment.locale("id");
   },
   methods: {
     getContent() {
@@ -169,11 +158,14 @@ export default {
         )
         .then((response) => {
           this.content = response.data.datas;
+          this.content_id = response.data.datas.id;
         });
     },
     getNews() {
       this.axios
-        .get(process.env.VUE_APP_IP_ADDRESS + "news/limit/three")
+        .post(process.env.VUE_APP_IP_ADDRESS + "news/limit/three", {
+          id: this.content_id,
+        })
         .then((response) => {
           this.news = response.data.datas;
         });
@@ -205,6 +197,9 @@ export default {
     },
     limitTitle(text) {
       return text.slice(0, 25) + " ...";
+    },
+    convertDate(strDate) {
+      return moment(strDate).format("dddd, DD MMMM YYYY");
     },
   },
 };
