@@ -1,5 +1,5 @@
 <template>
-  <div class="footer" style="background-color:red">
+  <div class="footer" style="background-color:#fa2c2c">
     <v-container>
       <b-row>
         <b-col class="mt-5">
