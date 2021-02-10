@@ -48,6 +48,18 @@
                   height="200px"
                   src="../assets/empty-image.png"
                 >
+                  <v-chip
+                    class="ma-2"
+                    color="red darken-3"
+                    label
+                    text-color="white"
+                    style="margin-top: -9.6rem !important; margin-left: 16rem !important"
+                    v-if="item.content_status == 1"
+                  >
+                    <v-icon center>
+                      mdi-eye-off-outline
+                    </v-icon>
+                  </v-chip>
                   <v-card-title>
                     <v-img src="@/assets/label-tittle.png" height="50px">
                       <div class="my-4 ml-8 subtitle-2">
