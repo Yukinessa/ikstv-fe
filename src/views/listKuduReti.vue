@@ -14,7 +14,7 @@
       >
         <b-col md="3" class="py-5 px-3 d-flex justify-content-center">
           <b-img
-            v-bind:src="urlImg + '/article/desktop/' + item.url"
+            v-bind:src="urlImg + '/article/' + item.url"
             fluid
             class="text-center w-100"
           ></b-img>
