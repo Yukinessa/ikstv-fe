@@ -70,7 +70,7 @@
             <CategoryMobile />
           </div>
 
-          <div id="advertise-mid" style="padding-top:2.5rem">
+          <div id="advertise-mid" style="margin-top: -2rem">
             <AdvertiseGoldMobile />
           </div>
 

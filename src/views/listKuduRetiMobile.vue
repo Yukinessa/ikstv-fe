@@ -34,7 +34,7 @@
               </b-col>
               <b-col cols="4" v-if="item.url_mobile != null">
                 <b-img
-                  :src="urlImg + 'article/mobile/' + item.url_mobile"
+                  :src="urlImg + 'article/' + item.url_mobile"
                   class="shadow"
                   style="border-radius: 10px; width: 100%; max-height: 80%"
                 >
