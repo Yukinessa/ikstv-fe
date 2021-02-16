@@ -1,5 +1,5 @@
 <template>
-  <div class="grey darken-4">
+  <div class="grey darken-4" v-if="!$isMobile()">
     <v-container>
       <div style="padding-bottom:4rem">
         <Navbar />
@@ -18,32 +18,22 @@
         width="24"
         height="24"
         style="margin-right:1rem"
-        @click="
-          shareWA(
-            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
-          )
-        "
+        @click="shareWA(ip_address + '/kudu-reti/' + strReplace(content.title))"
       />
       <img
         src="../assets/facebook.png"
         width="27"
         height="27"
         style="margin-right:1rem"
-        @click="
-          shareFB(
-            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
-          )
-        "
+        @click="shareFB(ip_address + '/kudu-reti/' + strReplace(content.title))"
       />
       <img
-        src="../assets/url.png"
+        src="../assets/copy.png"
         width="27"
         height="27"
         style="margin-right:1rem"
         @click="
-          shareUrl(
-            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
-          ),
+          shareUrl(ip_address + '/kudu-reti/' + strReplace(content.title)),
             (snackbar = true)
         "
       />
@@ -105,6 +95,13 @@
     </v-container>
     <Footer />
   </div>
+  <div v-else>
+    {{
+      this.$router.push({
+        path: `/kudu-reti/mobile/${this.$route.params.title}`,
+      })
+    }}
+  </div>
 </template>
 
 <script>
@@ -112,7 +109,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseGold from "../components/advertiseGold";
-import { loadImg } from "../../config.js";
+import { loadImg, urlLink } from "../../config.js";
 import moment from "moment";
 
 export default {
@@ -131,6 +128,7 @@ export default {
       snackbar: false,
       urlImg: loadImg,
       content_id: "",
+      ip_address: urlLink,
     };
   },
   mounted() {
