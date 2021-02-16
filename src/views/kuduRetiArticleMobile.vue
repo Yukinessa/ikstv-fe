@@ -1,5 +1,5 @@
 <template>
-  <div class="grey darken-4">
+  <div class="grey darken-4" v-if="$isMobile()">
     <v-container>
       <div style="padding-bottom:2rem">
         <NavbarMobile />
@@ -19,9 +19,7 @@
         height="24"
         style="margin-right:1rem"
         @click="
-          shareWA(
-            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
-          )
+          shareWA(ip_address + '/kudu-reti/mobile/' + strReplace(content.title))
         "
       />
       <img
@@ -30,19 +28,17 @@
         height="27"
         style="margin-right:1rem"
         @click="
-          shareFB(
-            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
-          )
+          shareFB(ip_address + '/kudu-reti/mobile/' + strReplace(content.title))
         "
       />
       <img
-        src="../assets/url.png"
+        src="../assets/copy.png"
         width="27"
         height="27"
         style="margin-right:1rem"
         @click="
           shareUrl(
-            'http://192.168.1.20:8080/#/kudu-reti/' + strReplace(content.title)
+            ip_address + '/kudu-reti/mobile/' + strReplace(content.title)
           ),
             (snackbar = true)
         "
@@ -55,7 +51,7 @@
         ></b-img>
       </div>
       <p class="text-light text-justify mt-5" v-html="content.text"></p>
-      <!-- <v-container style="margin-left: -1rem"> -->
+
       <b-row class="mt-5">
         <b-col cols="8">
           <span class="mt-7 font-weight-bold text-light">Kudu Reti lain</span>
@@ -93,10 +89,25 @@
       <div class="mb-5 mt-5">
         <AdvertiseGoldMobile />
       </div>
+      <v-snackbar v-model="snackbar"
+        >Berhasil Dicopy Lurr
+        <template v-slot:action="{ attrs }">
+          <v-btn color="pink" text v-bind="attrs" @click="snackbar = false"
+            >Close</v-btn
+          >
+        </template>
+      </v-snackbar>
     </v-container>
     <br />
     <br />
     <FooterMobile />
+  </div>
+  <div v-else>
+    {{
+      this.$router.push({
+        path: `/kudu-reti/${this.$route.params.title}`,
+      })
+    }}
   </div>
 </template>
 
@@ -105,7 +116,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
 import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
-import { loadImg } from "../../config.js";
+import { loadImg, urlLink } from "../../config.js";
 import moment from "moment";
 
 export default {
@@ -124,6 +135,7 @@ export default {
       kuduReti: [],
       snackbar: false,
       urlImg: loadImg,
+      ip_address: urlLink,
       options: {
         perPage: 1,
         pagination: false,
@@ -137,6 +149,7 @@ export default {
     this.getContent();
     setTimeout(this.getArticle, 3000);
     moment.locale("id");
+    console.log(this.urlDesktop);
   },
   methods: {
     getContent() {

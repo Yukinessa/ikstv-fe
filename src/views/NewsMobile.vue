@@ -1,5 +1,5 @@
 <template>
-  <div class="grey darken-4">
+  <div class="grey darken-4" v-if="$isMobile()">
     <v-container>
       <div style="padding-bottom:1rem">
         <NavbarMobile />
@@ -21,9 +21,7 @@
             height="24"
             style="margin-right:1rem"
             @click="
-              shareWA(
-                'http://192.168.1.6:8080/#/News/' + strReplace(content.title)
-              )
+              shareWA(ip_address + '/news/mobile' + strReplace(content.title))
             "
           />
           <img
@@ -32,9 +30,7 @@
             height="27"
             style="margin-right:1rem"
             @click="
-              shareFB(
-                'http://192.168.1.6:8080/#/News/' + strReplace(content.title)
-              )
+              shareFB(ip_address + '/news/mobile' + strReplace(content.title))
             "
           />
           <img
@@ -44,7 +40,7 @@
             style="margin-right:1rem"
             @click="
               shareUrl(
-                'http://192.168.1.6:8080/#/News/' + strReplace(content.title)
+                ip_address + '/news/mobile/' + strReplace(content.title)
               ),
                 (snackbar = true)
             "
@@ -153,6 +149,13 @@
 
     <FooterMobile />
   </div>
+  <div v-else>
+    {{
+      this.$router.push({
+        path: `/news/${this.$route.params.title}`,
+      })
+    }}
+  </div>
 </template>
 
 <script>
@@ -160,7 +163,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
 import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
-import { loadImg } from "../../config.js";
+import { loadImg, urlLink } from "../../config.js";
 import moment from "moment";
 
 export default {
@@ -178,6 +181,7 @@ export default {
       news: [],
       snackbar: false,
       urlImg: loadImg,
+      ip_address: urlLink,
       content_id: "",
       options: {
         perPage: 1,

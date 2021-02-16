@@ -1,5 +1,5 @@
 <template>
-  <div class="grey darken-4">
+  <div class="grey darken-4" v-if="!$isMobile()">
     <v-container>
       <div style="padding-bottom:4rem">
         <Navbar />
@@ -126,6 +126,13 @@
       </div>
     </v-container>
     <Footer />
+  </div>
+  <div v-else>
+    {{
+      this.$router.push({
+        path: `/news/mobile/${this.$route.params.title}`,
+      })
+    }}
   </div>
 </template>
 
