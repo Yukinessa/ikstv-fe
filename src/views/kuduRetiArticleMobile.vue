@@ -70,7 +70,7 @@
         <b-col cols="12" style="margin-top: -1rem">
           <splide :slides="kuduReti" :options="options" class="mt-2 clearfix">
             <splide-slide v-for="item in kuduReti" :key="item.id">
-              <router-link :to="'/News/mobile/' + strReplace(item.title)">
+              <router-link :to="'/kudu-reti/mobile/' + strReplace(item.title)">
                 <b-img
                   :src="urlImg + '/article/' + item.url"
                   class="shadow"
@@ -105,7 +105,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
 import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 import moment from "moment";
 
 export default {
@@ -120,6 +120,7 @@ export default {
     return {
       newsId: "",
       content: {},
+      content_id: "",
       kuduReti: [],
       snackbar: false,
       urlImg: loadImg,
@@ -134,7 +135,7 @@ export default {
   },
   mounted() {
     this.getContent();
-    this.getArticle();
+    setTimeout(this.getArticle, 3000);
     moment.locale("id");
   },
   methods: {
@@ -147,16 +148,17 @@ export default {
         )
         .then((response) => {
           this.content = response.data.datas;
-          console.log(response);
+          this.content_id = response.data.datas.id;
         });
     },
     // get content of artikel kudu-reti
     getArticle() {
       this.axios
-        .get(process.env.VUE_APP_IP_ADDRESS + "info/funfact/")
+        .post(process.env.VUE_APP_IP_ADDRESS + "info/funfact/limit/three", {
+          id: this.content_id,
+        })
         .then((response) => {
           this.kuduReti = response.data.datas;
-          console.log(response);
         });
     },
     shareWA(link) {

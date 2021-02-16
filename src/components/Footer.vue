@@ -73,13 +73,19 @@
       </b-row>
     </v-container>
     <div class="text-center text-light mt-15">
-      <p>© Copyright 2020 Info Kejadian Semarang | All right reserved.</p>
+      <p>© Copyright {{ year }} Info Kejadian Semarang | All right reserved.</p>
     </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
 export default {
+  data() {
+    return {
+      year: moment().format("YYYY"),
+    };
+  },
   methods: {
     smoothScroll(refName) {
       this.$emit("testing", refName);

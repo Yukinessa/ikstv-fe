@@ -72,7 +72,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
 import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import FooterMobile from "../components/FooterMobile";
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 import moment from "moment";
 
 export default {

@@ -38,7 +38,7 @@
             "
           />
           <img
-            src="../assets/url.png"
+            src="../assets/copy.png"
             width="27"
             height="27"
             style="margin-right:1rem"
@@ -149,9 +149,6 @@
           >
         </template>
       </v-snackbar>
-      <div style="padding-bottom:2rem; padding-top:1rem">
-        <AdvertiseSilverMobile />
-      </div>
     </v-container>
 
     <FooterMobile />
@@ -163,7 +160,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
 import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 import moment from "moment";
 
 export default {

@@ -4,6 +4,7 @@
       <div style="padding-bottom : 4rem">
         <Navbar />
       </div>
+      <AdvertiseDiamond />
       <h1 class="pt-6" style="color:white; padding-bottom:1rem">
         Nomer Penting Se-Kota Semarang
       </h1>
@@ -29,7 +30,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in contact" :key="item" style="color:white">
+            <tr v-for="(item, i) in contact" :key="i" style="color:white">
               <td>{{ item.name }}</td>
               <td>{{ item.region }}</td>
               <td>{{ item.phone }}</td>
@@ -56,6 +57,7 @@
           </tbody>
         </template>
       </v-simple-table>
+      <AdvertiseGold class="mt-7" />
       <div style="padding-top:4rem">
         <Footer />
       </div>
@@ -65,12 +67,16 @@
 
 <script>
 import Navbar from "../components/Navbar";
+import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseGold from "../components/advertiseGold";
 import Footer from "../components/Footer";
 
 export default {
   components: {
     Navbar,
     Footer,
+    AdvertiseDiamond,
+    AdvertiseGold,
   },
   data() {
     return {
@@ -87,7 +93,6 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "info/emergency")
         .then((response) => {
           this.contact = response.data.datas;
-          console.log(response);
         });
     },
     clipboard(number) {

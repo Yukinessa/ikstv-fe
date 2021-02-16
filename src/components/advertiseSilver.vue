@@ -16,12 +16,13 @@
 </template>
 
 <script>
-import loadImg from "../../config";
+import { loadImg } from "../../config";
 export default {
   data() {
     return {
       items: [],
       urlImg: loadImg,
+
       options: {
         type: "loop",
         perPage: 1,

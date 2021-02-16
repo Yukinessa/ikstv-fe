@@ -128,15 +128,13 @@
 }
 </style>
 <script>
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 export default {
   data() {
     return {
       news: [],
       urlImg: loadImg,
       options: {
-        // rewind: true,
-        // width: 300,
         perPage: 1,
         pagination: false,
         gap: ".5rem",

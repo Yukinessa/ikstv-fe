@@ -11,7 +11,7 @@
         </router-link>
       </b-col>
       <b-col>
-        <router-link :to="'/list-loker/mobile'">
+        <router-link :to="'/loker'">
           <img
             src="@/assets/info-loker.png"
             class="shadow"

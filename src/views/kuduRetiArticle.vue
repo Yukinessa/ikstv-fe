@@ -112,7 +112,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AdvertiseDiamond from "../components/advertiseDiamond";
 import AdvertiseGold from "../components/advertiseGold";
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 import moment from "moment";
 
 export default {

@@ -4,6 +4,7 @@
       <div class="mb-7">
         <Navbar />
       </div>
+      <AdvertiseDiamond />
       <h2 class="pt-8 pb-9" style="color:white; font-weight:bold">
         Berita Terkini
       </h2>
@@ -16,14 +17,14 @@
           <b-img
             v-if="item.photo != null"
             :class="`rounded-lg`"
-            v-bind:src="urlImg + '/news/desktop/' + item.photo"
+            v-bind:src="urlImg + '/news/' + item.photo"
             fluid
             class="text-center w-100"
           ></b-img>
           <b-img
             v-else
             :class="`rounded-lg`"
-            src="@/assets/example-pict.png"
+            :src="require('../assets/example-pict.png')"
             fluid
             class="text-center w-100"
           ></b-img>
@@ -52,6 +53,7 @@
           >Muat Lebih</b-btn
         >
       </div>
+      <AdvertiseGold class="mb-4" />
       <Footer />
     </v-container>
   </div>
@@ -59,8 +61,10 @@
 
 <script>
 import Navbar from "../components/Navbar";
+import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseGold from "../components/advertiseGold";
 import Footer from "../components/Footer";
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 
 export default {
   data() {
@@ -74,6 +78,8 @@ export default {
   components: {
     Navbar,
     Footer,
+    AdvertiseDiamond,
+    AdvertiseGold,
   },
   mounted() {
     this.getNews();
