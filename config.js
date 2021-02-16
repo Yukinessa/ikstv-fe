@@ -1,3 +1,4 @@
-let loadImg = "http://192.168.1.16:8000/uploads";
+const loadImg = "http://147.139.162.60:9000/uploads";
+const urlLink = "http://147.139.162.60:9000/";
 
-export default loadImg;
+export { loadImg, urlLink };
