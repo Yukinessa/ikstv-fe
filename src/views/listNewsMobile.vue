@@ -83,7 +83,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
 import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 import moment from "moment";
 export default {
   data() {
