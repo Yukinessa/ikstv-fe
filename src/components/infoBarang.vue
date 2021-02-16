@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 
 export default {
   data() {

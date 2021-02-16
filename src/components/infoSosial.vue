@@ -140,7 +140,7 @@
 </template>
 
 <script>
-import loadImg from "../../config";
+import { loadImg } from "../../config";
 import modalLoker from "../components/modalLoker";
 import modalSosial from "../components/modalSosial";
 

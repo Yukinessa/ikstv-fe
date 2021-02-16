@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import loadImg from "../../config";
+import { loadImg } from "../../config.js";
 export default {
   data() {
     return {

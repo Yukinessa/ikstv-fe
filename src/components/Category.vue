@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import loadImg from "../../config";
+import { loadImg } from "../../config";
 export default {
   data() {
     return {
