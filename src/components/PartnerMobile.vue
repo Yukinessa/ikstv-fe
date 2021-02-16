@@ -5,20 +5,21 @@
         Mitra Kami
       </h5>
     </div>
-    <v-row class="mt-2">
-      <v-col md="4" v-for="item in partner.slice(0, 8)" :key="item.id">
-        <img
+    <b-row align-v="center">
+      <b-col cols="4" v-for="item in partner.slice(0, 8)" :key="item.id">
+        <b-img
           v-bind:src="urlImg + '/partner/' + item.logo"
-          width="100%"
+          width="60"
           height="auto"
           class="d-block mx-auto"
-        />
-      </v-col>
-    </v-row>
+        >
+        </b-img>
+      </b-col>
+    </b-row>
   </v-container>
 </template>
 <script>
-import loadImg from "../../config";
+import { loadImg } from "../../config";
 export default {
   data() {
     return {
