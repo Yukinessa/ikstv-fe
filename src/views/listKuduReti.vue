@@ -1,9 +1,12 @@
 <template>
   <div class="grey darken-4">
     <v-container>
-      <div class="mb-7">
+      <br />
+      <br />
+      <div class="mt-7">
         <Navbar />
       </div>
+      <AdvertiseDiamond />
       <h2 class="pt-8 pb-9" style="color:white; font-weight:bold">
         Kudu Reti Lurr
       </h2>
@@ -17,6 +20,7 @@
             v-bind:src="urlImg + '/article/' + item.url"
             fluid
             class="text-center w-100"
+            style="border-radius: 10px"
           ></b-img>
         </b-col>
         <b-col md="9" class="p-5">
@@ -46,6 +50,7 @@
           >Muat Lebih</b-btn
         >
       </div>
+      <AdvertiseGold />
       <Footer />
     </v-container>
   </div>
@@ -54,7 +59,9 @@
 <script>
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import loadImg from "../../config.js";
+import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseGold from "../components/advertiseGold";
+import { loadImg } from "../../config.js";
 
 export default {
   data() {
@@ -68,13 +75,19 @@ export default {
   components: {
     Navbar,
     Footer,
+    AdvertiseDiamond,
+    AdvertiseGold,
   },
   mounted() {
     this.getArticle();
   },
   methods: {
     limitText(text) {
-      return text.slice(0, 180) + " ...";
+      if (text.length > 180) {
+        return text.slice(0, 180) + " ...";
+      } else {
+        return text;
+      }
     },
     getArticle() {
       this.axios
@@ -82,7 +95,6 @@ export default {
         .then((response) => {
           this.article = response.data.datas;
           this.totalSize = this.article.length;
-          console.log(response);
         });
     },
     strReplace(str) {

@@ -18,28 +18,22 @@
         width="24"
         height="24"
         style="margin-right:1rem"
-        @click="
-          shareWA('http://192.168.1.6:8080/#/News/' + strReplace(content.title))
-        "
+        @click="shareWA(ip_address + '/News' + strReplace(content.title))"
       />
       <img
         src="../assets/facebook.png"
         width="27"
         height="27"
         style="margin-right:1rem"
-        @click="
-          shareFB('http://192.168.1.6:8080/#/News/' + strReplace(content.title))
-        "
+        @click="shareFB(ip_address + '/News/' + strReplace(content.title))"
       />
       <img
-        src="../assets/url.png"
+        src="../assets/copy.png"
         width="27"
         height="27"
         style="margin-right:1rem"
         @click="
-          shareUrl(
-            'http://192.168.1.6:8080/#/News/' + strReplace(content.title)
-          ),
+          shareUrl(ip_address + '/News/' + strReplace(content.title)),
             (snackbar = true)
         "
       />
@@ -85,6 +79,24 @@
                 class="white--text align-end"
                 height="auto"
                 v-bind:src="urlImg + '/news/' + item.photo"
+                v-if="item.photo != null"
+              >
+                <v-card-title>
+                  <v-img src="@/assets/label-tittle.png" height="40px">
+                    <div class="my-2 ml-8 subtitle-2">
+                      <span class="white--text" style="font-size:14px;">{{
+                        limitTitle(item.title)
+                      }}</span>
+                    </div>
+                  </v-img>
+                </v-card-title>
+              </v-img>
+              <v-img
+                :class="`rounded-lg`"
+                class="white--text align-end"
+                height="auto"
+                :src="require('../assets/example-pict.png')"
+                v-else
               >
                 <v-card-title>
                   <v-img src="@/assets/label-tittle.png" height="40px">
@@ -122,7 +134,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AdvertiseGold from "../components/advertiseGold";
 import AdvertiseDiamond from "../components/advertiseDiamond";
-import loadImg from "../../config.js";
+import { loadImg, urlLink } from "../../config.js";
 import moment from "moment";
 
 export default {
@@ -141,6 +153,7 @@ export default {
       snackbar: false,
       urlImg: loadImg,
       content_id: "",
+      ip_address: urlLink,
     };
   },
   mounted() {

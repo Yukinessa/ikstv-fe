@@ -33,14 +33,13 @@
                 ></b-img>
               </v-col>
               <v-col cols="6">
-                <!-- judul sosial -->
                 <p
                   class="text-light font-weight-bold"
                   style="font-size: 12px; line-height: 1rem"
                 >
                   {{ item.title.toUpperCase() }}
                 </p>
-                <!-- tanggal publish -->
+
                 <p style="font-size: 10px" class="text-light">
                   {{ convertDate(item.created_at) }}
                 </p>
@@ -80,7 +79,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
 import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
 import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
-import loadImg from "../../config.js";
+import { loadImg } from "../../config.js";
 import moment from "moment";
 export default {
   data() {

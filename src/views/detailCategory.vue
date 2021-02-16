@@ -2,6 +2,7 @@
   <div class="grey darken-4">
     <v-container>
       <Navbar />
+      <AdvertiseDiamond />
       <h1 style="color:white; padding-top:5rem; padding-bottom:1rem">
         {{ categoryChannel.name }}
       </h1>
@@ -59,6 +60,7 @@
           </v-card>
         </div>
       </div>
+      <AdvertiseGold class="mt-5" />
       <div style="padding-top:6rem">
         <Footer />
       </div>
@@ -69,7 +71,9 @@
 <script>
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import loadImg from "../../config.js";
+import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseGold from "../components/advertiseGold";
+import { loadImg } from "../../config.js";
 import moment from "moment";
 
 export default {
@@ -83,6 +87,8 @@ export default {
   components: {
     Navbar,
     Footer,
+    AdvertiseDiamond,
+    AdvertiseGold,
   },
   mounted() {
     this.getContent();
@@ -105,7 +111,6 @@ export default {
         )
         .then((response) => {
           this.content = response.data.datas;
-          console.log(response);
         });
     },
     getChannelCategory() {

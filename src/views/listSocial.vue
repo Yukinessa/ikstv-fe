@@ -4,12 +4,13 @@
       <Navbar />
       <br />
       <br />
+      <AdvertiseDiamond class="mt-5" />
       <h1 class="pt-6" style="color:white">Sosial dan Donasi</h1>
-      <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
+      <v-expansion-panels style="padding-bottom:2rem; padding-top:1rem">
         <v-expansion-panel
           class="grey darken-3"
-          v-for="item in sosial"
-          :key="item"
+          v-for="(item, i) in sosial"
+          :key="i"
         >
           <v-expansion-panel-header>
             <v-row>
@@ -60,6 +61,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
+      <AdvertiseGold />
       <Footer />
     </v-container>
   </div>
@@ -68,12 +70,16 @@
 <script>
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import loadImg from "../../config";
+import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseGold from "../components/advertiseGold";
+import { loadImg } from "../../config";
 
 export default {
   components: {
     Navbar,
     Footer,
+    AdvertiseDiamond,
+    AdvertiseGold,
   },
   data() {
     return {
@@ -90,7 +96,6 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "info/sosial")
         .then((response) => {
           this.sosial = response.data.datas;
-          console.log(response);
         });
     },
     limitTitle(text) {

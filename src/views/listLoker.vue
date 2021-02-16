@@ -4,12 +4,13 @@
       <Navbar />
       <br />
       <br />
+      <AdvertiseDiamond class="mt-5" />
       <h2 class="pt-6" style="color:white">Lowongan Pekerjaan</h2>
-      <v-expansion-panels style="padding-bottom:10rem; padding-top:1rem">
+      <v-expansion-panels style="padding-bottom:2rem; padding-top:1rem">
         <v-expansion-panel
           class="grey darken-3"
-          v-for="item in loker"
-          :key="item"
+          v-for="(item, i) in loker"
+          :key="i"
         >
           <v-expansion-panel-header>
             <v-row>
@@ -72,6 +73,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
+      <AdvertiseGold class="mb-5" />
       <Footer />
     </v-container>
   </div>
@@ -80,12 +82,16 @@
 <script>
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import loadImg from "../../config";
+import AdvertiseDiamond from "../components/advertiseDiamond";
+import AdvertiseGold from "../components/advertiseGold";
+import { loadImg } from "../../config";
 
 export default {
   components: {
     Navbar,
     Footer,
+    AdvertiseDiamond,
+    AdvertiseGold,
   },
   data() {
     return {
@@ -102,7 +108,6 @@ export default {
         .get(process.env.VUE_APP_IP_ADDRESS + "info/loker")
         .then((response) => {
           this.loker = response.data.datas;
-          console.log(response);
         });
     },
     limitTitle(text) {

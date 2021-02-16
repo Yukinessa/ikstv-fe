@@ -4,7 +4,7 @@
       <div class="mb-6">
         <NavbarMobile />
       </div>
-      <AdvertiseDiamond />
+      <AdvertiseDiamondMobile />
       <br />
       <h6 class="text-light font-weight-bold mb-4">
         Nomer Penting Se-Kota Semarang
@@ -68,7 +68,7 @@
         align="center"
       ></b-pagination>
       <br />
-      <AdvertiseGold />
+      <AdvertiseGoldMobile />
       <div style="padding-top:4rem">
         <FooterMobile />
       </div>
@@ -79,15 +79,15 @@
 <script>
 import NavbarMobile from "../components/NavbarMobile";
 import FooterMobile from "../components/FooterMobile";
-import AdvertiseDiamond from "../components/advertiseDiamond";
-import AdvertiseGold from "../components/advertiseGold";
+import AdvertiseDiamondMobile from "../components/advertiseDiamondMobile";
+import AdvertiseGoldMobile from "../components/advertiseGoldMobile";
 
 export default {
   components: {
     NavbarMobile,
     FooterMobile,
-    AdvertiseDiamond,
-    AdvertiseGold,
+    AdvertiseDiamondMobile,
+    AdvertiseGoldMobile,
   },
   data() {
     return {
