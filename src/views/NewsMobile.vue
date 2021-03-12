@@ -236,10 +236,10 @@ export default {
       this.$copyText(link).then(function() {});
     },
     strReplace(str) {
-      return str.replace(" ", "-");
+      return str.replaceAll(" ", "-");
     },
     strReturn(str) {
-      return str.replace("-", " ");
+      return str.replaceAll("-", " ");
     },
     limitText(text) {
       return text.slice(0, 50) + " ...";
