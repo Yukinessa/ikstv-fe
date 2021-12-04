@@ -69,6 +69,71 @@
           <a @click="goYoutube">
             <img class="ml-2" src="@/assets/icon-youtube.png" width="50" />
           </a>
+          <v-row justify="center">
+            <v-dialog
+              v-model="dialog"
+              fullscreen
+              hide-overlay
+              transition="dialog-bottom-transition"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  style="color:red"
+                  class="mt-10"
+                  color="white"
+                  position="fixed"
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  Lapor Berita Disini
+                </v-btn>
+              </template>
+              <v-card>
+                <v-toolbar dark color="red">
+                  <v-btn icon dark @click="dialog = false">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                  <v-toolbar-title>Lapor Berita</v-toolbar-title>
+                </v-toolbar>
+                <v-list three-line subheader>
+                  <v-container grid-list-xs>
+                    <form @submit="submitForm" enctype="multipart/form-data">
+                      <v-text-field
+                        name="instagram"
+                        label="Username Instagram"
+                        id="instagram"
+                        style="color:white"
+                        dark
+                        hint="Identitas instagram untuk validasi laporan"
+                        v-model="form.instagram"
+                      >
+                      </v-text-field>
+                      <v-text-field
+                        name="location"
+                        label="Lokasi Kejadian"
+                        id="location"
+                        style="color:white"
+                        hint="Lokasi Kejadian yang terjadi pada laporan"
+                        dark
+                        v-model="form.location"
+                      >
+                      </v-text-field>
+                      <v-textarea
+                        id="description"
+                        label="Detail Laporan"
+                        hint="Ceritakan laporan anda secara singkat dan jelas"
+                        dark
+                        enctype
+                        v-model="form.description"
+                      ></v-textarea>
+                      <v-btn type="submit" color="success">Submit</v-btn>
+                    </form>
+                  </v-container>
+                </v-list>
+              </v-card>
+            </v-dialog>
+          </v-row>
         </b-col>
       </b-row>
     </v-container>
@@ -84,6 +149,15 @@ export default {
   data() {
     return {
       year: moment().format("YYYY"),
+      dialog: false,
+      notifications: false,
+      sound: true,
+      widgets: false,
+      form: {
+        instagram: "",
+        location: "",
+        description: "",
+      },
     };
   },
   methods: {
@@ -101,7 +175,24 @@ export default {
         "https://wa.me/6282180888164?text=Saya%20ingin%20mengiklankan%20produk%20saya%20prosedurnya%20bagaimana"
       );
     },
-    // openModalContact() {
+    submitForm(e) {
+      e.preventDefault();
+      let formData = new FormData();
+      formData.append("instagram", this.form.instagram);
+      formData.append("location", this.form.location);
+      formData.append("description", this.form.description);
+      const config = {
+        headers: { "content-type": "multipart/form-data" },
+      };
+      this.axios
+        .post(process.env.VUE_APP_IP_ADDRESS + "lapor", formData, config)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
